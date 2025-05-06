@@ -4,8 +4,8 @@ import { publicRoutes, privateRoutes } from "./routes";
 import { PublicRoute } from "./PublicRoute";
 import { PrivateRoute } from "./PrivateRoute";
 import { HomeLayout } from "../pages/HomeLayout";
-import { DashboardLayout } from "../components/layout/DashboardLayout";
 import { MainLayout } from "../components/layout/MainLayout";
+import { DashboardLayout } from "../components/layout/DashboardLayout";
 
 const isAuthenticated = true; //Todo: remove temporary 'true'
 
@@ -23,7 +23,7 @@ export const AppRouter = () => {
                 {
                     element: (
                         <PrivateRoute isAuthenticated={ isAuthenticated }>
-                            <DashboardLayout/>
+                            <DashboardLayout />
                         </PrivateRoute>
                     ),
                     children: privateRoutes

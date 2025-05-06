@@ -8,7 +8,9 @@ interface Props {
 }
 
 export const PrivateRoute = ( { children, isAuthenticated }: Props ) => {
-    return isAuthenticated ? <>{ children }</> : <Navigate to={ RouteDefinitions.LOGIN.path }/>;
+    return isAuthenticated ?
+        <>{ children }</> :
+        <Navigate to={ RouteDefinitions.LOGIN.path }/>;
 }
 
 

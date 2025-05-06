@@ -1,11 +1,11 @@
 import { lazy } from "react";
 import { RouteDefinitions } from "../constants/routes";
-import Logout from "../pages/Logout";
 
 const Login = lazy( () => import('../pages/Login') );
 const Register = lazy( () => import('../pages/Register') );
 const Dashboard = lazy( () => import('../pages/Dashboard') );
 const Settings = lazy( () => import('../pages/Settings') );
+const Logout = lazy( () => import('../pages/Logout') );
 
 export const publicRoutes = [
     { path: RouteDefinitions.LOGIN.path, element: <Login/> },

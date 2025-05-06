@@ -10,6 +10,11 @@ export const DashboardLayout = () => {
                     <nav>
                         <ul>
                             <li>
+                                <NavLink to={ RouteDefinitions.LOGOUT.path }>
+                                    { RouteDefinitions.LOGOUT.name }
+                                </NavLink>
+                            </li>
+                            <li>
                                 <NavLink to={ RouteDefinitions.DASHBOARD.path }>
                                     { RouteDefinitions.DASHBOARD.name }
                                 </NavLink>
@@ -19,7 +24,6 @@ export const DashboardLayout = () => {
                                     { RouteDefinitions.SETTINGS.name }
                                 </NavLink>
                             </li>
-
                         </ul>
                     </nav>
                 </aside>
