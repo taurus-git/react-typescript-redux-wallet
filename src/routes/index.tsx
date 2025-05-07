@@ -3,8 +3,8 @@ import { useRoutes } from "react-router-dom";
 import { publicRoutes, privateRoutes } from "./routes";
 import { PublicRoute } from "./PublicRoute";
 import { PrivateRoute } from "./PrivateRoute";
-import { HomeLayout } from "../pages/HomeLayout";
-import { MainLayout } from "../components/layout/MainLayout";
+import { HomeLayout } from "../components/layout/HomeLayout";
+import { MainLayout,  } from "../components/layout/MainLayout";
 import { DashboardLayout } from "../components/layout/DashboardLayout";
 
 const isAuthenticated = true; //Todo: remove temporary 'true'
