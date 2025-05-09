@@ -20,7 +20,7 @@ const Dashboard = () => {
         <>
             <h1>Dashboard</h1>
             <div>
-                <button onClick={ handleAdd }>Add Expence</button>
+                <button onClick={ handleAdd }>Add Expense</button>
                 <ul>
                     { expenses.map( item => (
                         <li key={ item.id }>
