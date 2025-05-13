@@ -22,6 +22,14 @@ body {
     background-color: var(--gray-0);
 }
 
+.main {
+    min-height: 100vh;
+}
+
+aside {
+    border-right: 1px solid var(--gray-2);
+}
+
 h1, h2, h3, h4, h5, h6 {
     margin-bottom: var(--spacing-4);
     font-weight: 600;
@@ -113,6 +121,14 @@ textarea {
 
 .flex-wrap {
     flex-wrap: wrap;
+}
+
+.flex-col {
+    flex-direction: column;
+}
+
+.w-full {
+    width: 100%;
 }
 
 @media (min-width: 768px) {

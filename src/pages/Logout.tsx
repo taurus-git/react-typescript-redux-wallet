@@ -3,7 +3,7 @@ import React from 'react';
 const Logout = () => {
     return (
         <>
-            <h1>Logout Page</h1>
+            <h1>Выйти из аккаунта</h1>
         </>
     );
 }

@@ -1,34 +1,19 @@
 import React from 'react';
-import { NavLink, Outlet } from "react-router-dom";
-import { RouteDefinitions } from "../../constants/routes";
+import { Outlet } from "react-router-dom";
+import { sidebarNavigation } from "../../constants/navigation";
+import { SidebarNavigation } from "../common/Navigation/SidebarNavigation";
 
 export const DashboardLayout = () => {
     return (
         <>
             <main>
-                <aside>
-                    <nav>
-                        <ul>
-                            <li>
-                                <NavLink to={ RouteDefinitions.LOGOUT.path }>
-                                    { RouteDefinitions.LOGOUT.name }
-                                </NavLink>
-                            </li>
-                            <li>
-                                <NavLink to={ RouteDefinitions.DASHBOARD.path }>
-                                    { RouteDefinitions.DASHBOARD.name }
-                                </NavLink>
-                            </li>
-                            <li>
-                                <NavLink to={ RouteDefinitions.SETTINGS.path }>
-                                    { RouteDefinitions.SETTINGS.name }
-                                </NavLink>
-                            </li>
-                        </ul>
-                    </nav>
-                </aside>
-                <div className="main">
-                    <Outlet/>
+                <div className="main d-flex">
+                    <aside className="sidebar">
+                        <SidebarNavigation navigation={ sidebarNavigation }/>
+                    </aside>
+                    <div className="d-flex flex-col w-full">
+                        <Outlet/>
+                    </div>
                 </div>
             </main>
         </>

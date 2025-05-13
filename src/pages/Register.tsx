@@ -8,7 +8,7 @@ const Register = () => {
             <h1>Register Page</h1>
             <div>Already have an account?</div>
             <NavLink to={ RouteDefinitions.LOGIN.path }>
-                { RouteDefinitions.LOGIN.name }
+                { RouteDefinitions.LOGIN.label }
             </NavLink>
         </>
     );

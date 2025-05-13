@@ -8,7 +8,7 @@ const Login = () => {
             <h1>Login Page</h1>
             <div>or</div>
             <NavLink to={ RouteDefinitions.REGISTER.path }>
-                { RouteDefinitions.REGISTER.name }
+                { RouteDefinitions.REGISTER.label }
             </NavLink>
         </>
     );
