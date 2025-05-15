@@ -9,7 +9,7 @@ const Dashboard = () => {
     const expenses = useSelector( ( state: RootState ) => state.expenses.items );
 
     const handleAdd = () => {
-        dispatch( addExpense( { accountId: '1', categoryId: 'Products', amount: 150, date: 'today' } ) );
+        dispatch( addExpense( { accountId: '1', categoryId: 'Продукты', amount: 150, date: 'сегодня' } ) );
     }
 
     const handleRemove = ( id: string ) => {
@@ -18,14 +18,14 @@ const Dashboard = () => {
 
     return (
         <>
-            <h1>Dashboard</h1>
+            <h1>Журнал</h1>
             <div>
-                <button onClick={ handleAdd }>Add Expense</button>
+                <button onClick={ handleAdd }>Добавить транзакцию</button>
                 <ul>
                     { expenses.map( item => (
                         <li key={ item.id }>
                             { item.categoryId } - { item.amount } - { item.date }
-                            <button onClick={() => handleRemove( item.id ) }>Delete Item</button>
+                            <button onClick={() => handleRemove( item.id ) }>Удалить</button>
                         </li>
                     ) ) }
                 </ul>

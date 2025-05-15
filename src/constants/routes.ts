@@ -1,13 +1,34 @@
 export const RouteDefinitions = {
+    /*Finances menu*/
     DASHBOARD: {
         path: "dashboard",
-        label: "Панель управления"
+        label: "Журнал"
     },
-    SETTINGS: {
+    ACCOUNTS: {
+        path: "accounts",
+        label: "Счета"
+    },
+    INCOME: {
+        path: "income",
+        label: "Доходы"
+    },
+    EXPENSES: {
+        path: "expenses",
+        label: "Расходы"
+    },
+
+    /*Settings menu*/
+    SETTINGS: { /*Settings*/
         path: "settings",
         label: "Настройки"
     },
-    LOGIN: {
+    /*settings/user start*/
+    USER: { /*Settings sub item*/
+        path: "user",
+        label: "Пользователь"
+    },
+
+    LOGIN: { /*Login sub items*/
         path: "login",
         label: "Логин"
     },
@@ -19,25 +40,12 @@ export const RouteDefinitions = {
         path: "register",
         label: "Регистрация"
     },
-    USER: {
-        path: "user",
-        label: "Пользователь"
-    },
+    /*settings/user end*/
+
+    /*settings/general*/
     GENERAL: {
         path: "general",
         label: "Общие настройки"
-    },
-    ACCOUNTS: { /*Банковские счета, Карты, Наличные*/
-        path: "accounts",
-        label: "Счета"
-    },
-    INCOME: {
-        path: "income",
-        label: "Доходы"
-    },
-    EXPENSES: {
-        path: "expenses",
-        label: "Расходы"
     },
 
 } as const;

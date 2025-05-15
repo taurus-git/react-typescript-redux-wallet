@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link, Outlet, useLocation } from "react-router-dom";
 import { RouteDefinitions } from "../constants/routes";
-import { settingsNavItems } from '../constants/navigation';
+/*import { settingsNavItems } from '../constants/navigation';*/
 import { NavigationItem } from "../types/navigation";
 
 
@@ -14,7 +14,7 @@ const Settings = () => {
         <div>
             <h1>{ RouteDefinitions.SETTINGS.label }</h1>
 
-            <nav>
+           {/* <nav>
                 <ul>
                     { isSettingsRoot &&
                         <>
@@ -30,7 +30,7 @@ const Settings = () => {
                         </>
                     }
                 </ul>
-            </nav>
+            </nav>*/}
 
             <Outlet/>
         </div>

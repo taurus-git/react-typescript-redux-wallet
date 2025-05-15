@@ -1,33 +1,16 @@
 import React from 'react';
-import { NavigationGroup } from "../../../types/navigation";
-import { NavLink } from "react-router-dom";
+import { renderNavItems } from "../../../features/navigation/utils/navigationUtils";
+import { NavigationItem } from "../../../types/navigation";
 
 interface SidebarNavigationProps {
-    navigation: NavigationGroup[]
+    navigation: NavigationItem[],
 }
 
 export const SidebarNavigation: React.FC<SidebarNavigationProps> = ( { navigation } ) => {
+    const navItems = renderNavItems( navigation );
     return (
         <nav className="sidebar-nav">
-            {
-                navigation.map( ( group: NavigationGroup ) => (
-                        <div key={ group.id } className="nav-group">
-                            <h3 className="nav-group-title">{ group.title }</h3>
-                            <ul className="nav-items">
-                                { group.items.map( ( item ) => (
-                                    <li key={ item.path } className="nav-item">
-                                        <NavLink to={ item.path } className="nav-link">
-                                            <span className="nav-label">
-                                                { item.label }
-                                            </span>
-                                        </NavLink>
-                                    </li>
-                                ) ) }
-                            </ul>
-                        </div>
-                    )
-                )
-            }
+            { navItems }
         </nav>
     );
 }

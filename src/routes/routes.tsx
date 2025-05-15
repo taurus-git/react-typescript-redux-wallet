@@ -1,6 +1,7 @@
 import { lazy } from "react";
 import { RouteDefinitions } from "../constants/routes";
 
+/*Todo: try to improve this huge list of imports*/
 const Login = lazy( () => import('../pages/Login') );
 const Register = lazy( () => import('../pages/Register') );
 const Dashboard = lazy( () => import('../pages/Dashboard') );
@@ -19,6 +20,9 @@ export const publicRoutes = [
 
 export const privateRoutes = [
     { path: RouteDefinitions.DASHBOARD.path, element: <Dashboard/> },
+    { path: RouteDefinitions.ACCOUNTS.path, element: <Accounts/> },
+    { path: RouteDefinitions.INCOME.path, element: <Income/> },
+    { path: RouteDefinitions.EXPENSES.path, element: <Expenses/> },
     {
         path: RouteDefinitions.SETTINGS.path,
         element: <Settings/>,
@@ -35,14 +39,5 @@ export const privateRoutes = [
                 path: RouteDefinitions.GENERAL.path, element: <General/>
             },
         ],
-    },
-    {
-        path: RouteDefinitions.ACCOUNTS.path, element: <Accounts/>
-    },
-    {
-        path: RouteDefinitions.INCOME.path, element: <Income/>
-    },
-    {
-        path: RouteDefinitions.EXPENSES.path, element: <Expenses/>
     },
 ];
