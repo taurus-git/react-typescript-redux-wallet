@@ -1,10 +1,10 @@
 import { NavLink } from "react-router-dom";
-import { NavigationItem } from "../../../types/navigation";
+import { MenuCategory, RouteItem, RouteItemMeta } from "../../../types/navigation";
 
 export const renderNavItems = ( navGroup: any ) => {
     return (
         <ul>
-            { navGroup.map( ( item: NavigationItem ) => (
+            { navGroup.map( ( item: RouteItemMeta ) => (
                 <li key={ item.path }>
                     { item.icon &&
                         <span className={ item.icon }></span>
@@ -14,4 +14,17 @@ export const renderNavItems = ( navGroup: any ) => {
             ) ) }
         </ul>
     )
+}
+
+export const getRoutes = (routes: RouteItemMeta[]): RouteItem[] => {
+    return routes.map(({ path, element, children }) => ({
+        path,
+        element,
+        ...(children && { children: getRoutes(children) })
+    }));
+};
+
+
+export const getCategoryRoutes = (routes:RouteItemMeta[], category: MenuCategory) => {
+    return routes.filter( ( { menuCategory }) =>  menuCategory === category );
 }

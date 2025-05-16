@@ -1,9 +1,9 @@
 import React from 'react';
 import { renderNavItems } from "../../../features/navigation/utils/navigationUtils";
-import { NavigationItem } from "../../../types/navigation";
+import { RouteItemMeta } from "../../../types/navigation";
 
 interface SidebarNavigationProps {
-    navigation: NavigationItem[],
+    navigation: RouteItemMeta[],
 }
 
 export const SidebarNavigation: React.FC<SidebarNavigationProps> = ( { navigation } ) => {

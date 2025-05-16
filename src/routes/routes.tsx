@@ -1,5 +1,5 @@
 import { lazy } from "react";
-import { RouteDefinitions } from "../constants/routes";
+import { AccessType, MenuCategory } from "../types/navigation";
 
 /*Todo: try to improve this huge list of imports*/
 const Login = lazy( () => import('../pages/Login') );
@@ -14,30 +14,93 @@ const Income = lazy( () => import('../pages/Income') );
 const Expenses = lazy( () => import('../pages/Expenses') );
 
 export const publicRoutes = [
-    { path: RouteDefinitions.LOGIN.path, element: <Login/> },
-    { path: RouteDefinitions.REGISTER.path, element: <Register/> },
+    {
+        path: "login",
+        element: <Login />,
+        access: AccessType.Public,
+        menuCategory: MenuCategory.Auth,
+        label: "Логин",
+        icon: "icon-login",
+    },
+    {
+        path: "register",
+        element: <Register />,
+        access: AccessType.Public,
+        menuCategory: MenuCategory.Auth,
+        label: "Регистрация",
+        icon: "icon-register",
+    }
 ];
 
 export const privateRoutes = [
-    { path: RouteDefinitions.DASHBOARD.path, element: <Dashboard/> },
-    { path: RouteDefinitions.ACCOUNTS.path, element: <Accounts/> },
-    { path: RouteDefinitions.INCOME.path, element: <Income/> },
-    { path: RouteDefinitions.EXPENSES.path, element: <Expenses/> },
     {
-        path: RouteDefinitions.SETTINGS.path,
-        element: <Settings/>,
+        path: "dashboard",
+        element: <Dashboard />,
+        access: AccessType.Private,
+        menuCategory: MenuCategory.Finances,
+        label: "Журнал",
+        icon: "icon-dashboard",
+    },
+    {
+        path: "accounts",
+        element: <Accounts />,
+        access: AccessType.Private,
+        menuCategory: MenuCategory.Finances,
+        label: "Счета",
+        icon: "icon-accounts",
+    },
+    {
+        path: "income",
+        element: <Income />,
+        access: AccessType.Private,
+        menuCategory: MenuCategory.Finances,
+        label: "Доходы",
+        icon: "icon-income",
+    },
+    {
+        path: "expenses",
+        element: <Expenses />,
+        access: AccessType.Private,
+        menuCategory: MenuCategory.Finances,
+        label: "Расходы",
+        icon: "icon-expenses",
+    },
+    {
+        path: "settings",
+        element: <Settings />,
+        access: AccessType.Private,
+        menuCategory: MenuCategory.Settings,
+        label: "Настройки",
+        icon: "icon-settings",
         children: [
             {
-                path: RouteDefinitions.USER.path, element: <User/>,
+                path: "user",
+                element: <User />,
+                access: AccessType.Private,
+                menuCategory: MenuCategory.Settings,
+                label: "Пользователь",
+                icon: "icon-user",
                 children: [
                     {
-                        path: RouteDefinitions.LOGOUT.path, element: <Logout/>
-                    },
+                        path: "logout",
+                        element: <Logout />,
+                        access: AccessType.Private,
+                        menuCategory: MenuCategory.Settings,
+                        label: "Выйти",
+                        icon: "icon-user-logout",
+                    }
                 ]
             },
             {
-                path: RouteDefinitions.GENERAL.path, element: <General/>
-            },
-        ],
-    },
+                path: "general",
+                element: <General />,
+                access: AccessType.Private,
+                menuCategory: MenuCategory.Settings,
+                label: "Общие настройки",
+                icon: "icon-general-settings",
+            }
+        ]
+    }
 ];
+
+

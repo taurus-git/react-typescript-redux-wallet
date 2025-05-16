@@ -1,6 +1,5 @@
 import React from 'react';
 import { Navigate, Outlet } from "react-router-dom";
-import { RouteDefinitions } from "../constants/routes";
 
 interface Props {
     isAuthenticated: boolean;
@@ -8,6 +7,6 @@ interface Props {
 
 export const PublicRoute = ( { isAuthenticated }: Props ) => {
     return isAuthenticated ?
-        <Navigate to={ RouteDefinitions.DASHBOARD.path }/> :
+        <Navigate to={ 'dashboard' }/> : //Todo: try to add constant instead inline text
         <Outlet/>;
 }

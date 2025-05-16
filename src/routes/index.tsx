@@ -6,6 +6,7 @@ import { PrivateRoute } from "./PrivateRoute";
 import { HomeLayout } from "../components/layout/HomeLayout";
 import { MainLayout,  } from "../components/layout/MainLayout";
 import { DashboardLayout } from "../components/layout/DashboardLayout";
+import { getRoutes } from "../features/navigation/utils/navigationUtils";
 
 const isAuthenticated = true; //Todo: remove temporary 'true'
 
@@ -18,7 +19,7 @@ export const AppRouter = () => {
                 { index: true, element: <HomeLayout/> },
                 {
                     element: <PublicRoute isAuthenticated={ isAuthenticated }/>,
-                    children: publicRoutes
+                    children: getRoutes(publicRoutes)
                 },
                 {
                     element: (
@@ -26,7 +27,7 @@ export const AppRouter = () => {
                             <DashboardLayout />
                         </PrivateRoute>
                     ),
-                    children: privateRoutes
+                    children: getRoutes(privateRoutes)
                 },
                 {
                     path: "*",

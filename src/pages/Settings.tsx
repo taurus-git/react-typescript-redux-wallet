@@ -1,24 +1,25 @@
 import React from 'react';
 import { Link, Outlet, useLocation } from "react-router-dom";
-import { RouteDefinitions } from "../constants/routes";
-/*import { settingsNavItems } from '../constants/navigation';*/
-import { NavigationItem } from "../types/navigation";
-
+import { getCategoryRoutes } from "../features/navigation/utils/navigationUtils";
+import { privateRoutes } from "../routes/routes";
+import { MenuCategory, RouteItemMeta } from "../types/navigation";
 
 const Settings = () => {
     const location = useLocation();
-    const settingsRootPath = `/${ RouteDefinitions.SETTINGS.path }`;
+    const settingsRootPath = `/${'settings'}`; //Todo: try to add constant instead inline text
     const isSettingsRoot = location.pathname === settingsRootPath;
+    const settings = getCategoryRoutes(privateRoutes, MenuCategory.Settings);
+    const settingsChild = settings[0].children;
 
     return (
         <div>
-            <h1>{ RouteDefinitions.SETTINGS.label }</h1>
+            <h1>Settings</h1>{/*Todo: try to add constant instead inline text*/}
 
-           {/* <nav>
+            <nav>
                 <ul>
-                    { isSettingsRoot &&
+                    { isSettingsRoot && Array.isArray(settingsChild) &&
                         <>
-                            { settingsNavItems.map( ( item: NavigationItem ) =>
+                            { settingsChild.map( ( item: RouteItemMeta ) =>
                                 (
                                     <li key={ item.path }>
                                         <Link to={ item.path }>
@@ -30,7 +31,7 @@ const Settings = () => {
                         </>
                     }
                 </ul>
-            </nav>*/}
+            </nav>
 
             <Outlet/>
         </div>
