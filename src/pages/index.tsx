@@ -1,21 +1,17 @@
-import { lazy } from "react";
+import {lazyLoad} from "../features/navigation/utils/navigationUtils";
 
-export const lazyLoad = (pageName: string) => {
-    return lazy(() => import(`./${pageName}`));
-}
-
-// Модули аутентификации
+// Auth
 export const Login = lazyLoad('Login');
 export const Register = lazyLoad('Register');
 export const Logout = lazyLoad('Logout');
 
-// Модули финансов
+// Finances
 export const Dashboard = lazyLoad('Dashboard');
 export const Accounts = lazyLoad('Accounts');
 export const Income = lazyLoad('Income');
 export const Expenses = lazyLoad('Expenses');
 
-// Модули настроек
+// Settings
 export const Settings = lazyLoad('Settings');
 export const User = lazyLoad('User');
 export const General = lazyLoad('General');

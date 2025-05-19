@@ -1,3 +1,4 @@
+import { lazy } from "react";
 import { NavLink } from "react-router-dom";
 import { MenuCategory, RouteItem, RouteItemMeta } from "../../../types/navigation";
 
@@ -27,4 +28,10 @@ export const getRoutes = (routes: RouteItemMeta[]): RouteItem[] => {
 
 export const getCategoryRoutes = (routes:RouteItemMeta[], category: MenuCategory) => {
     return routes.filter( ( { menuCategory }) =>  menuCategory === category );
+}
+
+
+
+export const lazyLoad = (pageName: string) => {
+    return lazy(() => import(`./${pageName}`));
 }
