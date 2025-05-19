@@ -1,17 +1,7 @@
-import { lazy } from "react";
+import {Login, Register, Logout, Dashboard, Accounts, Income, Expenses, Settings, User, General} from "../pages";
 import { AccessType, MenuCategory } from "../types/navigation";
 
 /*Todo: try to improve this huge list of imports*/
-const Login = lazy( () => import('../pages/Login') );
-const Register = lazy( () => import('../pages/Register') );
-const Dashboard = lazy( () => import('../pages/Dashboard') );
-const Settings = lazy( () => import('../pages/Settings') );
-const User = lazy( () => import('../pages/User') );
-const Logout = lazy( () => import('../pages/Logout') );
-const General = lazy( () => import('../pages/General') );
-const Accounts = lazy( () => import('../pages/Accounts') );
-const Income = lazy( () => import('../pages/Income') );
-const Expenses = lazy( () => import('../pages/Expenses') );
 
 export const publicRoutes = [
     {
