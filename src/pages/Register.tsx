@@ -1,14 +1,16 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import { ROUTES_MAP } from "../routes/routes";
+import { PageHeader } from "../components/common/PageHeader";
 
 const Register = () => {
     return (
         <>
-            <h1>Register Page</h1>
+            <PageHeader />
             <div>Already have an account?</div>
-            {/*<NavLink to={ RouteDefinitions.LOGIN.path }>
-                { RouteDefinitions.LOGIN.label }
-            </NavLink>*/}
+            <NavLink to={ ROUTES_MAP.login.path }>
+                { ROUTES_MAP.login.label }
+            </NavLink>
         </>
     );
 }

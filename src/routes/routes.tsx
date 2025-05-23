@@ -1,63 +1,70 @@
-import {Login, Register, Logout, Dashboard, Accounts, Income, Expenses, Settings, User, General} from "../pages";
-import { AccessType, MenuCategory } from "../types/navigation";
+import { lazy } from 'react';
+import { AccessType, MenuCategory, RouteItemField, RouteItemMeta } from "../types/navigation";
+import { filterRoutes } from "../features/navigation/utils/navigationUtils";
 
-/*Todo: try to improve this huge list of imports*/
+const Login = lazy( () => import('../pages/Login') );
+const Register = lazy( () => import('../pages/Register') );
+const Dashboard = lazy( () => import('../pages/Dashboard') );
+const Settings = lazy( () => import('../pages/Settings') );
+const User = lazy( () => import('../pages/User') );
+const Logout = lazy( () => import('../pages/Logout') );
+const General = lazy( () => import('../pages/General') );
+const Accounts = lazy( () => import('../pages/Accounts') );
+const Income = lazy( () => import('../pages/Income') );
+const Expenses = lazy( () => import('../pages/Expenses') );
 
-export const publicRoutes = [
-    {
+export const ROUTES_MAP: Record<string, RouteItemMeta> = {
+    login: {
         path: "login",
-        element: <Login />,
+        element: <Login/>,
         access: AccessType.Public,
         menuCategory: MenuCategory.Auth,
         label: "Логин",
         icon: "icon-login",
     },
-    {
+    register: {
         path: "register",
-        element: <Register />,
+        element: <Register/>,
         access: AccessType.Public,
         menuCategory: MenuCategory.Auth,
         label: "Регистрация",
         icon: "icon-register",
-    }
-];
-
-export const privateRoutes = [
-    {
+    },
+    dashboard: {
         path: "dashboard",
-        element: <Dashboard />,
+        element: <Dashboard/>,
         access: AccessType.Private,
         menuCategory: MenuCategory.Finances,
         label: "Журнал",
         icon: "icon-dashboard",
     },
-    {
+    accounts: {
         path: "accounts",
-        element: <Accounts />,
+        element: <Accounts/>,
         access: AccessType.Private,
         menuCategory: MenuCategory.Finances,
         label: "Счета",
         icon: "icon-accounts",
     },
-    {
+    income: {
         path: "income",
-        element: <Income />,
+        element: <Income/>,
         access: AccessType.Private,
         menuCategory: MenuCategory.Finances,
         label: "Доходы",
         icon: "icon-income",
     },
-    {
+    expenses: {
         path: "expenses",
-        element: <Expenses />,
+        element: <Expenses/>,
         access: AccessType.Private,
         menuCategory: MenuCategory.Finances,
         label: "Расходы",
         icon: "icon-expenses",
     },
-    {
+    settings: {
         path: "settings",
-        element: <Settings />,
+        element: <Settings/>,
         access: AccessType.Private,
         menuCategory: MenuCategory.Settings,
         label: "Настройки",
@@ -65,7 +72,7 @@ export const privateRoutes = [
         children: [
             {
                 path: "user",
-                element: <User />,
+                element: <User/>,
                 access: AccessType.Private,
                 menuCategory: MenuCategory.Settings,
                 label: "Пользователь",
@@ -73,7 +80,7 @@ export const privateRoutes = [
                 children: [
                     {
                         path: "logout",
-                        element: <Logout />,
+                        element: <Logout/>,
                         access: AccessType.Private,
                         menuCategory: MenuCategory.Settings,
                         label: "Выйти",
@@ -83,14 +90,17 @@ export const privateRoutes = [
             },
             {
                 path: "general",
-                element: <General />,
+                element: <General/>,
                 access: AccessType.Private,
                 menuCategory: MenuCategory.Settings,
                 label: "Общие настройки",
                 icon: "icon-general-settings",
-            }
+            },
         ]
     }
-];
+};
 
+export const ALL_ROUTES = Object.values( ROUTES_MAP );
+export const publicRoutes = filterRoutes( ALL_ROUTES, RouteItemField.Access, AccessType.Public );
+export const privateRoutes = filterRoutes( ALL_ROUTES, RouteItemField.Access, AccessType.Private );
 

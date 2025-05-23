@@ -1,5 +1,6 @@
 import React from 'react';
 import { Navigate } from "react-router-dom";
+import { ROUTES_MAP } from "./routes";
 
 interface Props {
     children: React.ReactNode;
@@ -9,7 +10,7 @@ interface Props {
 export const PrivateRoute = ( { children, isAuthenticated }: Props ) => {
     return isAuthenticated ?
         <>{ children }</> :
-        <Navigate to={ 'login' }/>;  //Todo: try to add constant instead inline text
+        <Navigate to={ ROUTES_MAP.login.path }/>;
 }
 
 

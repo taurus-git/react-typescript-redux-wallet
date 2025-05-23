@@ -1,9 +1,11 @@
 import React from 'react';
+import { PageHeader } from "../components/common/PageHeader";
 
 const Logout = () => {
     return (
         <>
-            <h1>Выйти из аккаунта</h1>
+            <PageHeader />
+            <p>Page to logout</p>
         </>
     );
 }

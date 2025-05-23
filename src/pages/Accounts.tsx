@@ -1,9 +1,11 @@
 import React from 'react';
+import { PageHeader } from "../components/common/PageHeader";
 
 const Accounts = () => {
+
     return (
         <>
-            <h1>Счета</h1>
+            <PageHeader/>
             <div>
                 <p>Тут будет список Банковских счетов, Карт, Наличных</p>
             </div>

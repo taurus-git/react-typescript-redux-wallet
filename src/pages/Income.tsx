@@ -1,9 +1,10 @@
 import React from 'react';
+import { PageHeader } from "../components/common/PageHeader";
 
 const Income = () => {
     return (
         <>
-            <h1>Доходы</h1>
+            <PageHeader />
             <p>Тут будет список категорий дохода</p>
         </>
     );

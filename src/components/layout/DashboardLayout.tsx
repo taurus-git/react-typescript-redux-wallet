@@ -2,12 +2,12 @@ import React from 'react';
 import { Outlet } from "react-router-dom";
 import { SidebarNavigation } from "../common/Navigation/SidebarNavigation";
 import { privateRoutes } from "../../routes/routes";
-import { getCategoryRoutes } from "../../features/navigation/utils/navigationUtils";
-import { MenuCategory } from "../../types/navigation";
+import { filterRoutes } from "../../features/navigation/utils/navigationUtils";
+import { MenuCategory, RouteItemField } from "../../types/navigation";
 
 export const DashboardLayout = () => {
-    const finances = getCategoryRoutes(privateRoutes, MenuCategory.Finances);
-    const settings = getCategoryRoutes(privateRoutes, MenuCategory.Settings);
+    const finances = filterRoutes( privateRoutes, RouteItemField.MenuCategory, MenuCategory.Finances );
+    const settings = filterRoutes( privateRoutes, RouteItemField.MenuCategory, MenuCategory.Settings );
 
     return (
         <main>

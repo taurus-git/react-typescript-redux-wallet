@@ -2,6 +2,7 @@ import React from 'react';
 import { AppDispatch, RootState } from "../store";
 import { useDispatch, useSelector } from "react-redux";
 import { addExpense, removeExpense } from "../store/features/expenses/expensesSlice";
+import { PageHeader } from "../components/common/PageHeader";
 
 
 const Dashboard = () => {
@@ -18,7 +19,7 @@ const Dashboard = () => {
 
     return (
         <>
-            <h1>Журнал</h1>
+            <PageHeader/>
             <div>
                 <button onClick={ handleAdd }>Добавить транзакцию</button>
                 <ul>

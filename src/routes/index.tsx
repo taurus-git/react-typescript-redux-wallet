@@ -4,7 +4,7 @@ import { publicRoutes, privateRoutes } from "./routes";
 import { PublicRoute } from "./PublicRoute";
 import { PrivateRoute } from "./PrivateRoute";
 import { HomeLayout } from "../components/layout/HomeLayout";
-import { MainLayout,  } from "../components/layout/MainLayout";
+import { MainLayout, } from "../components/layout/MainLayout";
 import { DashboardLayout } from "../components/layout/DashboardLayout";
 import { getRoutes } from "../features/navigation/utils/navigationUtils";
 
@@ -19,15 +19,15 @@ export const AppRouter = () => {
                 { index: true, element: <HomeLayout/> },
                 {
                     element: <PublicRoute isAuthenticated={ isAuthenticated }/>,
-                    children: getRoutes(publicRoutes)
+                    children: getRoutes( publicRoutes )
                 },
                 {
                     element: (
                         <PrivateRoute isAuthenticated={ isAuthenticated }>
-                            <DashboardLayout />
+                            <DashboardLayout/>
                         </PrivateRoute>
                     ),
-                    children: getRoutes(privateRoutes)
+                    children: getRoutes( privateRoutes )
                 },
                 {
                     path: "*",

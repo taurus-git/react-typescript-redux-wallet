@@ -1,9 +1,11 @@
 import React from 'react';
+import { PageHeader } from "../components/common/PageHeader";
 
 const Expenses = () => {
+
     return (
         <>
-            <h1>Расходы</h1>
+            <PageHeader />
             <div>
                 <p>Тут будет список категорий расходов</p>
                 <p>*удаление и добавление новых категорий</p>

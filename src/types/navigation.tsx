@@ -23,3 +23,13 @@ export interface RouteItemMeta extends RouteItem {
     label?: string;
     icon?: string;
 }
+
+export enum RouteItemField {
+    Path = "path",
+    Element = "element",
+    Access = "access",
+    MenuCategory = "menuCategory",
+    Children = "children",
+    Label = "label",
+    Icon = "icon",
+}
