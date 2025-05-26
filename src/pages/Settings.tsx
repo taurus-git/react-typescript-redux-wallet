@@ -7,8 +7,7 @@ import { PageHeader } from "../components/common/PageHeader";
 
 const Settings = () => {
     const location = useLocation();
-    const settingsRootPath = `/${ ROUTES_MAP.settings.path }`;
-    const isSettingsRoot = location.pathname === settingsRootPath;
+    const isSettingsRoot = location.pathname === ROUTES_MAP.settings.path;
     const settings = filterRoutes( privateRoutes, RouteItemField.MenuCategory, MenuCategory.Settings );
     const settingsChild = settings[ 0 ].children;
 

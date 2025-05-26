@@ -15,7 +15,7 @@ const Expenses = lazy( () => import('../pages/Expenses') );
 
 export const ROUTES_MAP: Record<string, RouteItemMeta> = {
     login: {
-        path: "login",
+        path: "/login",
         element: <Login/>,
         access: AccessType.Public,
         menuCategory: MenuCategory.Auth,
@@ -23,7 +23,7 @@ export const ROUTES_MAP: Record<string, RouteItemMeta> = {
         icon: "icon-login",
     },
     register: {
-        path: "register",
+        path: "/register",
         element: <Register/>,
         access: AccessType.Public,
         menuCategory: MenuCategory.Auth,
@@ -31,7 +31,7 @@ export const ROUTES_MAP: Record<string, RouteItemMeta> = {
         icon: "icon-register",
     },
     dashboard: {
-        path: "dashboard",
+        path: "/dashboard",
         element: <Dashboard/>,
         access: AccessType.Private,
         menuCategory: MenuCategory.Finances,
@@ -39,7 +39,7 @@ export const ROUTES_MAP: Record<string, RouteItemMeta> = {
         icon: "icon-dashboard",
     },
     accounts: {
-        path: "accounts",
+        path: "/accounts",
         element: <Accounts/>,
         access: AccessType.Private,
         menuCategory: MenuCategory.Finances,
@@ -47,7 +47,7 @@ export const ROUTES_MAP: Record<string, RouteItemMeta> = {
         icon: "icon-accounts",
     },
     income: {
-        path: "income",
+        path: "/income",
         element: <Income/>,
         access: AccessType.Private,
         menuCategory: MenuCategory.Finances,
@@ -55,7 +55,7 @@ export const ROUTES_MAP: Record<string, RouteItemMeta> = {
         icon: "icon-income",
     },
     expenses: {
-        path: "expenses",
+        path: "/expenses",
         element: <Expenses/>,
         access: AccessType.Private,
         menuCategory: MenuCategory.Finances,
@@ -63,7 +63,7 @@ export const ROUTES_MAP: Record<string, RouteItemMeta> = {
         icon: "icon-expenses",
     },
     settings: {
-        path: "settings",
+        path: "/settings",
         element: <Settings/>,
         access: AccessType.Private,
         menuCategory: MenuCategory.Settings,
