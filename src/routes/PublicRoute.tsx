@@ -8,6 +8,6 @@ interface Props {
 
 export const PublicRoute = ( { isAuthenticated }: Props ) => {
     return isAuthenticated ?
-        <Navigate to={ ROUTES_MAP.dashboard.path }/> : //Todo: try to add constant instead inline text
+        <Navigate to={ ROUTES_MAP.dashboard.path }/> :
         <Outlet/>;
 }

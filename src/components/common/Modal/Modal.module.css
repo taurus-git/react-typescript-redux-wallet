@@ -1,0 +1,26 @@
+.overlay__background {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  z-index: 9;
+  top: 0;
+  left: 0;
+  cursor: pointer;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+.overlay__container {
+  position: fixed;
+  width: fit-content;
+  height: fit-content;
+  z-index: 10;
+  margin: auto;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  cursor: auto;
+  padding: 2rem;
+  background-color: var(--gray-0);
+}
+
+/*# sourceMappingURL=Modal.module.css.map */
