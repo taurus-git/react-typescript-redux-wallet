@@ -13,7 +13,7 @@ const uiSlice = createSlice( {
     name: 'ui',
     initialState,
     reducers: {
-        addModal: ( state, action: PayloadAction<ModalItem> ) => {
+        openModal: ( state, action: PayloadAction<ModalItem> ) => {
             state.modals.push( { name: action.payload.name });
         },
         closeModal: ( state, action: PayloadAction<ModalItem> ) => {
@@ -27,5 +27,5 @@ const uiSlice = createSlice( {
     }
 } );
 
-export const { addModal, closeModal, closeAllModals } = uiSlice.actions;
+export const { openModal, closeModal, closeAllModals } = uiSlice.actions;
 export default uiSlice.reducer;

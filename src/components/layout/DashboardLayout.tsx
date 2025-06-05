@@ -15,35 +15,27 @@ export const DashboardLayout = () => {
     const settings = filterRoutes( privateRoutes, RouteItemField.MenuCategory, MenuCategory.Settings );
     const isDesktop = useMediaQuery( WidthMediaQueries.md );
 
-    const { open, close, isOpen } = useModal();
-    const menu1 = MODAL_NAME.MENU1;
-    const menu2 = MODAL_NAME.MENU2;
+    const { open, close, isOpen, closeAll } = useModal();
+    const mobileMenu = MODAL_NAME.MOBILE_MENU;
 
     return (
         <main>
             <div className="main d-flex">
-                <div>
-                    <button onClick={ () => open( menu1 ) }> menu1</button>
-                    <Modal isOpen={ isOpen( menu1 ) }
-                           onClose={ () => close( menu1 ) }>
-                        <h1>Hello</h1>
-                    </Modal>
-                </div>
-
-                <div>
-                    <button onClick={ () => open( menu2 ) }> menu2</button>
-                    <Modal isOpen={ isOpen( menu2 ) }
-                           onClose={ () => close( menu2 ) }>
-                        <h1>World</h1>
-                    </Modal>
-                </div>
-
-
                 { isDesktop &&
                     <aside className="sidebar">
                         <SidebarNavigation navigation={ finances }/>
                         <SidebarNavigation navigation={ settings }/>
                     </aside>
+                }
+                { !isDesktop &&
+                    <div>
+                        <button onClick={ () => open( mobileMenu ) }>Menu</button>
+                        <Modal isOpen={ isOpen( mobileMenu ) }
+                               onClose={ () => close( mobileMenu ) }>
+                            <SidebarNavigation navigation={ settings }
+                                               options={ { onItemClick: () => closeAll() } }/>
+                        </Modal>
+                    </div>
                 }
                 <div className="d-flex flex-col w-full">
                     <Outlet/>

@@ -1,6 +1,5 @@
 export const MODAL_NAME = {
-    MENU1: 'menu1',
-    MENU2: 'menu2',
+    MOBILE_MENU: 'mobileMenu',
 } as const;
 
 export type ModalName = (typeof MODAL_NAME)[keyof typeof MODAL_NAME];

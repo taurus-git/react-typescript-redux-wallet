@@ -10,7 +10,6 @@ interface ModalProps {
 
 export const Modal: React.FC<ModalProps> = ( { isOpen, onClose, children } ) => {
     if ( !isOpen ) return null;
-    console.log(isOpen);
 
     const rootElement = document.getElementById( "root" );
     if ( !rootElement ) return null;
