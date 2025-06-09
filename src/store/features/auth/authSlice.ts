@@ -5,7 +5,7 @@ interface AuthState {
 }
 
 const initialState: AuthState = {
-    isAuthenticated: false, //Todo: remove temporary 'true'
+    isAuthenticated: true, //Todo: remove temporary 'true'
 }
 
 const authSlice = createSlice ({
