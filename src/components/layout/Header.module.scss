@@ -1,3 +1,11 @@
-header {
-    background-color: red;
+.header {
+    position: sticky;
+    top: 0;
+    padding: 1rem;
+}
+
+.header {
+    &__homeLink {
+        color: var(--gray-7);
+    }
 }

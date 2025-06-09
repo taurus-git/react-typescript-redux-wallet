@@ -7,6 +7,12 @@
     --gray-9: #111111;
     --gray-10: #000000;
 
+    --primary-default: #3872fa;
+
+    --backdrop-color: rgba(255, 255, 255, 0.2);
+    --backdrop-blur: blur(1rem);
+    --card-shadow: rgba(255, 255, 255, 0.3);
+
     /*MARGINS AND PADDINGS*/
     --spacing-1: 0.4rem;
     --spacing-2: 0.8rem;

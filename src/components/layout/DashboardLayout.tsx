@@ -15,7 +15,7 @@ export const DashboardLayout = () => {
     const settings = filterRoutes( privateRoutes, RouteItemField.MenuCategory, MenuCategory.Settings );
     const isDesktop = useMediaQuery( WidthMediaQueries.md );
 
-    const { open, close, isOpen, closeAll } = useModal();
+    const { close, isOpen, closeAll } = useModal();
     const mobileMenu = MODAL_NAME.MOBILE_MENU;
 
     return (
@@ -28,7 +28,6 @@ export const DashboardLayout = () => {
             }
             { !isDesktop &&
                 <div>
-                    <button onClick={ () => open( mobileMenu ) }>Menu</button>
                     <Modal isOpen={ isOpen( mobileMenu ) }
                            onClose={ () => close( mobileMenu ) }>
                         <SidebarNavigation navigation={ settings }

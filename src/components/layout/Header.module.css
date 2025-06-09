@@ -1,0 +1,11 @@
+.header {
+  position: sticky;
+  top: 0;
+  padding: 1rem;
+}
+
+.header__homeLink {
+  color: var(--gray-7);
+}
+
+/*# sourceMappingURL=Header.module.css.map */
