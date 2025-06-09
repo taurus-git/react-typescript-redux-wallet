@@ -7,7 +7,7 @@ const Login = () => {
     return (
         <>
             <PageHeader />
-            <div>or</div>
+            <div>или</div>
             <Link to={ ROUTES_MAP.register.path }>
                 { ROUTES_MAP.register.label }
             </Link>

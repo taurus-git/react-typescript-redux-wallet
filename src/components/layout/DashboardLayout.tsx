@@ -19,28 +19,26 @@ export const DashboardLayout = () => {
     const mobileMenu = MODAL_NAME.MOBILE_MENU;
 
     return (
-        <main>
-            <div className="main d-flex">
-                { isDesktop &&
-                    <aside className="sidebar">
-                        <SidebarNavigation navigation={ finances }/>
-                        <SidebarNavigation navigation={ settings }/>
-                    </aside>
-                }
-                { !isDesktop &&
-                    <div>
-                        <button onClick={ () => open( mobileMenu ) }>Menu</button>
-                        <Modal isOpen={ isOpen( mobileMenu ) }
-                               onClose={ () => close( mobileMenu ) }>
-                            <SidebarNavigation navigation={ settings }
-                                               options={ { onItemClick: () => closeAll() } }/>
-                        </Modal>
-                    </div>
-                }
-                <div className="d-flex flex-col w-full">
-                    <Outlet/>
+        <div className="main d-flex">
+            { isDesktop &&
+                <aside className="sidebar">
+                    <SidebarNavigation navigation={ finances }/>
+                    <SidebarNavigation navigation={ settings }/>
+                </aside>
+            }
+            { !isDesktop &&
+                <div>
+                    <button onClick={ () => open( mobileMenu ) }>Menu</button>
+                    <Modal isOpen={ isOpen( mobileMenu ) }
+                           onClose={ () => close( mobileMenu ) }>
+                        <SidebarNavigation navigation={ settings }
+                                           options={ { onItemClick: () => closeAll() } }/>
+                    </Modal>
                 </div>
+            }
+            <div className="d-flex flex-col w-full">
+                <Outlet/>
             </div>
-        </main>
+        </div>
     );
 }

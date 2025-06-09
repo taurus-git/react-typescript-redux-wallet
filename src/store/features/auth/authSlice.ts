@@ -1,11 +1,11 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { createSlice } from '@reduxjs/toolkit';
 
 interface AuthState {
     isAuthenticated: boolean;
 }
 
 const initialState: AuthState = {
-    isAuthenticated: true, //Todo: remove temporary 'true'
+    isAuthenticated: false, //Todo: remove temporary 'true'
 }
 
 const authSlice = createSlice ({
