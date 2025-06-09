@@ -22,5 +22,11 @@
   padding: 2rem;
   background-color: var(--gray-0);
 }
+.overlay__container--fullHeight {
+  height: 100vh;
+  right: unset;
+  min-width: 80%;
+  max-width: 100%;
+}
 
 /*# sourceMappingURL=Modal.module.css.map */

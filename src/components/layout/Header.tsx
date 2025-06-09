@@ -9,6 +9,7 @@ import { useMediaQuery } from "../../hooks/useMediaQuery";
 import { WidthMediaQueries } from "../../constants/breakpoints";
 import { MODAL_NAME } from "../../store/features/ui/types";
 import { useModal } from "../../hooks/useModal";
+import { Container } from "./Container";
 
 export const Header = () => {
     const isAuthenticated = useSelector( ( state: RootState ) => state.auth.isAuthenticated );
@@ -18,19 +19,23 @@ export const Header = () => {
 
     const homeLink = isAuthenticated ? ROUTES_MAP.dashboard.path : "/";
     return (
-        <header className={`backdrop-blur ${styles.header}`}>
-            { !isDesktop &&
-                <button
-                    onClick={ () => open( mobileMenu ) }
-                    className="custom-button">
-                    <Menu/>
-                </button>
-            }
+        <header className={ `backdrop-blur ${ styles.header }` }>
+            <Container>
+                <div className="header__wrapper d-flex align-center">
+                    { !isDesktop &&
+                        <button
+                            onClick={ () => open( mobileMenu ) }
+                            className={ `${styles.header__menuButton} custom-button`}>
+                            <Menu/>
+                        </button>
+                    }
 
-            <Link to={ homeLink } className={ styles.header__homeLink }>
-                <Wallet/>
-            </Link>
-
+                    <Link to={ homeLink }
+                          className={ `${ styles.header__homeLink } d-flex align-items-center justify-center` }>
+                        <Wallet/>
+                    </Link>
+                </div>
+            </Container>
         </header>
     );
 }

@@ -23,6 +23,15 @@
     cursor: auto;
     padding: 2rem;
     background-color: var(--gray-0);
+
+    &--fullHeight {
+      height: 100vh;
+      right: unset;
+      min-width: 80%;
+      max-width: 100%;
+    }
   }
+
+
 
 }

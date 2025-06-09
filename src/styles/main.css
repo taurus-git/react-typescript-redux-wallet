@@ -91,7 +91,6 @@ textarea {
 }
 
 .container {
-    margin: 0 auto;
     padding: 0 var(--spacing-4);
 }
 
@@ -127,6 +126,10 @@ textarea {
     justify-content: space-between;
 }
 
+.justify-end {
+    justify-content: flex-end;
+}
+
 .align-center {
     align-items: center;
 }
@@ -142,11 +145,10 @@ textarea {
 .custom-button {
     all: unset;
     cursor: pointer;
-    display: inline-block;
-
+    display: flex;
+    align-items: center;
+    justify-content: center;
     color: var(--gray-7);
-    padding: 1.2rem 2.4rem;
-    border-radius: .6rem;
     font-weight: 500;
     transition: color 0.2s ease;
 }
@@ -162,6 +164,23 @@ textarea {
 
 .card-shadow {
     border: 1px solid var(--card-shadow);
+}
+
+.white-space {
+    white-space: nowrap;
+}
+
+.truncate {
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.cursor-pointer {
+    cursor: pointer;
+}
+
+.list-none {
+    list-style: none;
 }
 
 @media (min-width: 768px) {

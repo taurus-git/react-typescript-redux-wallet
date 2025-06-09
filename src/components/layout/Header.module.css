@@ -1,9 +1,12 @@
 .header {
   position: sticky;
   top: 0;
-  padding: 1rem;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
 }
-
+.header__menuButton, .header__homeLink {
+  margin-right: 1rem;
+}
 .header__homeLink {
   color: var(--gray-7);
 }

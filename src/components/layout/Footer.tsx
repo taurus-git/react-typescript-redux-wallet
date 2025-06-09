@@ -7,20 +7,29 @@ import { filterRoutes } from "../../features/navigation/utils/navigationUtils";
 import { privateRoutes } from "../../routes/routes";
 import { MenuCategory, RouteItemField } from "../../types/navigation";
 import { SidebarNavigation } from "../common/Navigation/SidebarNavigation";
+import { Container } from "./Container";
 
 export const Footer = () => {
     const isAuthenticated = useSelector( ( state: RootState ) => state.auth.isAuthenticated );
     const isDesktop = useMediaQuery( WidthMediaQueries.md );
     const finances = filterRoutes( privateRoutes, RouteItemField.MenuCategory, MenuCategory.Finances );
-    
+
     return (
         <footer>
-            { isAuthenticated && !isDesktop ? (
-                <SidebarNavigation navigation={ finances }/>
-            ) : (
-                <p>Footer</p>
-            ) }
-
+            <Container>
+                <>
+                    { isAuthenticated && !isDesktop ? (
+                        <SidebarNavigation
+                            navigation={ finances }
+                            options={ {
+                                className: 'white-space truncate list-none'
+                            } } />
+                    ) : (
+                        <p>Footer</p>
+                    ) }
+                </>
+            </Container>
         </footer>
-    );
+    )
+        ;
 }
