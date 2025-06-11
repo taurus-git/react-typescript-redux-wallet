@@ -1,28 +1,7 @@
 import { NavLink } from "react-router-dom";
 import { RouteItem, RouteItemMeta } from "../../../types/navigation";
 
-export const renderNavItems = (
-    navGroup: any,
-    options?: {
-        onItemClick?: () => void,
-        className?: string,
-    } ) => {
 
-    return (
-        <ul>
-            { navGroup.map( ( item: RouteItemMeta ) => (
-                <li key={ item.path }
-                    onClick={ options?.onItemClick }
-                    className={ options?.className }>
-                    { item.icon &&
-                        <span className={ item.icon }></span>
-                    }
-                    <NavLink to={ item.path }>{ item.label }</NavLink>
-                </li>
-            ) ) }
-        </ul>
-    )
-}
 
 export function filterRoutes<T extends keyof RouteItemMeta>(
     routes: RouteItemMeta[],

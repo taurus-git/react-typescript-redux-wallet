@@ -1,6 +1,18 @@
 import { lazy } from 'react';
 import { AccessType, MenuCategory, RouteItemField, RouteItemMeta } from "../types/navigation";
 import { filterRoutes } from "../features/navigation/utils/navigationUtils";
+import {
+    ScanFace,
+    UserPen,
+    Gauge,
+    WalletCards,
+    CirclePlus,
+    CircleMinus,
+    Settings2,
+    UserRound,
+    LogOut,
+    Wrench
+} from "lucide-react";
 
 const Login = lazy( () => import('../pages/Login') );
 const Register = lazy( () => import('../pages/Register') );
@@ -13,6 +25,8 @@ const Accounts = lazy( () => import('../pages/Accounts') );
 const Income = lazy( () => import('../pages/Income') );
 const Expenses = lazy( () => import('../pages/Expenses') );
 
+const size = 20;
+
 export const ROUTES_MAP: Record<string, RouteItemMeta> = {
     login: {
         path: "/login",
@@ -20,7 +34,7 @@ export const ROUTES_MAP: Record<string, RouteItemMeta> = {
         access: AccessType.Public,
         menuCategory: MenuCategory.Auth,
         label: "Логин",
-        icon: "icon-login",
+        icon: <ScanFace size={ size }/>,
     },
     register: {
         path: "/register",
@@ -28,7 +42,7 @@ export const ROUTES_MAP: Record<string, RouteItemMeta> = {
         access: AccessType.Public,
         menuCategory: MenuCategory.Auth,
         label: "Регистрация",
-        icon: "icon-register",
+        icon: <UserPen size={ size }/>,
     },
     dashboard: {
         path: "/dashboard",
@@ -36,7 +50,7 @@ export const ROUTES_MAP: Record<string, RouteItemMeta> = {
         access: AccessType.Private,
         menuCategory: MenuCategory.Finances,
         label: "Журнал",
-        icon: "icon-dashboard",
+        icon: <Gauge size={ size }/>,
     },
     accounts: {
         path: "/accounts",
@@ -44,7 +58,7 @@ export const ROUTES_MAP: Record<string, RouteItemMeta> = {
         access: AccessType.Private,
         menuCategory: MenuCategory.Finances,
         label: "Счета",
-        icon: "icon-accounts",
+        icon: <WalletCards size={ size }/>,
     },
     income: {
         path: "/income",
@@ -52,7 +66,7 @@ export const ROUTES_MAP: Record<string, RouteItemMeta> = {
         access: AccessType.Private,
         menuCategory: MenuCategory.Finances,
         label: "Доходы",
-        icon: "icon-income",
+        icon: <CirclePlus size={ size }/>,
     },
     expenses: {
         path: "/expenses",
@@ -60,7 +74,7 @@ export const ROUTES_MAP: Record<string, RouteItemMeta> = {
         access: AccessType.Private,
         menuCategory: MenuCategory.Finances,
         label: "Расходы",
-        icon: "icon-expenses",
+        icon: <CircleMinus size={ size }/>,
     },
     settings: {
         path: "/settings",
@@ -68,7 +82,7 @@ export const ROUTES_MAP: Record<string, RouteItemMeta> = {
         access: AccessType.Private,
         menuCategory: MenuCategory.Settings,
         label: "Настройки",
-        icon: "icon-settings",
+        icon: <Settings2 size={ size }/>,
         children: [
             {
                 path: "user",
@@ -76,7 +90,7 @@ export const ROUTES_MAP: Record<string, RouteItemMeta> = {
                 access: AccessType.Private,
                 menuCategory: MenuCategory.Settings,
                 label: "Пользователь",
-                icon: "icon-user",
+                icon: <UserRound size={ size }/>,
                 children: [
                     {
                         path: "logout",
@@ -84,7 +98,7 @@ export const ROUTES_MAP: Record<string, RouteItemMeta> = {
                         access: AccessType.Private,
                         menuCategory: MenuCategory.Settings,
                         label: "Выйти",
-                        icon: "icon-user-logout",
+                        icon: <LogOut size={ size }/>,
                     }
                 ]
             },
@@ -94,7 +108,7 @@ export const ROUTES_MAP: Record<string, RouteItemMeta> = {
                 access: AccessType.Private,
                 menuCategory: MenuCategory.Settings,
                 label: "Общие настройки",
-                icon: "icon-general-settings",
+                icon: <Wrench size={ size }/>,
             },
         ]
     }

@@ -1,9 +1,10 @@
 import React from 'react';
-import { Link, Outlet, useLocation } from "react-router-dom";
+import { Outlet, useLocation } from "react-router-dom";
 import { filterRoutes } from "../features/navigation/utils/navigationUtils";
-import { MenuCategory, RouteItemField, RouteItemMeta } from "../types/navigation";
+import { MenuCategory, RouteItemField } from "../types/navigation";
 import { ROUTES_MAP, privateRoutes } from "../routes/routes";
 import { PageHeader } from "../components/common/PageHeader";
+import { RenderNavItems } from "../components/common/Navigation/RenderNavItems/RenderNavItems";
 
 const Settings = () => {
     const location = useLocation();
@@ -16,17 +17,7 @@ const Settings = () => {
             <PageHeader/>
             { isSettingsRoot && Array.isArray( settingsChild ) &&
                 <nav>
-                    <ul>
-                        { settingsChild.map( ( item: RouteItemMeta ) =>
-                            (
-                                <li key={ item.path }>
-                                    <Link to={ item.path }>
-                                        { item.label }
-                                    </Link>
-                                </li>
-                            )
-                        ) }
-                    </ul>
+                    <RenderNavItems navGroup={ settingsChild } options={ { className: "list-none" } }/>
                 </nav>
             }
             <Outlet/>

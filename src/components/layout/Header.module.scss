@@ -1,15 +1,6 @@
 .header {
-    position: sticky;
-    top: 0;
-    padding-top: 1rem;
-    padding-bottom: 1rem;
-
-    &__menuButton,
-    &__homeLink {
-        margin-right: 1rem;
-    }
-
-    &__homeLink {
-        color: var(--gray-7);
-    }
+  position: sticky;
+  top: 0;
+  padding-top: var(--spacing-4);
+  padding-bottom: var(--spacing-4);
 }

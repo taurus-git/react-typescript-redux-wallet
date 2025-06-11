@@ -21,7 +21,7 @@ export interface RouteItemMeta extends RouteItem {
     menuCategory: MenuCategory;
     children?: RouteItemMeta[];
     label?: string;
-    icon?: string;
+    icon?: ReactNode | string;
 }
 
 export enum RouteItemField {

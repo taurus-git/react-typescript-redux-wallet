@@ -1,6 +1,6 @@
 import React from 'react';
-import { renderNavItems } from "../../../features/navigation/utils/navigationUtils";
 import { RouteItemMeta } from "../../../types/navigation";
+import { RenderNavItems } from "./RenderNavItems/RenderNavItems";
 
 interface SidebarNavigationProps {
     navigation: RouteItemMeta[],
@@ -8,10 +8,9 @@ interface SidebarNavigationProps {
 }
 
 export const SidebarNavigation: React.FC<SidebarNavigationProps> = ( { navigation, options } ) => {
-    const navItems = renderNavItems( navigation, options );
     return (
         <nav className="sidebar-nav">
-            { navItems }
+            <RenderNavItems navGroup={ navigation } options={ options }/>
         </nav>
     );
 }
