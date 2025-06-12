@@ -1,6 +1,6 @@
 import React from 'react';
 import { Outlet } from "react-router-dom";
-import { SidebarNavigation } from "../common/Navigation/SidebarNavigation";
+import { SidebarNavigation } from "../common/Navigation/SidebarNavigation/SidebarNavigation";
 import { privateRoutes } from "../../routes/routes";
 import { filterRoutes } from "../../features/navigation/utils/navigationUtils";
 import { MenuCategory, RouteItemField } from "../../types/navigation";
@@ -30,12 +30,8 @@ export const DashboardLayout = () => {
                     <div className="mb-1 py-2 px-2">
                         <LinkToHome className="custom-button d-flex w-fit"/>
                     </div>
-                    <SidebarNavigation navigation={ finances } options={ {
-                        className: 'white-space truncate list-none nav-list cursor-pointer mx-1'
-                    } }/>
-                    <SidebarNavigation navigation={ settings } options={ {
-                        className: 'white-space truncate list-none nav-list cursor-pointer mx-1'
-                    } }/>
+                    <SidebarNavigation navigation={ finances }/>
+                    <SidebarNavigation navigation={ settings }/>
                 </aside>
             }
 
@@ -70,7 +66,6 @@ export const DashboardLayout = () => {
                     <SidebarNavigation navigation={ settings }
                                        options={ {
                                            onItemClick: () => closeAll(),
-                                           className: 'white-space truncate list-none nav-list'
                                        } }/>
                 </Modal>
             }

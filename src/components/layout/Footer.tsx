@@ -6,8 +6,7 @@ import { WidthMediaQueries } from "../../constants/breakpoints";
 import { filterRoutes } from "../../features/navigation/utils/navigationUtils";
 import { privateRoutes } from "../../routes/routes";
 import { MenuCategory, RouteItemField } from "../../types/navigation";
-import { SidebarNavigation } from "../common/Navigation/SidebarNavigation";
-import { Container } from "./Container";
+import { SidebarNavigation } from "../common/Navigation/SidebarNavigation/SidebarNavigation";
 
 export const Footer = () => {
     const isAuthenticated = useSelector( ( state: RootState ) => state.auth.isAuthenticated );
@@ -16,20 +15,17 @@ export const Footer = () => {
 
     return (
         <footer>
-            <Container>
-                <>
-                    { isAuthenticated && !isDesktop ? (
-                        <SidebarNavigation
-                            navigation={ finances }
-                            options={ {
-                                className: 'white-space truncate list-none'
-                            } } />
-                    ) : (
-                        <p>Footer</p>
-                    ) }
-                </>
-            </Container>
+            <>
+                { isAuthenticated && !isDesktop ? (
+                    <SidebarNavigation
+                        navigation={ finances }
+                        options={ {
+                            className: 'footerNav'
+                        } }/>
+                ) : (
+                    ""
+                ) }
+            </>
         </footer>
-    )
-        ;
+    );
 }

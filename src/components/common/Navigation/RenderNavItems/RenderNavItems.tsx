@@ -1,6 +1,7 @@
 import React from 'react';
 import { RouteItemMeta } from "../../../../types/navigation";
 import { NavLink } from "react-router-dom";
+import styles from "./RenderNavItems.module.scss";
 
 interface RenderNavItemsProps {
     navGroup: any,
@@ -12,16 +13,15 @@ interface RenderNavItemsProps {
 
 export const RenderNavItems: React.FC<RenderNavItemsProps> = ( { navGroup, options } ) => {
     return (
-        <ul>
+        <ul className={ `${ styles.navList } ${ options?.className ? options?.className : "" } ` }>
             { navGroup.map( ( item: RouteItemMeta ) => (
                 <li key={ item.path }
-                    onClick={ options?.onItemClick }
-                    className={ `${options?.className}` }>
+                    onClick={ options?.onItemClick }>
                     <NavLink to={ item.path }>
                         { item.icon &&
-                            <span>{ item.icon }</span>
+                            <span className={ styles.navList__icon }>{ item.icon }</span>
                         }
-                        <span>{ item.label }</span>
+                        <p>{ item.label }</p>
                     </NavLink>
                 </li>
             ) ) }

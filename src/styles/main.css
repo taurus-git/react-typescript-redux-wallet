@@ -23,6 +23,7 @@ body {
 }
 
 aside.sidebar {
+    min-width: 20rem;
     border-right: 1px solid var(--gray-2);
 }
 
@@ -69,6 +70,10 @@ a {
 
 a:hover {
     color: var(--gray-6);
+}
+
+a.underline:hover {
+    text-decoration: underline;
 }
 
 img {
@@ -211,41 +216,7 @@ textarea {
     border: 1px solid var(--card-shadow);
 }
 
-.white-space {
-    white-space: nowrap;
-}
 
-.truncate {
-    overflow: hidden;
-    text-overflow: ellipsis;
-}
-
-.cursor-pointer {
-    cursor: pointer;
-}
-
-.list-none {
-    list-style: none;
-}
-
-.nav-list:hover {
-    background-color: var(--gray-2);
-    color: var(--gray-0);
-    border-radius: .375rem;
-}
-
-.nav-list a{
-    display: flex;
-    padding: var(--spacing-21) var(--spacing-2);
-}
-
-.nav-list a.active{
-    color: var(--primary-default);
-}
-
-a.underline:hover {
-    text-decoration: underline;
-}
 
 @media (min-width: 768px) {
 

@@ -1,3 +1,50 @@
+.navList li {
+  display: flex;
+  align-items: center;
+  margin-right: var(--spacing-21);
+  margin-left: var(--spacing-21);
+  list-style: none;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  cursor: pointer;
+}
+.navList li:hover {
+  background-color: var(--gray-2);
+  color: var(--gray-0);
+  border-radius: 0.375rem;
+}
+.navList li a {
+  display: flex;
+  width: 100%;
+  padding: var(--spacing-21) var(--spacing-2);
+}
+.navList li :global(.active) {
+  color: var(--primary-default);
+}
+.navList li .navList__icon {
+  display: flex;
+  margin-right: var(--spacing-21);
+}
 
+:global(.footerNav).navList {
+  display: flex;
+}
+:global(.footerNav).navList li {
+  flex: 1;
+  margin: 0;
+}
+:global(.footerNav).navList li a {
+  flex-direction: column;
+  align-items: center;
+  padding: var(--spacing-3) var(--spacing-1);
+}
+:global(.footerNav).navList li span {
+  margin-right: 0;
+}
+:global(.footerNav).navList li p {
+  font-size: 1rem;
+  margin-bottom: 0;
+}
 
 /*# sourceMappingURL=RenderNavItems.module.css.map */

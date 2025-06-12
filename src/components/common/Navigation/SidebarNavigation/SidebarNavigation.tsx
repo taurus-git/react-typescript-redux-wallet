@@ -1,6 +1,6 @@
 import React from 'react';
-import { RouteItemMeta } from "../../../types/navigation";
-import { RenderNavItems } from "./RenderNavItems/RenderNavItems";
+import { RouteItemMeta } from "../../../../types/navigation";
+import { RenderNavItems } from "../RenderNavItems/RenderNavItems";
 
 interface SidebarNavigationProps {
     navigation: RouteItemMeta[],
