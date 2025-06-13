@@ -14,6 +14,7 @@ import { Container } from "./Container";
 import { LinkToHome } from "../common/Navigation/LinkToHome/LinkToHome";
 import { Header } from "./Header";
 import { CtaButton } from "../common/CtaButton/CtaButton";
+import { FinanceForm } from "../common/FinanceForm/FinanceForm";
 
 export const DashboardLayout = () => {
     const finances = filterRoutes( privateRoutes, RouteItemField.MenuCategory, MenuCategory.Finances );
@@ -22,10 +23,7 @@ export const DashboardLayout = () => {
 
     const { open, close, isOpen, closeAll } = useModal();
     const mobileMenu = MODAL_NAME.MOBILE_MENU;
-
-    const onClick = () => {
-        console.log('click');
-    }
+    const financeForm = MODAL_NAME.FINANCE_FORM;
 
     return (
         <div className="main d-flex flex-1">
@@ -66,7 +64,7 @@ export const DashboardLayout = () => {
                        className={ 'modal-menu' }
                        variant={ 'fullHeight' }>
                     <div className="modal-menu__close d-flex align-center justify-end">
-                        <X className="cursor-pointer" onClick={ () => close( mobileMenu ) }></X>
+                        <X className="close cursor-pointer" onClick={ () => close( mobileMenu ) }></X>
                     </div>
                     <SidebarNavigation navigation={ settings }
                                        options={ {
@@ -75,7 +73,18 @@ export const DashboardLayout = () => {
                 </Modal>
             }
 
-            <CtaButton onClick={onClick}/>
+            <CtaButton onClick={() => open( financeForm ) }/>
+
+            <Modal isOpen={ isOpen( financeForm ) }
+                   onClose={ () => close( financeForm ) }
+                   className={ 'financeForm' }
+                   variant={ 'fullScreen' }>
+                <div className="modal-menu__close d-flex align-center justify-end">
+                    <X className="close cursor-pointer" onClick={ () => close( financeForm ) }></X>
+                </div>
+                <FinanceForm onClose={ () => close( financeForm ) } />
+            </Modal>
+
         </div>
     );
 }

@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from "react-dom";
 import styles from "./Modal.module.scss";
 
-type ModalVariant = 'default' | 'fullHeight';
+type ModalVariant = 'default' | 'fullHeight' | 'fullScreen';
 
 interface ModalProps {
     isOpen: boolean;
@@ -15,6 +15,7 @@ interface ModalProps {
 const variantClasses: Record<ModalVariant, string> = {
     default: styles.overlay__container,
     fullHeight: `${ styles.overlay__container } ${ styles['overlay__container--fullHeight'] } `,
+    fullScreen: `${ styles.overlay__container } ${ styles['overlay__container--fullScreen'] } `,
 }
 
 export const Modal: React.FC<ModalProps> = ( { isOpen, onClose, children, className, variant = 'default' } ) => {

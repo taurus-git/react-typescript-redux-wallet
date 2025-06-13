@@ -216,7 +216,13 @@ textarea {
     border: 1px solid var(--card-shadow);
 }
 
+.cursor-pointer {
+    cursor: pointer;
+}
 
+.close:hover {
+    color: var(--primary-default);
+}
 
 @media (min-width: 768px) {
 
