@@ -13,6 +13,7 @@ import { X, Menu } from "lucide-react";
 import { Container } from "./Container";
 import { LinkToHome } from "../common/Navigation/LinkToHome/LinkToHome";
 import { Header } from "./Header";
+import { CtaButton } from "../common/CtaButton/CtaButton";
 
 export const DashboardLayout = () => {
     const finances = filterRoutes( privateRoutes, RouteItemField.MenuCategory, MenuCategory.Finances );
@@ -21,6 +22,10 @@ export const DashboardLayout = () => {
 
     const { open, close, isOpen, closeAll } = useModal();
     const mobileMenu = MODAL_NAME.MOBILE_MENU;
+
+    const onClick = () => {
+        console.log('click');
+    }
 
     return (
         <div className="main d-flex flex-1">
@@ -69,6 +74,8 @@ export const DashboardLayout = () => {
                                        } }/>
                 </Modal>
             }
+
+            <CtaButton onClick={onClick}/>
         </div>
     );
 }

@@ -1,0 +1,25 @@
+.ctaButton {
+  position: fixed;
+  bottom: 7rem;
+  right: 5rem;
+  width: 4rem;
+  height: 4rem;
+  border-radius: 50%;
+  border: 1px solid var(--gray-9);
+  cursor: pointer;
+  background-color: var(--gray-0);
+}
+.ctaButton:hover {
+  border-color: var(--primary-default);
+}
+.ctaButton:hover .ctaButton__icon {
+  color: var(--primary-default);
+}
+.ctaButton__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(grey-9);
+}
+
+/*# sourceMappingURL=CtaButton.module.css.map */
