@@ -19,6 +19,9 @@
   width: 100%;
   padding: var(--spacing-21) var(--spacing-2);
 }
+.navList li p {
+  margin-bottom: 0;
+}
 .navList li :global(.active) {
   color: var(--primary-default);
 }

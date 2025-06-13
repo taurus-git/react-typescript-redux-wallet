@@ -22,6 +22,10 @@
       padding: var(--spacing-21) var(--spacing-2);
     }
 
+    p {
+      margin-bottom: 0;
+    }
+
     :global(.active) {
       color: var(--primary-default);
     }
