@@ -12,10 +12,16 @@ interface ModalProps {
     variant?: ModalVariant;
 }
 
-const variantClasses: Record<ModalVariant, string> = {
-    default: styles.overlay__container,
-    fullHeight: `${ styles.overlay__container } ${ styles['overlay__container--fullHeight'] } `,
-    fullScreen: `${ styles.overlay__container } ${ styles['overlay__container--fullScreen'] } `,
+const getModalClassName = ( variant: ModalVariant ): string => {
+    const baseClass = styles.overlay__container;
+
+    const modifiers: Record<ModalVariant, string | undefined> = {
+        default: '',
+        fullHeight: styles[ 'overlay__container--fullHeight' ],
+        fullScreen: styles[ 'overlay__container--fullScreen' ],
+    }
+
+    return [ baseClass, modifiers[ variant ] ].filter( Boolean ).join( ' ' );
 }
 
 export const Modal: React.FC<ModalProps> = ( { isOpen, onClose, children, className, variant = 'default' } ) => {
@@ -28,7 +34,7 @@ export const Modal: React.FC<ModalProps> = ( { isOpen, onClose, children, classN
         e.stopPropagation();
     }
 
-    const containerClass = variantClasses[ variant ];
+    const containerClass = getModalClassName( variant );
 
     return ReactDOM.createPortal(
         <div className={ `overlay ${ className }` }>

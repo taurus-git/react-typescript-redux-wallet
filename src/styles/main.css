@@ -22,11 +22,6 @@ body {
     background-color: var(--gray-0);
 }
 
-aside.sidebar {
-    min-width: 20rem;
-    border-right: 1px solid var(--gray-2);
-}
-
 h1, h2, h3, h4, h5, h6 {
     margin-bottom: var(--spacing-4);
     font-weight: 600;
