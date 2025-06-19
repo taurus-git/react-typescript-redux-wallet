@@ -1,6 +1,6 @@
 import React from 'react';
 import { X } from "lucide-react";
-import { FinanceForm } from "../../common/FinanceForm/FinanceForm";
+import { FinanceForm } from "../FinanceForm/FinanceForm";
 import { Modal } from "../../common/Modal/Modal";
 import { useModal } from "../../../hooks/useModal";
 import { MODAL_NAME } from "../../../store/features/ui/types";

@@ -3,6 +3,8 @@ import { AppDispatch, RootState } from "../store";
 import { useDispatch, useSelector } from "react-redux";
 import { addExpense, removeExpense } from "../store/features/expenses/expensesSlice";
 import { PageHeader } from "../components/common/PageHeader";
+import categoriesRaw from "../data/categories.json";
+import { normalizeCategories, separateCategories } from "../utils/normilizeCategories";
 
 
 const Dashboard = () => {
@@ -17,6 +19,10 @@ const Dashboard = () => {
         dispatch( removeExpense( id ) );
     }
 
+    const accountsCategories = categoriesRaw.accounts;
+    const categories = normalizeCategories(accountsCategories)
+    console.log(categories);
+
     return (
         <>
             <PageHeader/>
@@ -26,7 +32,7 @@ const Dashboard = () => {
                     { expenses.map( item => (
                         <li key={ item.id }>
                             { item.categoryId } - { item.amount } - { item.date }
-                            <button onClick={() => handleRemove( item.id ) }>Удалить</button>
+                            <button onClick={ () => handleRemove( item.id ) }>Удалить</button>
                         </li>
                     ) ) }
                 </ul>

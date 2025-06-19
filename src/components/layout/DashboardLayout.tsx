@@ -7,7 +7,7 @@ import { Header } from "./Header";
 import { Sidebar } from "./Sidebar/Sidebar";
 import { MobileHeader } from "./MobileHeader/MobileHeader";
 import { MobileMenuModal } from "./MobileMenuModal/MobileMenuModal";
-import { FinanceFormModal } from "./FinanceFormModal/FinanceFormModal";
+import { FinanceFormModal } from "../forms/FinanceFormModal/FinanceFormModal";
 
 export const DashboardLayout = () => {
     const isDesktop = useMediaQuery( WidthMediaQueries.md );
