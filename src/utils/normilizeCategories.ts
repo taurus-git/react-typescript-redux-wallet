@@ -1,28 +1,8 @@
-const FINANCES = {
-    EXPENSE: "expense",
-    INCOME: "income",
-    ASSET: "asset",
-} as const;
+import { FINANCES, Category, Categories } from "../store/features/catregories/types";
 
-interface Category {
-    name: string;
-    parentName: null | string;
-    type: string;
-    notes: null;
-    iconName: string | null;
-    iconColor: string | null;
-    templateCode: string;
-    isArchived: boolean;
-}
+export type NormalizedCategory = Omit<Category, "parentName" | "notes" | "templateCode" | "isArchived">;
 
-interface Categories {
-    expenses: Category[],
-    incomes: Category[],
-}
-
-type NormalizedCategory = Omit<Category, "parentName" | "notes" | "templateCode" | "isArchived">;
-
-interface NormalizedCategories {
+export interface NormalizedCategories {
     expenses: NormalizedCategory[],
     incomes: NormalizedCategory[],
 }

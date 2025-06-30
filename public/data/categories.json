@@ -85,7 +85,7 @@
       "parentName": null,
       "type": "expense",
       "notes": null,
-      "iconName": "bank",
+      "iconName": "credit-card",
       "iconColor": "pink",
       "templateCode": "bank_services",
       "isArchived": false
@@ -235,7 +235,7 @@
       "parentName": null,
       "type": "expense",
       "notes": null,
-      "iconName": "tax",
+      "iconName": "square-percent",
       "iconColor": "blue",
       "templateCode": "state_taxes_and_charges",
       "isArchived": false
@@ -265,7 +265,7 @@
       "parentName": null,
       "type": "expense",
       "notes": null,
-      "iconName": "kids",
+      "iconName": "baby",
       "iconColor": "red",
       "templateCode": "kids",
       "isArchived": false
