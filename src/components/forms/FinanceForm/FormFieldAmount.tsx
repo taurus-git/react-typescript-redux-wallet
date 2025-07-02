@@ -7,8 +7,8 @@ interface FormFieldAmountProps {
 export const FormFieldAmount: React.FC<FormFieldAmountProps> = ( { reference } ) => {
     return (
         <>
-            <label htmlFor="summ">Сумма</label>
-            <input type="number" id="summ" name='summ' ref={ reference } placeholder="Сумма"/>
+            <label htmlFor="amount">Сумма</label>
+            <input type="number" id="amount" name='amount' ref={ reference } placeholder="Сумма" required/>
         </>
     );
 }

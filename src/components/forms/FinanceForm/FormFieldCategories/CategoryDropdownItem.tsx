@@ -1,6 +1,6 @@
 import React from 'react';
-import { NormalizedCategory } from "../../../utils/normilizeCategories";
-import { capitalizedString } from "../../../utils/formatters";
+import { NormalizedCategory } from "../../../../utils/normilizeCategories";
+import { capitalizedString } from "../../../../utils/formatters";
 import * as Icons from "lucide-react";
 import { LucideIcon } from "lucide-react";
 // Note: I understand that importing all icons (import * as Icons from "lucide-react") can be expensive for bundle size.
@@ -8,22 +8,22 @@ import { LucideIcon } from "lucide-react";
 // this approach keeps the logic concise without manually mapping each iconName.
 
 
-interface FormFieldCategoryProps {
+interface CategoryDropdownItemProps {
     category: NormalizedCategory,
     index: number,
+    onSelect: ( category: NormalizedCategory ) => void,
 }
 
-export const FormFieldCategory: React.FC<FormFieldCategoryProps> = ( { category, index } ) => {
-    const handleClick = ( name: string ) => {
-        console.log( name );
+export const CategoryDropdownItem: React.FC<CategoryDropdownItemProps> = ( { category, index, onSelect } ) => {
+    const handleSelect = ( category: NormalizedCategory ) => {
+        onSelect( category );
     };
 
-    const iconName = category.iconName || "";
     const Icon = (Icons[ capitalizedString( category.iconName ) as keyof typeof Icons ] || Icons.HelpCircle) as LucideIcon;
 
     return (
         <li key={ category.type + index } style={ { color: category.iconColor || undefined } }>
-            <button onClick={ () => handleClick( iconName ) }>
+            <button onClick={ () => handleSelect( category ) }>
                 <Icon size={ 20 } color={ category.iconColor || "#000" }/>
                 { category.name }
             </button>

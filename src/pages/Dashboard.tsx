@@ -25,8 +25,6 @@ const Dashboard = () => {
     if(loading) return <div>Загрузка...</div>
     if(error) return <div>Ошибка: {error}</div>
 
-    console.log(incomes);
-
     return (
         <>
             <PageHeader/>

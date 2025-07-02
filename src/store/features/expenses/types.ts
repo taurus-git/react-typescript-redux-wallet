@@ -1,8 +1,7 @@
 export interface Expense {
     id: string;
-    accountId: string;
-    categoryId: string;
     amount: number;
+    categoryId: string;
     date: string;
     comment?: string;
 }

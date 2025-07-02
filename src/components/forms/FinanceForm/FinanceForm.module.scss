@@ -1,7 +1,16 @@
 .financeForm{
   &__field {
     background-color: blanchedalmond;
+
+    &--categories {
+      ul {
+        display: flex;
+        flex-wrap: wrap;
+      }
+    }
   }
+
+
 
 }
 

@@ -1,5 +1,9 @@
 .financeForm__field {
   background-color: blanchedalmond;
 }
+.financeForm__field--categories ul {
+  display: flex;
+  flex-wrap: wrap;
+}
 
 /*# sourceMappingURL=FinanceForm.module.css.map */
