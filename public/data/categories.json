@@ -315,8 +315,8 @@
       "parentName": null,
       "type": "expense",
       "notes": null,
-      "iconName": "household",
-      "iconColor": "amber",
+      "iconName": "house",
+      "iconColor": "goldenrod",
       "templateCode": "household",
       "isArchived": false
     },
@@ -325,8 +325,8 @@
       "parentName": null,
       "type": "expense",
       "notes": null,
-      "iconName": "pets-footstep",
-      "iconColor": "deep_purple",
+      "iconName": "paw-print",
+      "iconColor": "indigo",
       "templateCode": "pets",
       "isArchived": false
     },
@@ -375,7 +375,7 @@
       "parentName": null,
       "type": "expense",
       "notes": null,
-      "iconName": "housing",
+      "iconName": "house",
       "iconColor": "orange",
       "templateCode": "housing",
       "isArchived": false
@@ -395,7 +395,7 @@
       "parentName": null,
       "type": "income",
       "notes": null,
-      "iconName": "money-bag",
+      "iconName": "hand-coins",
       "iconColor": "orange",
       "templateCode": "earnings",
       "isArchived": false
@@ -415,8 +415,8 @@
       "parentName": null,
       "type": "expense",
       "notes": null,
-      "iconName": "health",
-      "iconColor": "light_green",
+      "iconName": "heart-plus",
+      "iconColor": "yellowgreen",
       "templateCode": "health",
       "isArchived": false
     },
@@ -455,7 +455,7 @@
       "parentName": null,
       "type": "income",
       "notes": null,
-      "iconName": "investment-graphic-bars",
+      "iconName": "squares-exclude",
       "iconColor": "deep_orange",
       "templateCode": "investment",
       "isArchived": false
@@ -506,7 +506,7 @@
       "type": "asset",
       "notes": null,
       "iconName": "credit-card",
-      "iconColor": "light_green",
+      "iconColor": "yellowgreen",
       "templateCode": "asset_bank_cards",
       "isArchived": false
     },
@@ -545,7 +545,7 @@
       "parentName": null,
       "type": "expense",
       "notes": null,
-      "iconName": "utilities",
+      "iconName": "house-plug",
       "iconColor": "teal",
       "templateCode": "utilities",
       "isArchived": false
@@ -675,7 +675,7 @@
       "parentName": null,
       "type": "expense",
       "notes": null,
-      "iconName": "personal-care",
+      "iconName": "soap-dispenser-droplet",
       "iconColor": "purple",
       "templateCode": "personal_care",
       "isArchived": false
@@ -785,7 +785,7 @@
       "parentName": null,
       "type": "expense",
       "notes": null,
-      "iconName": "education",
+      "iconName": "graduation-cap",
       "iconColor": "blue",
       "templateCode": "education",
       "isArchived": false
@@ -825,8 +825,8 @@
       "parentName": null,
       "type": "expense",
       "notes": null,
-      "iconName": "clothing",
-      "iconColor": "deep_purple",
+      "iconName": "shirt",
+      "iconColor": "indigo",
       "templateCode": "clothing",
       "isArchived": false
     },
@@ -845,8 +845,8 @@
       "parentName": null,
       "type": "expense",
       "notes": null,
-      "iconName": "entertainment",
-      "iconColor": "light_blue",
+      "iconName": "tree-palm",
+      "iconColor": "mediumseagreen",
       "templateCode": "entertainment",
       "isArchived": false
     },
@@ -905,7 +905,7 @@
       "parentName": null,
       "type": "expense",
       "notes": null,
-      "iconName": "dining",
+      "iconName": "hamburger",
       "iconColor": "indigo",
       "templateCode": "eatout",
       "isArchived": false
@@ -915,7 +915,7 @@
       "parentName": null,
       "type": "expense",
       "notes": null,
-      "iconName": "gifts",
+      "iconName": "gift",
       "iconColor": "green",
       "templateCode": "gifts",
       "isArchived": false
@@ -995,7 +995,7 @@
       "parentName": null,
       "type": "expense",
       "notes": null,
-      "iconName": "food-groceries",
+      "iconName": "salad",
       "iconColor": "teal",
       "templateCode": "food_and_groceries",
       "isArchived": false
@@ -1015,8 +1015,8 @@
       "parentName": null,
       "type": "expense",
       "notes": null,
-      "iconName": "payment",
-      "iconColor": "pink",
+      "iconName": "banknote-arrow-down",
+      "iconColor": "midnightblue",
       "templateCode": "other_expenses",
       "isArchived": false
     },
@@ -1025,8 +1025,8 @@
       "parentName": null,
       "type": "expense",
       "notes": null,
-      "iconName": "vacation",
-      "iconColor": "cyan",
+      "iconName": "plane",
+      "iconColor": "royalblue",
       "templateCode": "travels",
       "isArchived": false
     },
@@ -1035,8 +1035,8 @@
       "parentName": null,
       "type": "expense",
       "notes": null,
-      "iconName": "job-briefcase",
-      "iconColor": "deep_orange",
+      "iconName": "monitor-cog",
+      "iconColor": "orange",
       "templateCode": "job_expenses",
       "isArchived": false
     },
@@ -1095,8 +1095,8 @@
       "parentName": null,
       "type": "expense",
       "notes": null,
-      "iconName": "events",
-      "iconColor": "cyan",
+      "iconName": "calendar-plus",
+      "iconColor": "orangered",
       "templateCode": "events",
       "isArchived": false
     },
@@ -1115,7 +1115,7 @@
       "parentName": null,
       "type": "expense",
       "notes": null,
-      "iconName": "sport2",
+      "iconName": "dumbbell",
       "iconColor": "indigo",
       "templateCode": "sport",
       "isArchived": false
@@ -1225,8 +1225,8 @@
       "parentName": null,
       "type": "expense",
       "notes": null,
-      "iconName": "transport-bus",
-      "iconColor": "light_blue",
+      "iconName": "bus",
+      "iconColor": "steelblue",
       "templateCode": "transport",
       "isArchived": false
     },
@@ -1315,8 +1315,8 @@
       "parentName": null,
       "type": "expense",
       "notes": null,
-      "iconName": "hobbies",
-      "iconColor": "lime",
+      "iconName": "guitar",
+      "iconColor": "violet",
       "templateCode": "hobbies",
       "isArchived": false
     },

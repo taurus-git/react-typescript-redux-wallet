@@ -2,13 +2,21 @@ import React from 'react';
 
 interface FormFieldAmountProps {
     reference: React.RefObject<HTMLInputElement | null>,
+    change: ( e: React.ChangeEvent<HTMLInputElement> ) => void,
 }
 
-export const FormFieldAmount: React.FC<FormFieldAmountProps> = ( { reference } ) => {
+export const FormFieldAmount: React.FC<FormFieldAmountProps> = ( { reference, change } ) => {
     return (
         <>
             <label htmlFor="amount">Сумма</label>
-            <input type="number" id="amount" name='amount' ref={ reference } placeholder="Сумма" required/>
+            <input
+                type="number"
+                id="amount"
+                name='amount'
+                min="1"
+                onChange={ change }
+                ref={ reference }
+                placeholder="Сумма"/>
         </>
     );
 }

@@ -5,16 +5,26 @@ import { fetchCategories } from "../../../../store/features/catregories/categori
 import { CategoryButton } from "./CategoryButton";
 import { CategoryDropdown } from "./CategoryDropdown";
 import { NormalizedCategory } from "../../../../utils/normilizeCategories";
+import { CategoriesSearch } from "./CategoriesSearch";
 
-export const FormFieldCategories = () => {
+interface FormFieldCategoriesProps {
+    change: ( e: React.ChangeEvent<HTMLInputElement> ) => void;
+}
+
+export const FormFieldCategories: React.FC<FormFieldCategoriesProps> = ( { change } ) => {
     const dispatch = useDispatch<AppDispatch>();
     const [ categoriesOpen, setCategoriesOpen ] = useState( false );
     const [ selectedCategory, setSelectedCategory ] = useState<NormalizedCategory>();
+    const [ searchTerm, setSearchTerm ] = useState( '' );
     const { expenses, loading, error } = useSelector( ( state: RootState ) => state.categories );
 
-    const handleOpenCategories = ( e: React.MouseEvent ) => {
-        e.stopPropagation();
-        setCategoriesOpen( prev => !prev );
+    const getChangeEvent = ( value: string ): React.ChangeEvent<HTMLInputElement> => {
+        return {
+            target: {
+                name: 'categoryId',
+                value: value,
+            }
+        } as React.ChangeEvent<HTMLInputElement>
     }
 
     const toggleDropdown = () => {
@@ -23,8 +33,28 @@ export const FormFieldCategories = () => {
 
     const handleSelect = ( category: NormalizedCategory ) => {
         setSelectedCategory( category );
-        setCategoriesOpen(false);
-        console.log(category);
+        setCategoriesOpen( false );
+        const changeEvent = getChangeEvent( category.name );
+        change( changeEvent );
+    }
+
+    const handleClear = ( e: React.MouseEvent ) => {
+        e.stopPropagation();
+        setSelectedCategory( undefined );
+        setSearchTerm( '' );
+        const changeEvent = getChangeEvent( "" );
+        change( changeEvent  );
+    }
+
+    const filterCategories = ( categories: NormalizedCategory[] ) => {
+        if ( !searchTerm ) return categories;
+        return expenses.filter( ( category ) =>
+            category.name.toLowerCase()
+                .includes( searchTerm.toLowerCase() ) )
+    }
+
+    const categoriesToDisplay = () => {
+        return filterCategories( expenses );
     }
 
     useEffect( () => {
@@ -35,19 +65,22 @@ export const FormFieldCategories = () => {
 
     return (
         <>
+            <CategoryButton
+                onToggle={ toggleDropdown }
+                selectedCategory={ selectedCategory }
+                handleClear={ handleClear }/>
 
-            {/*selectedCategory. If category chose display it */ }
-            {/*Button to clear chosen category*/ }
-            {/*If dropdown opened, display input for search.
-            onChange setSearchTerm*/ }
-
-            {/* <input type="hidden" name="category" value={selectedCategory || ""}/>*/ }
-            <CategoryButton onToggle={ toggleDropdown } selectedCategory={selectedCategory}/>
-
-            { categoriesOpen && expenses.length > 0 &&
-                /*CategoriesSearch input*/
-                <CategoryDropdown categories={ expenses } onSelect={handleSelect}/>
+            { categoriesOpen &&
+                <>
+                    <CategoriesSearch searchTerm={ searchTerm } setSearchTerm={ setSearchTerm }/>
+                    <CategoryDropdown categories={ categoriesToDisplay() } onSelect={ handleSelect }/>
+                </>
             }
+
+            <input type="hidden"
+                   id="categoryId"
+                   name="categoryId"
+                   value={ selectedCategory?.name || "" }/>
         </>
     );
 }

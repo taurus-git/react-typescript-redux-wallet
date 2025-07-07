@@ -1,28 +1,25 @@
 import React from 'react';
 import { NormalizedCategory } from "../../../../utils/normilizeCategories";
-import * as Icons from "lucide-react";
-import { capitalizedString } from "../../../../utils/formatters";
-import { LucideIcon } from "lucide-react";
+import {X} from "lucide-react";
 
 interface CategoriesDropdownProps {
     onToggle: () => void,
     selectedCategory: NormalizedCategory | undefined,
+    handleClear: (e: React.MouseEvent) => void,
 }
 
-export const CategoryButton: React.FC<CategoriesDropdownProps> = ( { onToggle, selectedCategory } ) => {
-
-    const IconComponent = selectedCategory
-        ? (Icons[ capitalizedString( selectedCategory.iconName ) as keyof typeof Icons ] || Icons.HelpCircle) as LucideIcon
-        : null;
+export const CategoryButton: React.FC<CategoriesDropdownProps> = ( { onToggle, selectedCategory, handleClear } ) => {
 
 
     return (
         <button type="button" onClick={ onToggle }>
 
-            { selectedCategory && IconComponent ?
+            { selectedCategory ?
                 <div>
-                    <IconComponent size={ 20 } color={ selectedCategory.iconColor || "#000" }/>
-                    { selectedCategory.name }
+                    <span style={ { color: selectedCategory.iconColor }}>{ selectedCategory.name }</span>
+                    <span onClick={ handleClear} title="Очистить">
+                        <X/>
+                    </span>
                 </div>
                 :
                 <span>Выберете категорию</span>
