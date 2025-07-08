@@ -17,17 +17,31 @@ interface FinanceFormProps {
 export const FinanceForm: React.FC<FinanceFormProps> = ( { onClose } ) => {
     const dispatch = useDispatch<AppDispatch>();
     const inputElement = useRef<HTMLInputElement>( null );
-    const [ errors, setErrors ] = useState<Partial<Record<keyof Omit<Expense, "id" | "comment">, string>>>();
+    type FormErrors = Partial<Record<keyof Omit<Expense, "id" | "comment">, string>>;
+    type InputTypes = HTMLInputElement | HTMLSelectElement;
+    const [ errors, setErrors ] = useState<FormErrors>();
+    const [ isSubmitting, setIsSubmitting ] = useState( false );
 
+    const FORM_FIELD_NAMES = {
+        amount: "amount",
+        categoryId: "categoryId",
+        date: "date",
+        comment: "comment",
+    } as const;
 
-    console.log(errors);
+    const DEFAULT_FORM_VALUES = {
+        amount: 0,
+        categoryId: "",
+        date: "",
+        comment: undefined,
+    } as const;
 
     const getFormFields = ( formData: FormData ) => {
         return {
-            amount: Number( formData.get( "amount" ) ),
-            categoryId: String( formData.get( "categoryId" ) ),
-            date: String( formData.get( "date" ) ),
-            comment: String( formData.get( "comment" ) )
+            amount: Number( formData.get( FORM_FIELD_NAMES.amount ) ) || DEFAULT_FORM_VALUES.amount,
+            categoryId: String( formData.get( FORM_FIELD_NAMES.categoryId ) ) || DEFAULT_FORM_VALUES.categoryId,
+            date: String( formData.get( FORM_FIELD_NAMES.date ) ) || DEFAULT_FORM_VALUES.date,
+            comment: String( formData.get( FORM_FIELD_NAMES.comment ) ) || DEFAULT_FORM_VALUES.comment,
         }
     }
 
@@ -38,8 +52,6 @@ export const FinanceForm: React.FC<FinanceFormProps> = ( { onClose } ) => {
         if ( !amount || amount <= 0 ) {
             errorMessages.amount = "Введите корректную сумму";
         }
-
-        console.log(categoryId);
 
         if ( !categoryId ) {
             errorMessages.categoryId = "Укажите категорию";
@@ -53,37 +65,40 @@ export const FinanceForm: React.FC<FinanceFormProps> = ( { onClose } ) => {
         return Object.keys( errorMessages ).length === 0;
     }
 
-    const handleChange = ( e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement> ) => {
-        const { name, value } = e.target;
+    const handleInputChange = ( e: React.ChangeEvent<InputTypes> ) => {
+        const { name } = e.target;
 
-        console.log( name, value );
-
-        if ( errors !== undefined ) {
-
-            if ( errors[ name as keyof typeof errors ] ) {
-                setErrors( ( prev ) => ({
-                    ...prev,
-                    [ name ]: undefined
-                }) )
-            }
+        if ( errors && name in errors ) {
+            setErrors( ( prev ) => ({
+                ...prev,
+                [ name ]: undefined
+            }) )
         }
     }
 
     const handleSubmit = ( e: React.FormEvent<HTMLFormElement> ) => {
         e.preventDefault();
-        const formData = new FormData( e.currentTarget );
 
+        if ( isSubmitting ) return;
+
+        const form = e.currentTarget;
+        const formData = new FormData( form );
         const formValid = isFormValid( formData );
         if ( !formValid ) return;
 
-        const formFields = getFormFields( formData );
+        setIsSubmitting( true );
 
-        dispatch( addExpense( formFields ) );
+        try {
+            const formFields = getFormFields( formData );
+            dispatch( addExpense( formFields ) );
+            form.reset();
+            onClose?.();
+        } catch ( error ) {
+            console.error( 'Error on the form submitting', error );
+        } finally {
+            setIsSubmitting( false );
+        }
     }
-
-    /*const handleRemove = ( id: string ) => {
-        dispatch( removeExpense( id ) );
-    }*/
 
     useEffect( () => {
         if ( inputElement ) {
@@ -96,28 +111,31 @@ export const FinanceForm: React.FC<FinanceFormProps> = ( { onClose } ) => {
             <fieldset>
                 <legend>Новая запись</legend>
                 <div className={ `${ styles[ 'financeForm__field' ] }` }>
-                    <FormFieldAmount reference={ inputElement } change={ handleChange }/>
+                    <FormFieldAmount reference={ inputElement } change={ handleInputChange }/>
                     { errors?.amount && <Message message={ errors.amount }/> }
                 </div>
 
                 <div className={ `${ styles[ 'financeForm__field' ] }` }>
-                    <FormFieldAccount change={ handleChange }/>
+                    <FormFieldAccount change={ handleInputChange }/>
                     {/*Todo: add error message for Account field*/ }
                 </div>
 
                 <div className={ `${ styles[ 'financeForm__field' ] }` }>
-                    <FormFieldCategories change={ handleChange }/>
+                    <FormFieldCategories change={ handleInputChange }/>
                     { errors?.categoryId && <Message message={ errors.categoryId }/> }
                 </div>
 
                 <div className={ `${ styles[ 'financeForm__field' ] }` }>
-                    <FormFieldDate/>
+                    <FormFieldDate change={ handleInputChange }/>
+                    { errors?.date && <Message message={ errors.date }/> }
                 </div>
 
                 <div className={ `${ styles[ 'financeForm__field' ] }` }>
-                    <input type="submit" value="Сохранить"/>
-                    {/*Todo: add grey / blue color button depends on fields filled in*/ }
-                    {/*Todo: add onClose event if fields filled in*/ }
+                    <input
+                        type="submit"
+                        disabled={ isSubmitting }
+                        value={ isSubmitting ? "Сохранение..." : "Сохранить" }
+                    />
                 </div>
             </fieldset>
 
