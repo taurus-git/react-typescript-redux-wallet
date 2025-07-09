@@ -395,7 +395,7 @@
       "parentName": null,
       "type": "income",
       "notes": null,
-      "iconName": "hand-coins",
+      "iconName": "banknote-arrow-down",
       "iconColor": "orange",
       "templateCode": "earnings",
       "isArchived": false
@@ -455,8 +455,8 @@
       "parentName": null,
       "type": "income",
       "notes": null,
-      "iconName": "squares-exclude",
-      "iconColor": "deep_orange",
+      "iconName": "chart-no-axes-combined",
+      "iconColor": "darkmagenta",
       "templateCode": "investment",
       "isArchived": false
     },
@@ -1005,7 +1005,7 @@
       "parentName": null,
       "type": "income",
       "notes": null,
-      "iconName": "money-stack",
+      "iconName": "layers",
       "iconColor": "red",
       "templateCode": "other_incomes",
       "isArchived": false
