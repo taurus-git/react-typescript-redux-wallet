@@ -6,17 +6,19 @@ import { CategoryButton } from "./CategoryButton";
 import { CategoryDropdown } from "./CategoryDropdown";
 import { NormalizedCategory } from "../../../../utils/normilizeCategories";
 import { CategoriesSearch } from "./CategoriesSearch";
+import { TransactionType } from "../../../../types/transactions";
 
 interface FormFieldCategoriesProps {
+    transactionType: TransactionType;
     change: ( e: React.ChangeEvent<HTMLInputElement> ) => void;
 }
 
-export const FormFieldCategories: React.FC<FormFieldCategoriesProps> = ( { change } ) => {
+export const FormFieldCategories: React.FC<FormFieldCategoriesProps> = ( { transactionType, change } ) => {
     const dispatch = useDispatch<AppDispatch>();
+    const { expenses, incomes, loading, error } = useSelector( ( state: RootState ) => state.categories );
     const [ categoriesOpen, setCategoriesOpen ] = useState( false );
     const [ selectedCategory, setSelectedCategory ] = useState<NormalizedCategory>();
     const [ searchTerm, setSearchTerm ] = useState( '' );
-    const { expenses, loading, error } = useSelector( ( state: RootState ) => state.categories );
 
     const getChangeEvent = ( value: string ): React.ChangeEvent<HTMLInputElement> => {
         return {
@@ -43,25 +45,36 @@ export const FormFieldCategories: React.FC<FormFieldCategoriesProps> = ( { chang
         setSelectedCategory( undefined );
         setSearchTerm( '' );
         const changeEvent = getChangeEvent( "" );
-        change( changeEvent  );
+        change( changeEvent );
     }
 
     const filterCategories = ( categories: NormalizedCategory[] ) => {
         if ( !searchTerm ) return categories;
-        return expenses.filter( ( category ) =>
+        return categories.filter( ( category ) =>
             category.name.toLowerCase()
                 .includes( searchTerm.toLowerCase() ) )
     }
 
-    const categoriesToDisplay = () => {
+    const categoriesToDisplay = ( transactionType: TransactionType ) => {
+        if ( transactionType === TransactionType.INCOME ) {
+            return filterCategories( incomes );
+        }
+
         return filterCategories( expenses );
     }
 
+    const shouldDispatchCategories = () => {
+        if ( loading || error ) return false;
+        if ( expenses.length > 0 || incomes.length > 0 ) return false;
+
+        return false;
+    }
+
     useEffect( () => {
-        if ( !loading && !error && expenses.length === 0 ) {
+        if ( shouldDispatchCategories() ) {
             dispatch( fetchCategories() );
         }
-    }, [ dispatch, expenses, loading, error ] );
+    }, [ dispatch, expenses, incomes, loading, error ] );
 
     return (
         <>
@@ -73,7 +86,7 @@ export const FormFieldCategories: React.FC<FormFieldCategoriesProps> = ( { chang
             { categoriesOpen &&
                 <>
                     <CategoriesSearch searchTerm={ searchTerm } setSearchTerm={ setSearchTerm }/>
-                    <CategoryDropdown categories={ categoriesToDisplay() } onSelect={ handleSelect }/>
+                    <CategoryDropdown categories={ categoriesToDisplay( transactionType ) } onSelect={ handleSelect }/>
                 </>
             }
 

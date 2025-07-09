@@ -2,13 +2,15 @@ import React, { useEffect, useRef, useState } from 'react';
 import styles from './FinanceForm.module.scss';
 import { useDispatch } from "react-redux";
 import { AppDispatch } from "../../../store";
-import { addExpense } from "../../../store/features/expenses/expensesSlice";
+import { createExpense } from "../../../store/features/expenses/expensesSlice";
+import { createIncome } from "../../../store/features/incomes/incomesSlice";
+import { Transaction, TransactionType } from "../../../types/transactions";
 import { FormFieldCategories } from "./FormFieldCategories";
 import { FormFieldAmount } from "./FormFieldAmount";
 import { FormFieldAccount } from "./FormFielAccount";
 import { FormFieldDate } from "./FormFieldDate";
 import { Message } from "../../common/ErrorMessage/Message";
-import { Expense } from "../../../store/features/expenses/types";
+import { FormFieldTransactionToggle } from "./FormFieldTransactionToggle";
 
 interface FinanceFormProps {
     onClose?: () => void;
@@ -17,18 +19,17 @@ interface FinanceFormProps {
 export const FinanceForm: React.FC<FinanceFormProps> = ( { onClose } ) => {
     const dispatch = useDispatch<AppDispatch>();
     const inputElement = useRef<HTMLInputElement>( null );
-    type FormErrors = Partial<Record<keyof Omit<Expense, "id" | "comment">, string>>;
+    type FormErrors = Partial<Record<keyof Omit<Transaction, "id" | "comment">, string>>;
     type InputTypes = HTMLInputElement | HTMLSelectElement;
+    const [ transactionType, setTransactionType ] = useState<TransactionType>( TransactionType.EXPENSE );
     const [ errors, setErrors ] = useState<FormErrors>();
     const [ isSubmitting, setIsSubmitting ] = useState( false );
-
     const FORM_FIELD_NAMES = {
         amount: "amount",
         categoryId: "categoryId",
         date: "date",
         comment: "comment",
     } as const;
-
     const DEFAULT_FORM_VALUES = {
         amount: 0,
         categoryId: "",
@@ -76,22 +77,36 @@ export const FinanceForm: React.FC<FinanceFormProps> = ( { onClose } ) => {
         }
     }
 
+    const dispatchTransaction = ( formFields: ReturnType<typeof getFormFields> ) => {
+        const actions = {
+            [ TransactionType.EXPENSE ]: () => dispatch( createExpense( formFields ) ),
+            [ TransactionType.INCOME ]: () => dispatch( createIncome( formFields ) ),
+        }
+
+        return actions[ transactionType ]();
+    }
+
+    const processSubmitting = (e: React.FormEvent<HTMLFormElement>) => {
+        const form = e.currentTarget;
+        const formData = new FormData( form );
+        const formValid = isFormValid( formData );
+
+        if ( !formValid ) return;
+
+        const formFields = getFormFields( formData );
+        dispatchTransaction( formFields );
+        form.reset();
+    }
+
     const handleSubmit = ( e: React.FormEvent<HTMLFormElement> ) => {
         e.preventDefault();
 
         if ( isSubmitting ) return;
 
-        const form = e.currentTarget;
-        const formData = new FormData( form );
-        const formValid = isFormValid( formData );
-        if ( !formValid ) return;
-
         setIsSubmitting( true );
 
         try {
-            const formFields = getFormFields( formData );
-            dispatch( addExpense( formFields ) );
-            form.reset();
+            processSubmitting(e);
             onClose?.();
         } catch ( error ) {
             console.error( 'Error on the form submitting', error );
@@ -111,6 +126,11 @@ export const FinanceForm: React.FC<FinanceFormProps> = ( { onClose } ) => {
             <fieldset>
                 <legend>Новая запись</legend>
                 <div className={ `${ styles[ 'financeForm__field' ] }` }>
+                    <FormFieldTransactionToggle transactionType={ transactionType }
+                                                setTransactionType={ setTransactionType }/>
+                </div>
+
+                <div className={ `${ styles[ 'financeForm__field' ] }` }>
                     <FormFieldAmount reference={ inputElement } change={ handleInputChange }/>
                     { errors?.amount && <Message message={ errors.amount }/> }
                 </div>
@@ -121,7 +141,8 @@ export const FinanceForm: React.FC<FinanceFormProps> = ( { onClose } ) => {
                 </div>
 
                 <div className={ `${ styles[ 'financeForm__field' ] }` }>
-                    <FormFieldCategories change={ handleInputChange }/>
+                    <FormFieldCategories transactionType={ transactionType }
+                                         change={ handleInputChange }/>
                     { errors?.categoryId && <Message message={ errors.categoryId }/> }
                 </div>
 
