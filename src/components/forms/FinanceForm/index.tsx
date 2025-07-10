@@ -7,10 +7,11 @@ import { createIncome } from "../../../store/features/incomes/incomesSlice";
 import { Transaction, TransactionType } from "../../../types/transactions";
 import { FormFieldCategories } from "./FormFieldCategories";
 import { FormFieldAmount } from "./FormFieldAmount";
-import { FormFieldAccount } from "./FormFielAccount";
+import { FormFieldWallet } from "./FormFieldWallet";
 import { FormFieldDate } from "./FormFieldDate";
 import { Message } from "../../common/ErrorMessage/Message";
 import { FormFieldTransactionToggle } from "./FormFieldTransactionToggle";
+import { WalletType } from "../../../types/wallets";
 
 interface FinanceFormProps {
     onClose?: () => void;
@@ -29,12 +30,14 @@ export const FinanceForm: React.FC<FinanceFormProps> = ( { onClose } ) => {
         categoryId: "categoryId",
         date: "date",
         comment: "comment",
+        walletType: "walletType"
     } as const;
     const DEFAULT_FORM_VALUES = {
         amount: 0,
         categoryId: "",
         date: "",
         comment: undefined,
+        walletType: WalletType.BANK_CARD,
     } as const;
 
     const getFormFields = ( formData: FormData ) => {
@@ -43,6 +46,7 @@ export const FinanceForm: React.FC<FinanceFormProps> = ( { onClose } ) => {
             categoryId: String( formData.get( FORM_FIELD_NAMES.categoryId ) ) || DEFAULT_FORM_VALUES.categoryId,
             date: String( formData.get( FORM_FIELD_NAMES.date ) ) || DEFAULT_FORM_VALUES.date,
             comment: String( formData.get( FORM_FIELD_NAMES.comment ) ) || DEFAULT_FORM_VALUES.comment,
+            walletType: (formData.get( FORM_FIELD_NAMES.walletType ) as WalletType) || DEFAULT_FORM_VALUES.walletType,
         }
     }
 
@@ -86,7 +90,7 @@ export const FinanceForm: React.FC<FinanceFormProps> = ( { onClose } ) => {
         return actions[ transactionType ]();
     }
 
-    const processSubmitting = (e: React.FormEvent<HTMLFormElement>) => {
+    const processSubmitting = ( e: React.FormEvent<HTMLFormElement> ) => {
         const form = e.currentTarget;
         const formData = new FormData( form );
         const formValid = isFormValid( formData );
@@ -106,7 +110,7 @@ export const FinanceForm: React.FC<FinanceFormProps> = ( { onClose } ) => {
         setIsSubmitting( true );
 
         try {
-            processSubmitting(e);
+            processSubmitting( e );
             onClose?.();
         } catch ( error ) {
             console.error( 'Error on the form submitting', error );
@@ -136,7 +140,7 @@ export const FinanceForm: React.FC<FinanceFormProps> = ( { onClose } ) => {
                 </div>
 
                 <div className={ `${ styles[ 'financeForm__field' ] }` }>
-                    <FormFieldAccount change={ handleInputChange }/>
+                    <FormFieldWallet change={ handleInputChange }/>
                     {/*Todo: add error message for Account field*/ }
                 </div>
 

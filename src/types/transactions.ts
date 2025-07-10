@@ -1,9 +1,12 @@
+import { WalletType } from "./wallets";
+
 export interface Transaction {
     id: string;
     amount: number;
     categoryId: string;
     date: string;
     comment?: string;
+    walletType: WalletType;
 }
 
 /**

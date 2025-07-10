@@ -4,11 +4,11 @@ import { v4 as uuidv4 } from 'uuid';
 
 interface ExpensesState {
     items: Expense[];
-}
+};
 
 const initialState: ExpensesState = {
     items: []
-}
+};
 
 const expensesSlice = createSlice( {
     name: TransactionType.EXPENSE,
@@ -22,7 +22,7 @@ const expensesSlice = createSlice( {
             state.items = state.items.filter( e => e.id !== action.payload );
         }
     }
-} )
+} );
 
 export const { createExpense, deleteExpense } = expensesSlice.actions;
 export default expensesSlice.reducer;
