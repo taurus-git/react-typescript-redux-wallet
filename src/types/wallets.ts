@@ -11,7 +11,7 @@ export interface Cash extends Wallet {
 }
 
 export enum WalletType {
-    BANK_CARD = "bank card",
+    BANK_CARD = "bank_card",
     CASH = "cash",
 }
 

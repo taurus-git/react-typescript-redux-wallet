@@ -1,17 +1,21 @@
 import React, { useEffect, useRef, useState } from 'react';
 import styles from './FinanceForm.module.scss';
+
 import { useDispatch } from "react-redux";
 import { AppDispatch } from "../../../store";
 import { createExpense } from "../../../store/features/expenses/expensesSlice";
 import { createIncome } from "../../../store/features/incomes/incomesSlice";
 import { Transaction, TransactionType } from "../../../types/transactions";
+import { createCardExpense, createCardIncome } from "../../../store/features/bankCardSlice/bankCardSlice";
+import { createCashExpense, createCashIncome } from "../../../store/features/cashSlice/cashSlice";
+import { WalletType } from "../../../types/wallets";
+
 import { FormFieldCategories } from "./FormFieldCategories";
 import { FormFieldAmount } from "./FormFieldAmount";
 import { FormFieldWallet } from "./FormFieldWallet";
 import { FormFieldDate } from "./FormFieldDate";
 import { Message } from "../../common/ErrorMessage/Message";
 import { FormFieldTransactionToggle } from "./FormFieldTransactionToggle";
-import { WalletType } from "../../../types/wallets";
 
 interface FinanceFormProps {
     onClose?: () => void;
@@ -81,11 +85,28 @@ export const FinanceForm: React.FC<FinanceFormProps> = ( { onClose } ) => {
         }
     }
 
+    const dispatchToWallet = ( formFields: ReturnType<typeof getFormFields> ) => {
+        const { amount, walletType } = formFields;
+
+        const walletActions = {
+            [ TransactionType.INCOME ]: {
+                [ WalletType.BANK_CARD ]: () => dispatch( createCardIncome( amount ) ),
+                [ WalletType.CASH ]: () => dispatch( createCashIncome( amount ) ),
+            },
+            [ TransactionType.EXPENSE ]: {
+                [ WalletType.BANK_CARD ]: () => dispatch( createCardExpense( amount ) ),
+                [ WalletType.CASH ]: () => dispatch( createCashExpense( amount ) ),
+            }
+        }
+
+        return walletActions[ transactionType ][ walletType ]();
+    }
+
     const dispatchTransaction = ( formFields: ReturnType<typeof getFormFields> ) => {
         const actions = {
             [ TransactionType.EXPENSE ]: () => dispatch( createExpense( formFields ) ),
             [ TransactionType.INCOME ]: () => dispatch( createIncome( formFields ) ),
-        }
+        };
 
         return actions[ transactionType ]();
     }
@@ -99,6 +120,7 @@ export const FinanceForm: React.FC<FinanceFormProps> = ( { onClose } ) => {
 
         const formFields = getFormFields( formData );
         dispatchTransaction( formFields );
+        dispatchToWallet( formFields );
         form.reset();
     }
 
@@ -141,7 +163,6 @@ export const FinanceForm: React.FC<FinanceFormProps> = ( { onClose } ) => {
 
                 <div className={ `${ styles[ 'financeForm__field' ] }` }>
                     <FormFieldWallet change={ handleInputChange }/>
-                    {/*Todo: add error message for Account field*/ }
                 </div>
 
                 <div className={ `${ styles[ 'financeForm__field' ] }` }>
