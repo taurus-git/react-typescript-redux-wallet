@@ -3,48 +3,24 @@ import { AppDispatch } from "../store";
 import React, { useEffect, useRef, useState } from "react";
 import { TransactionType } from "../types/transactions";
 import { WalletType } from "../types/wallets";
+import { useFormValidation } from "./useFormValidation";
+import { getFormFields } from "../utils/formUtils";
 import { createCardExpense, createCardIncome } from "../store/features/bankCardSlice/bankCardSlice";
 import { createCashExpense, createCashIncome } from "../store/features/cashSlice/cashSlice";
 import { createExpense } from "../store/features/expenses/expensesSlice";
 import { createIncome } from "../store/features/incomes/incomesSlice";
-import { FORM_FIELD_NAMES, DEFAULT_FORM_VALUES, FormErrors, InputTypes } from "../types/formFields";
+import { InputTypes } from "../types/formFields";
 
 export const useFinanceForm = ( onClose?: () => void ) => {
     const dispatch = useDispatch<AppDispatch>();
     const inputElement = useRef<HTMLInputElement>( null );
     const [ transactionType, setTransactionType ] = useState<TransactionType>( TransactionType.EXPENSE );
-    const [ errors, setErrors ] = useState<FormErrors>();
     const [ isSubmitting, setIsSubmitting ] = useState( false );
-
-    const getFormFields = ( formData: FormData ) => {
-        return {
-            amount: Number( formData.get( FORM_FIELD_NAMES.amount ) ) || DEFAULT_FORM_VALUES.amount,
-            categoryId: String( formData.get( FORM_FIELD_NAMES.categoryId ) ) || DEFAULT_FORM_VALUES.categoryId,
-            date: String( formData.get( FORM_FIELD_NAMES.date ) ) || DEFAULT_FORM_VALUES.date,
-            comment: String( formData.get( FORM_FIELD_NAMES.comment ) ) || DEFAULT_FORM_VALUES.comment,
-            walletType: (formData.get( FORM_FIELD_NAMES.walletType ) as WalletType) || DEFAULT_FORM_VALUES.walletType,
-        }
-    }
-
-    const isFormValid = ( formData: FormData ) => {
-        const { amount, categoryId, date } = getFormFields( formData );
-        const errorMessages: typeof errors = {};
-
-        if ( !amount || amount <= 0 ) {
-            errorMessages.amount = "Введите корректную сумму";
-        }
-
-        if ( !categoryId ) {
-            errorMessages.categoryId = "Укажите категорию";
-        }
-
-        if ( !date ) {
-            errorMessages.date = "Установите дату";
-        }
-
-        setErrors( errorMessages );
-        return Object.keys( errorMessages ).length === 0;
-    }
+    const {
+        errors,
+        setErrors,
+        isFormValid
+    } = useFormValidation();
 
     const handleInputChange = ( e: React.ChangeEvent<InputTypes> ) => {
         const { name } = e.target;
