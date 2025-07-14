@@ -20,8 +20,6 @@ export const FormFieldCategories: React.FC<FormFieldCategoriesProps> = ( { trans
     const [ selectedCategory, setSelectedCategory ] = useState<NormalizedCategory>();
     const [ searchTerm, setSearchTerm ] = useState( '' );
 
-    console.log( selectedCategory );
-
     const getChangeEvent = ( value: string ): React.ChangeEvent<HTMLInputElement> => {
         return {
             target: {
@@ -42,12 +40,16 @@ export const FormFieldCategories: React.FC<FormFieldCategoriesProps> = ( { trans
         change( changeEvent );
     }
 
-    const handleClear = ( e: React.MouseEvent ) => {
-        e.stopPropagation();
+    const clearSelectedCategory = () => {
         setSelectedCategory( undefined );
         setSearchTerm( '' );
         const changeEvent = getChangeEvent( "" );
         change( changeEvent );
+    }
+
+    const handleClear = ( e: React.MouseEvent ) => {
+        e.stopPropagation();
+        clearSelectedCategory();
     }
 
     const filterCategories = ( categories: NormalizedCategory[] ) => {
@@ -74,6 +76,10 @@ export const FormFieldCategories: React.FC<FormFieldCategoriesProps> = ( { trans
 
         return false;
     }
+
+    useEffect( () => {
+        clearSelectedCategory();
+    }, [ transactionType ] );
 
     useEffect( () => {
         if ( shouldDispatchCategories() ) {
