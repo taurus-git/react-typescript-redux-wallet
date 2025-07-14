@@ -20,6 +20,8 @@ export const FormFieldCategories: React.FC<FormFieldCategoriesProps> = ( { trans
     const [ selectedCategory, setSelectedCategory ] = useState<NormalizedCategory>();
     const [ searchTerm, setSearchTerm ] = useState( '' );
 
+    console.log( selectedCategory );
+
     const getChangeEvent = ( value: string ): React.ChangeEvent<HTMLInputElement> => {
         return {
             target: {
@@ -64,8 +66,11 @@ export const FormFieldCategories: React.FC<FormFieldCategoriesProps> = ( { trans
     }
 
     const shouldDispatchCategories = () => {
-        if ( loading || error ) return false;
-        if ( expenses.length > 0 || incomes.length > 0 ) return false;
+        if ( loading && error ) return false;
+        if ( expenses.length === 0 || incomes.length === 0 ) {
+            return true;
+        }
+        ;
 
         return false;
     }
