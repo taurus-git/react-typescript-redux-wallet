@@ -1,63 +1,29 @@
 import React from 'react';
-import styles from './FinanceForm.module.scss';
-import { FormFieldCategories } from "./FormFieldCategories";
-import { FormFieldAmount } from "./FormFieldAmount";
-import { FormFieldWallet } from "./FormFieldWallet";
-import { FormFieldDate } from "./FormFieldDate";
+import { TransactionForm } from "./TransactionForm";
+import { useTransactionForm } from "../../../hooks/useTransactionForm";
 import { FormFieldTransactionToggle } from "./FormFieldTransactionToggle";
-import { useFinanceForm } from "../../../hooks/useFinanceForm";
 import { FormField } from "./FormField";
+import { TransactionType } from "../../../types/transactions";
+import { TransferForm } from "./TransferForm";
 
 interface FinanceFormProps {
     onClose?: () => void;
 }
 
 export const FinanceForm: React.FC<FinanceFormProps> = ( { onClose } ) => {
-    const {
-        inputElement,
-        handleInputChange,
-        errors,
-        transactionType,
-        setTransactionType,
-        isSubmitting,
-        handleSubmit,
-    } = useFinanceForm( onClose );
+    const { transactionType, setTransactionType } = useTransactionForm( onClose );
 
     return (
-        <form onSubmit={ handleSubmit } className={ styles.financeForm }>
-            <fieldset>
-                <legend>Новая запись</legend>
-                <FormField>
-                    <FormFieldTransactionToggle transactionType={ transactionType }
-                                                setTransactionType={ setTransactionType }/>
-                </FormField>
-
-                <FormField errors={errors?.amount}>
-                    <FormFieldAmount reference={ inputElement } change={ handleInputChange }/>
-                </FormField>
-
-                <FormField>
-                    <FormFieldWallet change={ handleInputChange }/>
-                </FormField>
-
-                <FormField errors={errors?.categoryId}>
-                    <FormFieldCategories transactionType={ transactionType }
-                                         change={ handleInputChange }/>
-                </FormField>
-
-                <FormField errors={errors?.date}>
-                    <FormFieldDate change={ handleInputChange }/>
-                </FormField>
-
-                <FormField>
-                    <input
-                        type="submit"
-                        disabled={ isSubmitting }
-                        value={ isSubmitting ? "Сохранение..." : "Сохранить" } />
-                </FormField>
-            </fieldset>
-
-        </form>
+        <div>
+            <FormField>
+                <FormFieldTransactionToggle transactionType={ transactionType }
+                                            setTransactionType={ setTransactionType }/>
+            </FormField>
+            { transactionType === TransactionType.TRANSFER ?
+                <TransferForm onClose={ onClose }/> :
+                <TransactionForm onClose={ onClose }/>
+            }
+        </div>
     );
 }
 

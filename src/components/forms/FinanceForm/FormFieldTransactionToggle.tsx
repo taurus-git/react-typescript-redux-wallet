@@ -1,5 +1,6 @@
 import React from 'react';
 import { TransactionType } from "../../../types/transactions";
+import { FormFieldRadiobutton } from "./FormFieldRadiobutton";
 
 interface FormFieldTransactionToggleProps {
     transactionType: TransactionType,
@@ -14,27 +15,26 @@ export const FormFieldTransactionToggle: React.FC<FormFieldTransactionToggleProp
 
     return (
         <div role="radiogroup" aria-label="Тип операции" id="transaction-type">
-            <label>
-                <input
-                    type="radio"
-                    name="transactionType"
-                    value={ TransactionType.EXPENSE }
-                    checked={ transactionType === TransactionType.EXPENSE }
-                    onChange={ () => setTransactionType( TransactionType.EXPENSE ) }
-                />
+            <FormFieldRadiobutton
+                transactionType={ transactionType }
+                value={ TransactionType.EXPENSE }
+                onChange={ setTransactionType }>
                 Расход
-            </label>
+            </FormFieldRadiobutton>
 
-            <label>
-                <input
-                    type="radio"
-                    name="transactionType"
-                    value={ TransactionType.INCOME }
-                    checked={ transactionType === TransactionType.INCOME }
-                    onChange={ () => setTransactionType( TransactionType.INCOME ) }
-                />
+            <FormFieldRadiobutton
+                transactionType={ transactionType }
+                value={ TransactionType.INCOME }
+                onChange={ setTransactionType }>
                 Доход
-            </label>
+            </FormFieldRadiobutton>
+
+            <FormFieldRadiobutton
+                transactionType={ transactionType }
+                value={ TransactionType.TRANSFER }
+                onChange={ setTransactionType }>
+                Перевод
+            </FormFieldRadiobutton>
         </div>
     );
 }

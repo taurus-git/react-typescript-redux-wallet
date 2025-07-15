@@ -11,7 +11,7 @@ import { createExpense } from "../store/features/expenses/expensesSlice";
 import { createIncome } from "../store/features/incomes/incomesSlice";
 import { InputTypes } from "../types/formFields";
 
-export const useFinanceForm = ( onClose?: () => void ) => {
+export const useTransactionForm = ( onClose?: () => void ) => {
     const dispatch = useDispatch<AppDispatch>();
     const inputElement = useRef<HTMLInputElement>( null );
     const [ transactionType, setTransactionType ] = useState<TransactionType>( TransactionType.EXPENSE );
@@ -44,6 +44,10 @@ export const useFinanceForm = ( onClose?: () => void ) => {
             [ TransactionType.EXPENSE ]: {
                 [ WalletType.BANK_CARD ]: () => dispatch( createCardExpense( amount ) ),
                 [ WalletType.CASH ]: () => dispatch( createCashExpense( amount ) ),
+            },
+            [ TransactionType.TRANSFER ]: {
+                [ WalletType.BANK_CARD ]: () => dispatch( createCardExpense( amount ) ),
+                [ WalletType.CASH ]: () => dispatch( createCashExpense( amount ) ),
             }
         }
 
@@ -54,6 +58,7 @@ export const useFinanceForm = ( onClose?: () => void ) => {
         const actions = {
             [ TransactionType.EXPENSE ]: () => dispatch( createExpense( formFields ) ),
             [ TransactionType.INCOME ]: () => dispatch( createIncome( formFields ) ),
+            [ TransactionType.TRANSFER ]: () => dispatch( createIncome( formFields ) ),
         };
 
         return actions[ transactionType ]();

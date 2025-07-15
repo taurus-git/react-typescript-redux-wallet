@@ -24,4 +24,5 @@ export interface Income extends Transaction {
 export enum TransactionType {
     EXPENSE = "expenses",
     INCOME = "incomes",
+    TRANSFER = "transfer",
 }
