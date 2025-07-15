@@ -4,9 +4,9 @@ import { FormFieldCategories } from "./FormFieldCategories";
 import { FormFieldAmount } from "./FormFieldAmount";
 import { FormFieldWallet } from "./FormFieldWallet";
 import { FormFieldDate } from "./FormFieldDate";
-import { Message } from "../../common/ErrorMessage/Message";
 import { FormFieldTransactionToggle } from "./FormFieldTransactionToggle";
 import { useFinanceForm } from "../../../hooks/useFinanceForm";
+import { FormField } from "./FormField";
 
 interface FinanceFormProps {
     onClose?: () => void;
@@ -27,38 +27,34 @@ export const FinanceForm: React.FC<FinanceFormProps> = ( { onClose } ) => {
         <form onSubmit={ handleSubmit } className={ styles.financeForm }>
             <fieldset>
                 <legend>Новая запись</legend>
-                <div className={ `${ styles[ 'financeForm__field' ] }` }>
+                <FormField>
                     <FormFieldTransactionToggle transactionType={ transactionType }
                                                 setTransactionType={ setTransactionType }/>
-                </div>
+                </FormField>
 
-                <div className={ `${ styles[ 'financeForm__field' ] }` }>
+                <FormField errors={errors?.amount}>
                     <FormFieldAmount reference={ inputElement } change={ handleInputChange }/>
-                    { errors?.amount && <Message message={ errors.amount }/> }
-                </div>
+                </FormField>
 
-                <div className={ `${ styles[ 'financeForm__field' ] }` }>
+                <FormField>
                     <FormFieldWallet change={ handleInputChange }/>
-                </div>
+                </FormField>
 
-                <div className={ `${ styles[ 'financeForm__field' ] }` }>
+                <FormField errors={errors?.categoryId}>
                     <FormFieldCategories transactionType={ transactionType }
                                          change={ handleInputChange }/>
-                    { errors?.categoryId && <Message message={ errors.categoryId }/> }
-                </div>
+                </FormField>
 
-                <div className={ `${ styles[ 'financeForm__field' ] }` }>
+                <FormField errors={errors?.date}>
                     <FormFieldDate change={ handleInputChange }/>
-                    { errors?.date && <Message message={ errors.date }/> }
-                </div>
+                </FormField>
 
-                <div className={ `${ styles[ 'financeForm__field' ] }` }>
+                <FormField>
                     <input
                         type="submit"
                         disabled={ isSubmitting }
-                        value={ isSubmitting ? "Сохранение..." : "Сохранить" }
-                    />
-                </div>
+                        value={ isSubmitting ? "Сохранение..." : "Сохранить" } />
+                </FormField>
             </fieldset>
 
         </form>
