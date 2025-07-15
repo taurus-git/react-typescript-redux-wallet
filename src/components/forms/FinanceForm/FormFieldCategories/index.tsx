@@ -71,8 +71,7 @@ export const FormFieldCategories: React.FC<FormFieldCategoriesProps> = ( { trans
         if ( loading && error ) return false;
         if ( expenses.length === 0 || incomes.length === 0 ) {
             return true;
-        }
-        ;
+        };
 
         return false;
     }
@@ -86,6 +85,9 @@ export const FormFieldCategories: React.FC<FormFieldCategoriesProps> = ( { trans
             dispatch( fetchCategories() );
         }
     }, [ dispatch, expenses, incomes, loading, error ] );
+
+    console.log("transactionType " + transactionType);
+    console.log(categoriesToDisplay( transactionType ));
 
     return (
         <>

@@ -6,17 +6,22 @@ import { FormFieldWallet } from "./FormFieldWallet";
 import { FormFieldDate } from "./FormFieldDate";
 import { useTransactionForm } from "../../../hooks/useTransactionForm";
 import { FormField } from "./FormField";
+import { TransactionType } from "../../../types/transactions";
 
 interface TransactionFormProps {
+    transactionType: TransactionType;
     onClose?: () => void;
 }
 
-export const TransactionForm: React.FC<TransactionFormProps> = ( { onClose } ) => {
+export const TransactionForm: React.FC<TransactionFormProps> = (
+    {
+        transactionType,
+        onClose
+    } ) => {
     const {
         inputElement,
         handleInputChange,
         errors,
-        transactionType,
         isSubmitting,
         handleSubmit,
     } = useTransactionForm( onClose );

@@ -21,7 +21,9 @@ export const FinanceForm: React.FC<FinanceFormProps> = ( { onClose } ) => {
             </FormField>
             { transactionType === TransactionType.TRANSFER ?
                 <TransferForm onClose={ onClose }/> :
-                <TransactionForm onClose={ onClose }/>
+                <TransactionForm
+                    transactionType={ transactionType }
+                    onClose={ onClose }/>
             }
         </div>
     );

@@ -8,7 +8,13 @@ interface FormFieldRadiobuttonProps {
     children?: React.ReactNode;
 }
 
-export const FormFieldRadiobutton: React.FC<FormFieldRadiobuttonProps> = ( { transactionType, value, onChange, children } ) => {
+export const FormFieldRadiobutton: React.FC<FormFieldRadiobuttonProps> = (
+    {
+        transactionType,
+        value,
+        onChange,
+        children
+    } ) => {
     return (
         <label>
             <input
