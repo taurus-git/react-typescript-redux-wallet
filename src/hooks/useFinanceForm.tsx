@@ -1,19 +1,16 @@
+import React, { useEffect, useRef, useState } from "react";
 import { useDispatch } from "react-redux";
 import { AppDispatch } from "../store";
-import React, { useEffect, useRef, useState } from "react";
+import { createTransactionDispatchers } from "../utils/transactionDispatcher";
 import { TransactionType } from "../types/transactions";
-import { WalletType } from "../types/wallets";
 import { useFormValidation } from "./useFormValidation";
 import { getFormFields } from "../utils/formUtils";
-import { createCardExpense, createCardIncome } from "../store/features/bankCardSlice/bankCardSlice";
-import { createCashExpense, createCashIncome } from "../store/features/cashSlice/cashSlice";
-import { createExpense } from "../store/features/expenses/expensesSlice";
-import { createIncome } from "../store/features/incomes/incomesSlice";
 import { InputTypes } from "../types/formFields";
-import { FinanceForm } from "../components/forms/FinanceForm";
+
 
 export const useFinanceForm = ( onClose?: () => void ) => {
     const dispatch = useDispatch<AppDispatch>();
+    const { dispatchIncome, dispatchExpense, dispatchTransfer } = createTransactionDispatchers( dispatch );
     const inputElement = useRef<HTMLInputElement>( null );
     const [ transactionType, setTransactionType ] = useState<TransactionType>( TransactionType.EXPENSE );
     const [ isSubmitting, setIsSubmitting ] = useState( false );
@@ -31,44 +28,6 @@ export const useFinanceForm = ( onClose?: () => void ) => {
                 ...prev,
                 [ name ]: undefined
             }) )
-        }
-    }
-
-    const dispatchIncome = ( formFields: ReturnType<typeof getFormFields> ) => {
-        const { amount, walletType } = formFields;
-
-        dispatch( createIncome( formFields ) );
-
-        if ( walletType === WalletType.BANK_CARD ) {
-            dispatch( createCardIncome( amount ) );
-        } else if ( walletType === WalletType.CASH ) {
-            dispatch( createCashIncome( amount ) );
-        }
-    }
-
-    const dispatchExpense = ( formFields: ReturnType<typeof getFormFields> ) => {
-        const { amount, walletType } = formFields;
-
-        dispatch( createExpense( formFields ) );
-
-        if ( walletType === WalletType.BANK_CARD ) {
-            dispatch( createCardExpense( amount ) );
-        } else if ( walletType === WalletType.CASH ) {
-            dispatch( createCashExpense( amount ) );
-        }
-    }
-
-    const dispatchTransfer = ( formFields: ReturnType<typeof getFormFields> ) => {
-        const { amount, fromWallet, toWallet } = formFields;
-
-        if ( fromWallet === toWallet ) return;
-
-        if ( fromWallet === WalletType.BANK_CARD && toWallet === WalletType.CASH ) {
-            dispatch( createCardExpense( amount ) );
-            dispatch( createCashIncome( amount ) );
-        } else if ( fromWallet === WalletType.CASH && toWallet === WalletType.BANK_CARD ) {
-            dispatch( createCashExpense( amount ) );
-            dispatch( createCardIncome( amount ) );
         }
     }
 
