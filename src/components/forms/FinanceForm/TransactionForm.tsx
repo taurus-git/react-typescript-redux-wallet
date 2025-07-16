@@ -7,6 +7,7 @@ import { FormFieldDate } from "./FormFieldDate";
 import { useTransactionForm } from "../../../hooks/useTransactionForm";
 import { FormField } from "./FormField";
 import { TransactionType } from "../../../types/transactions";
+import { FormFieldSubmit } from "./FormFieldSubmit";
 
 interface TransactionFormProps {
     transactionType: TransactionType;
@@ -48,10 +49,7 @@ export const TransactionForm: React.FC<TransactionFormProps> = (
                 </FormField>
 
                 <FormField>
-                    <input
-                        type="submit"
-                        disabled={ isSubmitting }
-                        value={ isSubmitting ? "Сохранение..." : "Сохранить" }/>
+                    <FormFieldSubmit isSubmitting={ isSubmitting }/>
                 </FormField>
             </fieldset>
 

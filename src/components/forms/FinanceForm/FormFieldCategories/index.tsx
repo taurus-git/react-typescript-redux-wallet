@@ -86,9 +86,6 @@ export const FormFieldCategories: React.FC<FormFieldCategoriesProps> = ( { trans
         }
     }, [ dispatch, expenses, incomes, loading, error ] );
 
-    console.log("transactionType " + transactionType);
-    console.log(categoriesToDisplay( transactionType ));
-
     return (
         <>
             <CategoryButton
