@@ -8,5 +8,7 @@ export const getFormFields = ( formData: FormData ) => {
         date: String( formData.get( FORM_FIELD_NAMES.date ) ) || DEFAULT_FORM_VALUES.date,
         comment: String( formData.get( FORM_FIELD_NAMES.comment ) ) || DEFAULT_FORM_VALUES.comment,
         walletType: (formData.get( FORM_FIELD_NAMES.walletType ) as WalletType) || DEFAULT_FORM_VALUES.walletType,
+        fromWallet: formData.get("fromWallet") as WalletType || WalletType.BANK_CARD,
+        toWallet: formData.get("toWallet") as WalletType || WalletType.CASH,
     }
 }

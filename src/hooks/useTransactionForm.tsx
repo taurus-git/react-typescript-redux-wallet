@@ -33,35 +33,56 @@ export const useTransactionForm = ( onClose?: () => void ) => {
         }
     }
 
-    const dispatchToWallet = ( formFields: ReturnType<typeof getFormFields> ) => {
+    const dispatchIncome = ( formFields: ReturnType<typeof getFormFields> ) => {
         const { amount, walletType } = formFields;
 
-        const walletActions = {
-            [ TransactionType.INCOME ]: {
-                [ WalletType.BANK_CARD ]: () => dispatch( createCardIncome( amount ) ),
-                [ WalletType.CASH ]: () => dispatch( createCashIncome( amount ) ),
-            },
-            [ TransactionType.EXPENSE ]: {
-                [ WalletType.BANK_CARD ]: () => dispatch( createCardExpense( amount ) ),
-                [ WalletType.CASH ]: () => dispatch( createCashExpense( amount ) ),
-            },
-            [ TransactionType.TRANSFER ]: {
-                [ WalletType.BANK_CARD ]: () => dispatch( createCardExpense( amount ) ),
-                [ WalletType.CASH ]: () => dispatch( createCashExpense( amount ) ),
-            }
-        }
+        dispatch( createIncome( formFields ) )
 
-        return walletActions[ transactionType ][ walletType ]();
+        if ( walletType === WalletType.BANK_CARD ) {
+            dispatch( createCardIncome( amount ) );
+        } else if ( walletType === WalletType.CASH ) {
+            dispatch( createCashIncome( amount ) );
+        }
     }
 
-    const dispatchTransaction = ( formFields: ReturnType<typeof getFormFields> ) => {
-        const actions = {
-            [ TransactionType.EXPENSE ]: () => dispatch( createExpense( formFields ) ),
-            [ TransactionType.INCOME ]: () => dispatch( createIncome( formFields ) ),
-            [ TransactionType.TRANSFER ]: () => dispatch( createIncome( formFields ) ),
-        };
+    const dispatchExpense = ( formFields: ReturnType<typeof getFormFields> ) => {
+        const { amount, walletType } = formFields;
 
-        return actions[ transactionType ]();
+        dispatch( createExpense( formFields ) )
+
+        if ( walletType === WalletType.BANK_CARD ) {
+            dispatch( createCardExpense( amount ) );
+        } else if ( walletType === WalletType.CASH ) {
+            dispatch( createCashExpense( amount ) );
+        }
+    }
+
+    const dispatchTransfer = ( formFields: ReturnType<typeof getFormFields> ) => {
+        const { amount, fromWallet, toWallet } = formFields;
+
+        if ( fromWallet === toWallet ) return;
+
+        if ( fromWallet === WalletType.BANK_CARD && toWallet === WalletType.CASH ) {
+            dispatch( createCardExpense( amount ) );
+            dispatch( createCashIncome( amount ) );
+        } else if ( fromWallet === WalletType.CASH && toWallet === WalletType.BANK_CARD ) {
+            dispatch( createCashExpense( amount ) );
+            dispatch( createCardIncome( amount ) );
+        }
+    }
+
+    const dispatchActions = ( formFields: ReturnType<typeof getFormFields> ) => {
+        switch ( transactionType ) {
+            case TransactionType.INCOME :
+                dispatchIncome( formFields );
+                break;
+            case TransactionType.EXPENSE :
+                dispatchExpense( formFields );
+                break;
+            case TransactionType.TRANSFER :
+                dispatchTransfer( formFields );
+                break;
+        }
     }
 
     const processSubmitting = ( e: React.FormEvent<HTMLFormElement> ) => {
@@ -72,8 +93,7 @@ export const useTransactionForm = ( onClose?: () => void ) => {
         if ( !formValid ) return false;
 
         const formFields = getFormFields( formData );
-        dispatchTransaction( formFields );
-        dispatchToWallet( formFields );
+        dispatchActions( formFields );
         form.reset();
 
         return true;

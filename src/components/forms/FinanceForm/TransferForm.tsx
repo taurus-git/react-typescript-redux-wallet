@@ -15,41 +15,46 @@ export const TransferForm: React.FC<TransferFormProps> = ( { onClose } ) => {
         inputElement,
         handleInputChange,
         errors,
-        isSubmitting
+        isSubmitting,
+        handleSubmit
     } = useTransactionForm( onClose );
 
     const [ fromWallet, setFromWallet ] = useState( WalletType.BANK_CARD );
     const [ toWallet, setToWallet ] = useState( WalletType.CASH );
 
-    return (
-        <form>
-            <fieldset>
-                <legend>Новый перевод</legend>
-                <FormField errors={ errors?.amount }>
-                    <FormFieldAmount reference={ inputElement } change={ handleInputChange }/>
-                </FormField>
+        return (
+            <form onSubmit={ handleSubmit }>
+                <fieldset>
+                    <legend>Новый перевод</legend>
+                    <FormField errors={ errors?.amount }>
+                        <FormFieldAmount reference={ inputElement } change={ handleInputChange }/>
+                    </FormField>
 
-                <FormField>
-                    <FormFieldWallet
-                        change={ handleInputChange }
-                        value={ fromWallet }
-                        onChange={ setFromWallet }
-                    />
-                </FormField>
+                    <FormField>
+                        <FormFieldWallet
+                            change={ handleInputChange }
+                            label="Со счета"
+                            name="fromWallet"
+                            value={ fromWallet }
+                            onChange={ setFromWallet }
+                        />
+                    </FormField>
 
-                <FormField>
-                    <FormFieldWallet
-                        change={ handleInputChange }
-                        value={ toWallet }
-                        onChange={ setToWallet }
-                    />
-                </FormField>
+                    <FormField>
+                        <FormFieldWallet
+                            change={ handleInputChange }
+                            label="На счет"
+                            name="toWallet"
+                            value={ toWallet }
+                            onChange={ setToWallet }
+                        />
+                    </FormField>
 
-                <FormField>
-                    <FormFieldSubmit isSubmitting={ isSubmitting }/>
-                </FormField>
-            </fieldset>
-        </form>
-    )
+                    <FormField>
+                        <FormFieldSubmit isSubmitting={ isSubmitting }/>
+                    </FormField>
+                </fieldset>
+            </form>
+        )
 }
 
