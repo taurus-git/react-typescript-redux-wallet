@@ -6,6 +6,7 @@ interface FormFieldWalletProps {
     label?: string;
     name?: string;
     value?: WalletType;
+    exclude?: WalletType;
     onChange?: ( type: WalletType ) => void;
 }
 
@@ -15,7 +16,8 @@ export const FormFieldWallet: React.FC<FormFieldWalletProps> = (
         label = "Счет",
         name = "walletType",
         value,
-        onChange
+        exclude,
+        onChange,
     } ) => {
     return (
         <>
@@ -25,8 +27,8 @@ export const FormFieldWallet: React.FC<FormFieldWalletProps> = (
                         change( e );
                         onChange?.( e.target.value as WalletType );
                     } }>
-                <option value={ WalletType.BANK_CARD }>Карта</option>
-                <option value={ WalletType.CASH }>Наличные</option>
+                <option disabled={ exclude === WalletType.BANK_CARD } value={ WalletType.BANK_CARD }>Карта</option>
+                <option disabled={ exclude === WalletType.CASH } value={ WalletType.CASH }>Наличные</option>
             </select>
         </>
     );

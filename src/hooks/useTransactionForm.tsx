@@ -36,7 +36,7 @@ export const useTransactionForm = ( onClose?: () => void ) => {
     const dispatchIncome = ( formFields: ReturnType<typeof getFormFields> ) => {
         const { amount, walletType } = formFields;
 
-        dispatch( createIncome( formFields ) )
+        dispatch( createIncome( formFields ) );
 
         if ( walletType === WalletType.BANK_CARD ) {
             dispatch( createCardIncome( amount ) );
@@ -48,7 +48,7 @@ export const useTransactionForm = ( onClose?: () => void ) => {
     const dispatchExpense = ( formFields: ReturnType<typeof getFormFields> ) => {
         const { amount, walletType } = formFields;
 
-        dispatch( createExpense( formFields ) )
+        dispatch( createExpense( formFields ) );
 
         if ( walletType === WalletType.BANK_CARD ) {
             dispatch( createCardExpense( amount ) );
