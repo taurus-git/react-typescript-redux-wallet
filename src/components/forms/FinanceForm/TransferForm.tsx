@@ -5,6 +5,7 @@ import { useFinanceForm } from "../../../hooks/useFinanceForm";
 import { FormFieldSubmit } from "./FormFieldSubmit";
 import { FormFieldWallet } from "./FormFieldWallet";
 import { WalletType } from "../../../types/wallets";
+import { FORM_FIELD_NAMES } from "../../../types/formFields";
 
 interface TransferFormProps {
     onClose?: () => void;
@@ -44,7 +45,7 @@ export const TransferForm: React.FC<TransferFormProps> = ( { onClose } ) => {
                     <FormFieldWallet
                         change={ handleInputChange }
                         label="Со счета"
-                        name="fromWallet"
+                        name={ FORM_FIELD_NAMES.fromWallet }
                         value={ fromWallet }
                         onChange={ setFromWallet }
                     />
@@ -54,7 +55,7 @@ export const TransferForm: React.FC<TransferFormProps> = ( { onClose } ) => {
                     <FormFieldWallet
                         change={ handleInputChange }
                         label="На счет"
-                        name="toWallet"
+                        name={ FORM_FIELD_NAMES.toWallet }
                         value={ toWallet }
                         exclude={ fromWallet }
                         onChange={ setToWallet }

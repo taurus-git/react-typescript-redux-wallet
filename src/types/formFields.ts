@@ -9,7 +9,9 @@ export const FORM_FIELD_NAMES = {
     categoryId: "categoryId",
     date: "date",
     comment: "comment",
-    walletType: "walletType"
+    walletType: "walletType",
+    fromWallet: "fromWallet",
+    toWallet: "toWallet",
 } as const;
 
 export const DEFAULT_FORM_VALUES = {
@@ -18,4 +20,6 @@ export const DEFAULT_FORM_VALUES = {
     date: "",
     comment: undefined,
     walletType: WalletType.BANK_CARD,
+    fromWallet: WalletType.BANK_CARD,
+    toWallet: WalletType.CASH,
 } as const;
