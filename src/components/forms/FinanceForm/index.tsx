@@ -1,6 +1,6 @@
 import React from 'react';
 import { TransactionForm } from "./TransactionForm";
-import { useTransactionForm } from "../../../hooks/useTransactionForm";
+import { useFinanceForm } from "../../../hooks/useFinanceForm";
 import { FormFieldTransactionToggle } from "./FormFieldTransactionToggle";
 import { FormField } from "./FormField";
 import { TransactionType } from "../../../types/transactions";
@@ -11,7 +11,7 @@ interface FinanceFormProps {
 }
 
 export const FinanceForm: React.FC<FinanceFormProps> = ( { onClose } ) => {
-    const { transactionType, setTransactionType } = useTransactionForm( onClose );
+    const { transactionType, setTransactionType } = useFinanceForm( onClose );
 
     return (
         <div>

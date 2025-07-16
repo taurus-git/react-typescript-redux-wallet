@@ -10,8 +10,9 @@ import { createCashExpense, createCashIncome } from "../store/features/cashSlice
 import { createExpense } from "../store/features/expenses/expensesSlice";
 import { createIncome } from "../store/features/incomes/incomesSlice";
 import { InputTypes } from "../types/formFields";
+import { FinanceForm } from "../components/forms/FinanceForm";
 
-export const useTransactionForm = ( onClose?: () => void ) => {
+export const useFinanceForm = ( onClose?: () => void ) => {
     const dispatch = useDispatch<AppDispatch>();
     const inputElement = useRef<HTMLInputElement>( null );
     const [ transactionType, setTransactionType ] = useState<TransactionType>( TransactionType.EXPENSE );

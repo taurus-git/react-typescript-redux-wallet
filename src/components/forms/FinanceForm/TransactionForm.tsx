@@ -4,7 +4,7 @@ import { FormFieldCategories } from "./FormFieldCategories";
 import { FormFieldAmount } from "./FormFieldAmount";
 import { FormFieldWallet } from "./FormFieldWallet";
 import { FormFieldDate } from "./FormFieldDate";
-import { useTransactionForm } from "../../../hooks/useTransactionForm";
+import { useFinanceForm } from "../../../hooks/useFinanceForm";
 import { FormField } from "./FormField";
 import { TransactionType } from "../../../types/transactions";
 import { FormFieldSubmit } from "./FormFieldSubmit";
@@ -25,7 +25,7 @@ export const TransactionForm: React.FC<TransactionFormProps> = (
         errors,
         isSubmitting,
         handleSubmit,
-    } = useTransactionForm( onClose );
+    } = useFinanceForm( onClose );
 
     return (
         <form onSubmit={ handleSubmit } className={ styles.financeForm }>

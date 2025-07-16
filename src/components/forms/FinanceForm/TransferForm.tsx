@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { FormFieldAmount } from "./FormFieldAmount";
 import { FormField } from "./FormField";
-import { useTransactionForm } from "../../../hooks/useTransactionForm";
+import { useFinanceForm } from "../../../hooks/useFinanceForm";
 import { FormFieldSubmit } from "./FormFieldSubmit";
 import { FormFieldWallet } from "./FormFieldWallet";
 import { WalletType } from "../../../types/wallets";
@@ -17,7 +17,7 @@ export const TransferForm: React.FC<TransferFormProps> = ( { onClose } ) => {
         errors,
         isSubmitting,
         handleSubmit
-    } = useTransactionForm( onClose );
+    } = useFinanceForm( onClose );
 
     const [ fromWallet, setFromWallet ] = useState( WalletType.BANK_CARD );
     const [ toWallet, setToWallet ] = useState( WalletType.CASH );
