@@ -20,6 +20,7 @@ const persistConfig = {
     whitelist: [
         TransactionType.EXPENSE,
         TransactionType.INCOME,
+        TransactionType.TRANSFER,
         WalletType.BANK_CARD,
         WalletType.CASH,
         'categories',

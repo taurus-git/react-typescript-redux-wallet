@@ -1,5 +1,5 @@
 import React from 'react';
-import { NormalizedCategory } from "../../../../utils/normilizeCategories";
+import { NormalizedCategory } from "../../../../utils/normalizeCategories";
 import {X} from "lucide-react";
 
 interface CategoriesDropdownProps {

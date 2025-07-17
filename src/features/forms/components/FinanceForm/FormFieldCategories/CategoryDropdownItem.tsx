@@ -1,5 +1,5 @@
 import React from 'react';
-import { NormalizedCategory } from "../../../../utils/normilizeCategories";
+import { NormalizedCategory } from "../../../../utils/normalizeCategories";
 import { capitalizedString } from "../../../../utils/formatters";
 import * as Icons from "lucide-react";
 import { LucideIcon } from "lucide-react";

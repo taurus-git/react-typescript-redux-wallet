@@ -4,7 +4,7 @@ import { AppDispatch, RootState } from "../../../../store";
 import { fetchCategories } from "../../../../store/features/catregories/categoriesSlice";
 import { CategoryButton } from "./CategoryButton";
 import { CategoryDropdown } from "./CategoryDropdown";
-import { NormalizedCategory } from "../../../../utils/normilizeCategories";
+import { NormalizedCategory } from "../../../../utils/normalizeCategories";
 import { CategoriesSearch } from "./CategoriesSearch";
 import { TransactionType } from "../../../../types/transactions";
 

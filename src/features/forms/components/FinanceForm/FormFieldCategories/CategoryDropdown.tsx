@@ -1,6 +1,6 @@
 import React from 'react';
 import { CategoryDropdownItem } from "./CategoryDropdownItem";
-import { NormalizedCategory } from "../../../../utils/normilizeCategories";
+import { NormalizedCategory } from "../../../../utils/normalizeCategories";
 
 interface CategoryDropdownProps {
     categories: NormalizedCategory[],
