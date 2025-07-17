@@ -6,6 +6,7 @@ import { PageHeader } from "../components/common/PageHeader";
 const Dashboard = () => {
     const expenses = useSelector( ( state: RootState ) => state.expenses.items );
     const incomes = useSelector( ( state: RootState ) => state.incomes.items );
+    const transfer = useSelector( ( state: RootState ) => state.transfer.items );
 
     const handleClick = () => {
 
@@ -17,6 +18,7 @@ const Dashboard = () => {
 
     console.log( expenses );
     console.log( incomes );
+    console.log( transfer );
 
 
     return (

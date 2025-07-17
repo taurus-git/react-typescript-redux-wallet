@@ -1,10 +1,11 @@
 import { AppDispatch } from "../store";
 import { getFormFields } from "./formUtils";
-import { createIncome } from "../store/features/incomes/incomesSlice";
 import { WalletType } from "../types/wallets";
-import { createCardExpense, createCardIncome } from "../store/features/bankCardSlice/bankCardSlice";
-import { createCashExpense, createCashIncome } from "../store/features/cashSlice/cashSlice";
+import { createCardExpense, createCardIncome } from "../store/features/bankCard/bankCardSlice";
+import { createCashExpense, createCashIncome } from "../store/features/cash/cashSlice";
 import { createExpense } from "../store/features/expenses/expensesSlice";
+import { createIncome } from "../store/features/incomes/incomesSlice";
+import { createTransfer } from "../store/features/transfer/transferSlice";
 
 export const createTransactionDispatchers = ( dispatch: AppDispatch ) => ({
     dispatchIncome: ( formFields: ReturnType<typeof getFormFields> ) => {
@@ -43,5 +44,7 @@ export const createTransactionDispatchers = ( dispatch: AppDispatch ) => ({
             dispatch( createCashExpense( amount ) );
             dispatch( createCardIncome( amount ) );
         }
+
+        dispatch( createTransfer( formFields ) );
     },
 })
