@@ -52,7 +52,7 @@ export const TransactionForm: React.FC<TransactionFormProps> = (
                     <FormFieldSubmit isSubmitting={ isSubmitting }/>
                 </FormField>
             </fieldset>
-
+            <input type="hidden" name="transactionType" value={ transactionType }/>
         </form>
     );
 }

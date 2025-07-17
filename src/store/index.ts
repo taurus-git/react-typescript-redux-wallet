@@ -23,7 +23,6 @@ const persistConfig = {
         WalletType.BANK_CARD,
         WalletType.CASH,
         'categories',
-        'ui'
     ],
 }
 

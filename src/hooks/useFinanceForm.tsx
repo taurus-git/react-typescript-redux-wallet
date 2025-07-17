@@ -32,7 +32,7 @@ export const useFinanceForm = ( onClose?: () => void ) => {
     }
 
     const dispatchActions = ( formFields: ReturnType<typeof getFormFields> ) => {
-        switch ( transactionType ) {
+        switch ( formFields.transactionType ) {
             case TransactionType.INCOME :
                 dispatchIncome( formFields );
                 break;

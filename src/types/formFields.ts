@@ -1,5 +1,5 @@
 import { WalletType } from "./wallets";
-import { Transaction } from "./transactions";
+import { Transaction, TransactionType } from "./transactions";
 
 export type FormErrors = Partial<Record<keyof Omit<Transaction, "id" | "comment">, string>>;
 export type InputTypes = HTMLInputElement | HTMLSelectElement;
@@ -12,6 +12,7 @@ export const FORM_FIELD_NAMES = {
     walletType: "walletType",
     fromWallet: "fromWallet",
     toWallet: "toWallet",
+    transactionType: "transactionType",
 } as const;
 
 export const DEFAULT_FORM_VALUES = {
@@ -22,4 +23,5 @@ export const DEFAULT_FORM_VALUES = {
     walletType: WalletType.BANK_CARD,
     fromWallet: WalletType.BANK_CARD,
     toWallet: WalletType.CASH,
+    transactionType: TransactionType.EXPENSE
 } as const;

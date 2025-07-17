@@ -6,6 +6,7 @@ import { FormFieldSubmit } from "./FormFieldSubmit";
 import { FormFieldWallet } from "./FormFieldWallet";
 import { WalletType } from "../../../types/wallets";
 import { FORM_FIELD_NAMES } from "../../../types/formFields";
+import { TransactionType } from "../../../types/transactions";
 
 interface TransferFormProps {
     onClose?: () => void;
@@ -65,6 +66,8 @@ export const TransferForm: React.FC<TransferFormProps> = ( { onClose } ) => {
                 <FormField>
                     <FormFieldSubmit isSubmitting={ isSubmitting }/>
                 </FormField>
+
+                <input type="hidden" name="transactionType" value={ TransactionType.TRANSFER }/>
             </fieldset>
         </form>
     )
