@@ -1,24 +1,46 @@
 import { configureStore } from '@reduxjs/toolkit';
-import expensesReducer from './features/expenses/expensesSlice';
-import incomesReducer from './features/incomes/incomesSlice';
-import uiReducer from './features/ui/uiSlice';
-import authReducer from './features/auth/authSlice';
-import categoriesReducer from './features/catregories/categoriesSlice';
-import bankCardSlice from './features/bankCardSlice/bankCardSlice';
-import cashSlice from "./features/cashSlice/cashSlice";
+import {
+    persistStore,
+    persistReducer,
+    FLUSH,
+    REHYDRATE,
+    PAUSE,
+    PERSIST,
+    PURGE,
+    REGISTER
+} from "redux-persist";
+import storage from "redux-persist/lib/storage";
+import rootReducer from "./rootReducer";
+import { TransactionType } from "../types/transactions";
+import { WalletType } from "../types/wallets";
+
+const persistConfig = {
+    key: 'root',
+    storage,
+    whitelist: [
+        TransactionType.EXPENSE,
+        TransactionType.INCOME,
+        WalletType.BANK_CARD,
+        WalletType.CASH,
+        'categories',
+        'ui'
+    ],
+}
+
+const persistedReducer = persistReducer( persistConfig, rootReducer );
 
 export const store = configureStore( {
-    reducer: {
-        expenses: expensesReducer,
-        incomes: incomesReducer,
-        ui: uiReducer,
-        auth: authReducer,
-        categories: categoriesReducer,
-        bank_card: bankCardSlice,
-        cash: cashSlice,
-    },
+    reducer: persistedReducer,
+    middleware: ( getDefaultMiddleware ) =>
+        getDefaultMiddleware( {
+            serializableCheck: {
+                ignoredActions: [ FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER ],
+            },
+        } ),
     devTools: process.env.NODE_ENV !== 'production',
 } );
+
+export const persistor = persistStore( store );
 
 export type RootState = ReturnType<typeof store.getState>;
 export type AppDispatch = typeof store.dispatch;
