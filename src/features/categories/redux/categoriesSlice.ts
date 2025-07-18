@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { normalizeCategories, NormalizedCategories } from "../../../utils/normalizeCategories";
+import { normalizeCategories, NormalizedCategories } from "../utils/normalizeCategories";
 
 interface CategoriesState extends NormalizedCategories {
     loading: boolean,

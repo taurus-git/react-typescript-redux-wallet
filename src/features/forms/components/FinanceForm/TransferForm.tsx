@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { FormFieldAmount } from "./FormFieldAmount";
 import { FormField } from "./FormField";
-import { useFinanceForm } from "../../../hooks/useFinanceForm";
+import { useFinanceForm } from "../../hooks/useFinanceForm";
 import { FormFieldSubmit } from "./FormFieldSubmit";
 import { FormFieldWallet } from "./FormFieldWallet";
-import { WalletType } from "../../../types/wallets";
-import { FORM_FIELD_NAMES } from "../../../types/formFields";
-import { TransactionType } from "../../../types/transactions";
+import { WalletType } from "../../../wallets/types";
+import { FORM_FIELD_NAMES } from "../../types";
+import { TransactionType } from "../../../transactions/types";
 
 interface TransferFormProps {
     onClose?: () => void;

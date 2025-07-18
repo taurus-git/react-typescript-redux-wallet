@@ -1,8 +1,8 @@
 import React, { useCallback, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { AppDispatch, RootState } from "../store";
-import { openModal, closeModal, closeAllModals } from "../store/features/ui/uiSlice";
-import { ModalName } from "../store/features/ui/types";
+import { AppDispatch, RootState } from "../../../store";
+import { openModal, closeModal, closeAllModals } from "../redux/uiSlice";
+import { ModalName } from "../types";
 
 export function useModal() {
     const dispatch = useDispatch<AppDispatch>();
@@ -16,9 +16,9 @@ export function useModal() {
         dispatch( closeModal( { name: name } ) )
     ), [ dispatch ] );
 
-    const closeAll = useCallback(() => (
-        dispatch(closeAllModals())
-    ), [dispatch]);
+    const closeAll = useCallback( () => (
+        dispatch( closeAllModals() )
+    ), [ dispatch ] );
 
     const isOpen = useCallback( ( name: ModalName ) => (
         modals.some( ( modal ) =>

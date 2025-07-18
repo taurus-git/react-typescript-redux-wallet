@@ -1,10 +1,10 @@
 import React from 'react';
 import { Outlet, useLocation } from "react-router-dom";
 import { filterRoutes } from "../features/navigation/utils/navigationUtils";
-import { MenuCategory, RouteItemField } from "../types/navigation";
+import { MenuCategory, RouteItemField } from "../features/navigation/types";
 import { ROUTES_MAP, privateRoutes } from "../routes/routes";
 import { PageHeader } from "../components/common/PageHeader";
-import { RenderNavItems } from "../components/common/Navigation/RenderNavItems/RenderNavItems";
+import { RenderNavItems } from "../features/navigation/components/RenderNavItems/RenderNavItems";
 
 const Settings = () => {
     const location = useLocation();

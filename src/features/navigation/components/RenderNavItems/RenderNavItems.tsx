@@ -1,5 +1,5 @@
 import React from 'react';
-import { RouteItemMeta } from "../../../../types/navigation";
+import { RouteItemMeta } from "../../types";
 import { NavLink } from "react-router-dom";
 import styles from "./RenderNavItems.module.scss";
 

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { FormErrors } from "../types/formFields";
+import { FormErrors } from "../types";
 import { getFormFields } from "../utils/formUtils";
 
 export const useFormValidation = () => {

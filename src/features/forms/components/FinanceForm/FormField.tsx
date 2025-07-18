@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from "./FinanceForm.module.scss";
-import { Message } from "../../common/ErrorMessage/Message";
+import { Message } from "../ErrorMessage/Message";
 
 interface FormFieldProps {
     children: React.ReactNode;

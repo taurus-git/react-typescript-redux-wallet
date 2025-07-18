@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from "react-redux";
-import { AppDispatch, RootState } from "../../../../store";
-import { fetchCategories } from "../../../../store/features/catregories/categoriesSlice";
+import { AppDispatch, RootState } from "../../../../../store";
+import { fetchCategories } from "../../../../categories/redux/categoriesSlice";
 import { CategoryButton } from "./CategoryButton";
 import { CategoryDropdown } from "./CategoryDropdown";
-import { NormalizedCategory } from "../../../../utils/normalizeCategories";
+import { NormalizedCategory } from "../../../../categories/utils/normalizeCategories";
 import { CategoriesSearch } from "./CategoriesSearch";
-import { TransactionType } from "../../../../types/transactions";
+import { TransactionType } from "../../../../transactions/types";
 
 interface FormFieldCategoriesProps {
     transactionType: TransactionType;

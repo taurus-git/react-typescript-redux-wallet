@@ -1,4 +1,4 @@
-import { WalletType } from "./wallets";
+import { WalletType } from "../wallets/types";
 
 export interface Transaction {
     id: string;

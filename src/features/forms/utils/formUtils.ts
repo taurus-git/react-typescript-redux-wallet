@@ -1,6 +1,6 @@
-import { DEFAULT_FORM_VALUES, FORM_FIELD_NAMES } from "../types/formFields";
-import { WalletType } from "../types/wallets";
-import { TransactionType } from "../types/transactions"
+import { DEFAULT_FORM_VALUES, FORM_FIELD_NAMES } from "../types";
+import { WalletType } from "../../wallets/types";
+import { TransactionType } from "../../transactions/types";
 
 export const getFormFields = ( formData: FormData ) => {
     return {

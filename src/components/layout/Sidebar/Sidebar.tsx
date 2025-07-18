@@ -1,10 +1,10 @@
 import React from 'react';
-import { LinkToHome } from "../../common/Navigation/LinkToHome/LinkToHome";
-import { SidebarNavigation } from "../../common/Navigation/SidebarNavigation/SidebarNavigation";
+import styles from "./Sidebar.module.scss";
+import { LinkToHome } from "../../../features/navigation/components/LinkToHome/LinkToHome";
+import { SidebarNavigation } from "../../../features/navigation/components/SidebarNavigation/SidebarNavigation";
 import { filterRoutes } from "../../../features/navigation/utils/navigationUtils";
 import { privateRoutes } from "../../../routes/routes";
-import { MenuCategory, RouteItemField } from "../../../types/navigation";
-import styles from "./Sidebar.module.scss";
+import { MenuCategory, RouteItemField } from "../../../features/navigation/types";
 
 export const Sidebar = () => {
     const finances = filterRoutes( privateRoutes, RouteItemField.MenuCategory, MenuCategory.Finances );

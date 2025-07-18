@@ -1,9 +1,9 @@
 import React from 'react';
 import { TransactionForm } from "./TransactionForm";
-import { useFinanceForm } from "../../../hooks/useFinanceForm";
+import { useFinanceForm } from "../../hooks/useFinanceForm";
 import { FormFieldTransactionToggle } from "./FormFieldTransactionToggle";
 import { FormField } from "./FormField";
-import { TransactionType } from "../../../types/transactions";
+import { TransactionType } from "../../../transactions/types";
 import { TransferForm } from "./TransferForm";
 
 interface FinanceFormProps {

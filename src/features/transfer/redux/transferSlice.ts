@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit"
-import { TransactionType } from "../../../types/transactions";
+import { TransactionType } from "../../transactions/types";
 import { v4 as uuidv4 } from 'uuid';
-import { Transfer } from "../../../types/transfer";
+import { Transfer } from "../types";
 
 interface TransferState {
     items: Transfer[];

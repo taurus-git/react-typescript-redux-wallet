@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
-import { Cash, WalletType } from "../../../types/wallets";
+import { Cash, WalletType } from "../types";
 
 const initialState: Cash = {
     balance: 500,

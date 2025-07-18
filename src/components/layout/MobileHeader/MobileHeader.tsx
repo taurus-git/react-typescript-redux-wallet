@@ -1,8 +1,8 @@
 import React from 'react';
 import { Menu } from "lucide-react";
-import { LinkToHome } from "../../common/Navigation/LinkToHome/LinkToHome";
-import { useModal } from "../../../hooks/useModal";
-import { MODAL_NAME } from "../../../store/features/ui/types";
+import { LinkToHome } from "../../../features/navigation/components/LinkToHome/LinkToHome";
+import { useModal } from "../../../features/modal/hooks/useModal";
+import { MODAL_NAME } from "../../../features/modal/types";
 
 export const MobileHeader = () => {
     const { open } = useModal();

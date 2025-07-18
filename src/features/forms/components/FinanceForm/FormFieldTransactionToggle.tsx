@@ -1,5 +1,5 @@
 import React from 'react';
-import { TransactionType } from "../../../types/transactions";
+import { TransactionType } from "../../../transactions/types";
 import { FormFieldRadiobutton } from "./FormFieldRadiobutton";
 
 interface FormFieldTransactionToggleProps {

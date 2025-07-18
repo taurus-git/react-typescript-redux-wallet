@@ -11,8 +11,8 @@ import {
 } from "redux-persist";
 import storage from "redux-persist/lib/storage";
 import rootReducer from "./rootReducer";
-import { TransactionType } from "../types/transactions";
-import { WalletType } from "../types/wallets";
+import { TransactionType } from "../features/transactions/types";
+import { WalletType } from "../features/wallets/types";
 
 const persistConfig = {
     key: 'root',

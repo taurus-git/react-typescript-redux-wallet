@@ -1,5 +1,5 @@
-import { WalletType } from "./wallets";
-import { Transaction, TransactionType } from "./transactions";
+import { WalletType } from "../wallets/types";
+import { Transaction, TransactionType } from "../transactions/types";
 
 export type FormErrors = Partial<Record<keyof Omit<Transaction, "id" | "comment">, string>>;
 export type InputTypes = HTMLInputElement | HTMLSelectElement;

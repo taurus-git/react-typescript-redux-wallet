@@ -1,5 +1,5 @@
-import {WalletType} from "./wallets";
-import { TransactionType } from "./transactions";
+import { WalletType } from "../wallets/types";
+import { TransactionType } from "../transactions/types";
 
 export interface Transfer {
     id: string;

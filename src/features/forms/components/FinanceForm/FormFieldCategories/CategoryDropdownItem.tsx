@@ -1,6 +1,6 @@
 import React from 'react';
-import { NormalizedCategory } from "../../../../utils/normalizeCategories";
-import { capitalizedString } from "../../../../utils/formatters";
+import { NormalizedCategory } from "../../../../categories/utils/normalizeCategories";
+import { capitalizedString } from "../../../../../utils/formatters";
 import * as Icons from "lucide-react";
 import { LucideIcon } from "lucide-react";
 // Note: I understand that importing all icons (import * as Icons from "lucide-react") can be expensive for bundle size.

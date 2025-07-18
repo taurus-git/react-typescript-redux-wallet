@@ -1,5 +1,5 @@
 import { NavLink } from "react-router-dom";
-import { RouteItem, RouteItemMeta } from "../../../types/navigation";
+import { RouteItem, RouteItemMeta } from "../types";
 
 export function filterRoutes<T extends keyof RouteItemMeta>(
     routes: RouteItemMeta[],

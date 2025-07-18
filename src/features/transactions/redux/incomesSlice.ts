@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { Income, TransactionType } from "../../../types/transactions";
+import { Income, TransactionType } from "../types";
 import { v4 as uuidv4 } from 'uuid';
 
 interface IncomesState {

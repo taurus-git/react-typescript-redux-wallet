@@ -1,5 +1,5 @@
 import { lazy } from 'react';
-import { AccessType, MenuCategory, RouteItemField, RouteItemMeta } from "../types/navigation";
+import { AccessType, MenuCategory, RouteItemField, RouteItemMeta } from "../features/navigation/types";
 import { filterRoutes } from "../features/navigation/utils/navigationUtils";
 import {
     ScanFace,

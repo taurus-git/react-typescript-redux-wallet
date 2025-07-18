@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { ModalItem } from "./types";
+import { ModalItem } from "../types";
 
 interface UIState {
     modals: ModalItem[];

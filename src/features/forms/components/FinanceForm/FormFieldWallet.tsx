@@ -1,5 +1,5 @@
 import React from 'react';
-import { WalletType } from "../../../types/wallets";
+import { WalletType } from "../../../wallets/types";
 
 interface FormFieldWalletProps {
     change: ( e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement> ) => void;

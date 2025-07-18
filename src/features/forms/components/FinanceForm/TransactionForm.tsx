@@ -4,9 +4,9 @@ import { FormFieldCategories } from "./FormFieldCategories";
 import { FormFieldAmount } from "./FormFieldAmount";
 import { FormFieldWallet } from "./FormFieldWallet";
 import { FormFieldDate } from "./FormFieldDate";
-import { useFinanceForm } from "../../../hooks/useFinanceForm";
+import { useFinanceForm } from "../../hooks/useFinanceForm";
 import { FormField } from "./FormField";
-import { TransactionType } from "../../../types/transactions";
+import { TransactionType } from "../../../transactions/types";
 import { FormFieldSubmit } from "./FormFieldSubmit";
 
 interface TransactionFormProps {

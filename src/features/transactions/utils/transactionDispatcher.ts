@@ -1,11 +1,11 @@
-import { AppDispatch } from "../store";
-import { getFormFields } from "./formUtils";
-import { WalletType } from "../types/wallets";
-import { createCardExpense, createCardIncome } from "../store/features/bankCard/bankCardSlice";
-import { createCashExpense, createCashIncome } from "../store/features/cash/cashSlice";
-import { createExpense } from "../store/features/expenses/expensesSlice";
-import { createIncome } from "../store/features/incomes/incomesSlice";
-import { createTransfer } from "../store/features/transfer/transferSlice";
+import { AppDispatch } from "../../../store";
+import { getFormFields } from "../../forms/utils/formUtils";
+import { WalletType } from "../../wallets/types";
+import { createCardExpense, createCardIncome } from "../../wallets/redux/bankCardSlice";
+import { createCashExpense, createCashIncome } from "../../wallets/redux/cashSlice";
+import { createExpense } from "../redux/expensesSlice";
+import { createIncome } from "../redux/incomesSlice";
+import { createTransfer } from "../../transfer/redux/transferSlice";
 
 export const createTransactionDispatchers = ( dispatch: AppDispatch ) => ({
     dispatchIncome: ( formFields: ReturnType<typeof getFormFields> ) => {

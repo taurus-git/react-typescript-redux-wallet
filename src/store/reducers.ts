@@ -1,18 +1,18 @@
-import expensesReducer from './features/expenses/expensesSlice';
-import incomesReducer from './features/incomes/incomesSlice';
-import transferSlice from "./features/transfer/transferSlice";
-import uiReducer from './features/ui/uiSlice';
-import authReducer from './features/auth/authSlice';
-import categoriesReducer from './features/catregories/categoriesSlice';
-import bankCardSlice from './features/bankCard/bankCardSlice';
-import cashSlice from './features/cash/cashSlice';
+import authReducer from '../features/auth/redux/authSlice';
+import expensesReducer from '../features/transactions/redux/expensesSlice';
+import incomesReducer from '../features/transactions/redux/incomesSlice';
+import transferSlice from "../features/transfer/redux/transferSlice";
+import uiReducer from '../features/modal/redux/uiSlice';
+import categoriesReducer from '../features/categories/redux/categoriesSlice';
+import bankCardSlice from '../features/wallets/redux/bankCardSlice';
+import cashSlice from '../features/wallets/redux/cashSlice';
 
 export const reducers = {
+    auth: authReducer,
     expenses: expensesReducer,
     incomes: incomesReducer,
     transfer: transferSlice,
     ui: uiReducer,
-    auth: authReducer,
     categories: categoriesReducer,
     bank_card: bankCardSlice,
     cash: cashSlice,

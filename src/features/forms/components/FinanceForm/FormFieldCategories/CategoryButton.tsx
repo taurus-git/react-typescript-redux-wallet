@@ -1,11 +1,11 @@
 import React from 'react';
-import { NormalizedCategory } from "../../../../utils/normalizeCategories";
-import {X} from "lucide-react";
+import { NormalizedCategory } from "../../../../categories/utils/normalizeCategories";
+import { X } from "lucide-react";
 
 interface CategoriesDropdownProps {
     onToggle: () => void,
     selectedCategory: NormalizedCategory | undefined,
-    handleClear: (e: React.MouseEvent) => void,
+    handleClear: ( e: React.MouseEvent ) => void,
 }
 
 export const CategoryButton: React.FC<CategoriesDropdownProps> = ( { onToggle, selectedCategory, handleClear } ) => {
@@ -16,8 +16,8 @@ export const CategoryButton: React.FC<CategoriesDropdownProps> = ( { onToggle, s
 
             { selectedCategory ?
                 <div>
-                    <span style={ { color: selectedCategory.iconColor }}>{ selectedCategory.name }</span>
-                    <span onClick={ handleClear} title="Очистить">
+                    <span style={ { color: selectedCategory.iconColor } }>{ selectedCategory.name }</span>
+                    <span onClick={ handleClear } title="Очистить">
                         <X/>
                     </span>
                 </div>

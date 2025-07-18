@@ -1,6 +1,6 @@
-import { ALL_ROUTES } from "../routes/routes"
+import { ALL_ROUTES } from "../../../routes/routes";
 import { useLocation, matchRoutes } from "react-router-dom";
-import { RouteItemMeta } from "../types/navigation";
+import { RouteItemMeta } from "../types";
 
 export function useRouteMeta() {
     const location = useLocation();

@@ -1,10 +1,10 @@
 import React from 'react';
 import { X } from "lucide-react";
 import { FinanceForm } from "../FinanceForm";
-import { Modal } from "../../common/Modal/Modal";
-import { useModal } from "../../../hooks/useModal";
-import { MODAL_NAME } from "../../../store/features/ui/types";
-import { CtaButton } from "../../common/CtaButton/CtaButton";
+import { Modal } from "../../../modal/components/Modal";
+import { useModal } from "../../../modal/hooks/useModal";
+import { MODAL_NAME } from "../../../modal/types";
+import { CtaButton } from "../../../../components/common/CtaButton/CtaButton";
 
 export const FinanceFormModal = () => {
     const { open, close, isOpen } = useModal();

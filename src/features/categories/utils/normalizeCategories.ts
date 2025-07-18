@@ -1,4 +1,4 @@
-import { FINANCES, Category, Categories } from "../store/features/catregories/types";
+import { FINANCES, Category, Categories } from "../types";
 
 export type NormalizedCategory = Omit<Category, "parentName" | "notes" | "templateCode" | "isArchived">;
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import { useRouteMeta } from "../../hooks/useRouteMeta";
+import { useRouteMeta } from "../../features/navigation/hooks/useRouteMeta";
 
 interface PageHeaderProps {
     header?: string;

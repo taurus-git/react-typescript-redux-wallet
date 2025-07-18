@@ -1,12 +1,12 @@
 import React from 'react';
 import { X } from "lucide-react";
-import { SidebarNavigation } from "../../common/Navigation/SidebarNavigation/SidebarNavigation";
-import { Modal } from "../../common/Modal/Modal";
-import { useModal } from "../../../hooks/useModal";
-import { MODAL_NAME } from "../../../store/features/ui/types";
+import { SidebarNavigation } from "../../../features/navigation/components/SidebarNavigation/SidebarNavigation";
+import { Modal } from "../../../features/modal/components/Modal";
+import { useModal } from "../../../features/modal/hooks/useModal";
+import { MODAL_NAME } from "../../../features/modal/types";
 import { filterRoutes } from "../../../features/navigation/utils/navigationUtils";
 import { privateRoutes } from "../../../routes/routes";
-import { MenuCategory, RouteItemField } from "../../../types/navigation";
+import { MenuCategory, RouteItemField } from "../../../features/navigation/types";
 
 export const MobileMenuModal = () => {
     const { close, isOpen, closeAll } = useModal();

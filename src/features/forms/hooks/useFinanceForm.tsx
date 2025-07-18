@@ -1,11 +1,11 @@
 import React, { useEffect, useRef, useState } from "react";
 import { useDispatch } from "react-redux";
-import { AppDispatch } from "../store";
-import { createTransactionDispatchers } from "../utils/transactionDispatcher";
-import { TransactionType } from "../types/transactions";
+import { AppDispatch } from "../../../store";
+import { createTransactionDispatchers } from "../../transactions/utils/transactionDispatcher";
+import { TransactionType } from "../../transactions/types";
 import { useFormValidation } from "./useFormValidation";
 import { getFormFields } from "../utils/formUtils";
-import { InputTypes } from "../types/formFields";
+import { InputTypes } from "../types";
 
 
 export const useFinanceForm = ( onClose?: () => void ) => {
