@@ -1,5 +1,5 @@
 import React from 'react';
-import { TransactionType } from "../../../transactions/types";
+import { TransactionType, TransactionTypeLabel } from "../../../transactions/types";
 import { FormFieldRadiobutton } from "./FormFieldRadiobutton";
 
 interface FormFieldTransactionToggleProps {
@@ -19,21 +19,21 @@ export const FormFieldTransactionToggle: React.FC<FormFieldTransactionToggleProp
                 transactionType={ transactionType }
                 value={ TransactionType.EXPENSE }
                 onChange={ setTransactionType }>
-                Расход
+                { TransactionTypeLabel[ TransactionType.EXPENSE ] }
             </FormFieldRadiobutton>
 
             <FormFieldRadiobutton
                 transactionType={ transactionType }
                 value={ TransactionType.INCOME }
                 onChange={ setTransactionType }>
-                Доход
+                { TransactionTypeLabel[ TransactionType.INCOME ] }
             </FormFieldRadiobutton>
 
             <FormFieldRadiobutton
                 transactionType={ transactionType }
                 value={ TransactionType.TRANSFER }
                 onChange={ setTransactionType }>
-                Перевод
+                { TransactionTypeLabel[ TransactionType.TRANSFER ] }
             </FormFieldRadiobutton>
         </div>
     );

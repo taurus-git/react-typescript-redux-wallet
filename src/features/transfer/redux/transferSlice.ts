@@ -18,9 +18,12 @@ const transferSlice = createSlice( {
         createTransfer: ( state, action: PayloadAction<Omit<Transfer, 'id'>> ) => {
             const newTransfer = { id: uuidv4(), ...action.payload };
             state.items.push( newTransfer );
+        },
+        deleteTransfer: ( state, action: PayloadAction<string>) => {
+            state.items = state.items.filter( e => e.id !== action.payload );
         }
     }
 } );
 
-export const { createTransfer } = transferSlice.actions;
+export const { createTransfer, deleteTransfer } = transferSlice.actions;
 export default transferSlice.reducer;

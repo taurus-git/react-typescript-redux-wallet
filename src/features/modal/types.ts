@@ -1,3 +1,5 @@
+export type ModalVariant = 'default' | 'fullHeight' | 'fullScreen';
+
 export const MODAL_NAME = {
     MOBILE_MENU: 'mobileMenu',
     FINANCE_FORM: 'financeForm',

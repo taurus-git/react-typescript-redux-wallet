@@ -15,4 +15,8 @@ export enum WalletType {
     CASH = "cash",
 }
 
+export const WalletTypeLabel: Record<WalletType, string> = {
+    [ WalletType.BANK_CARD ]: "Банковская карта",
+    [ WalletType.CASH ]: "Наличные"
+}
 

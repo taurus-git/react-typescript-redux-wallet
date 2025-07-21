@@ -1,8 +1,8 @@
 import React from 'react';
 import ReactDOM from "react-dom";
 import styles from "./Modal.module.scss";
-
-type ModalVariant = 'default' | 'fullHeight' | 'fullScreen';
+import { getModalClassName } from "../utils/modalUtils";
+import { ModalVariant } from "../types";
 
 interface ModalProps {
     isOpen: boolean;
@@ -10,18 +10,6 @@ interface ModalProps {
     children: React.ReactNode;
     className?: string;
     variant?: ModalVariant;
-}
-
-const getModalClassName = ( variant: ModalVariant ): string => {
-    const baseClass = styles.overlay__container;
-
-    const modifiers: Record<ModalVariant, string | undefined> = {
-        default: '',
-        fullHeight: styles[ 'overlay__container--fullHeight' ],
-        fullScreen: styles[ 'overlay__container--fullScreen' ],
-    }
-
-    return [ baseClass, modifiers[ variant ] ].filter( Boolean ).join( ' ' );
 }
 
 export const Modal: React.FC<ModalProps> = ( { isOpen, onClose, children, className, variant = 'default' } ) => {

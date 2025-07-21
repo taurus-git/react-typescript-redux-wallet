@@ -18,7 +18,6 @@ const bankCardSlice = createSlice( {
         updateCardBalance: ( state, action: PayloadAction<number> ) => {
             state.balance = action.payload;
         },
-
     }
 } );
 

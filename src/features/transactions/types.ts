@@ -7,6 +7,7 @@ export interface Transaction {
     date: string;
     comment?: string;
     walletType: WalletType;
+    transactionType: TransactionType;
 }
 
 /**
@@ -16,6 +17,7 @@ export interface Transaction {
  * maintainability, and type safety as the application grows.
  */
 export interface Expense extends Transaction {
+
 }
 
 export interface Income extends Transaction {
@@ -25,4 +27,10 @@ export enum TransactionType {
     EXPENSE = "expenses",
     INCOME = "incomes",
     TRANSFER = "transfer",
+}
+
+export const TransactionTypeLabel: Record<TransactionType, string> = {
+    [ TransactionType.EXPENSE ]: "Расход",
+    [ TransactionType.INCOME ]: "Доход",
+    [ TransactionType.TRANSFER ]: "Перевод",
 }
