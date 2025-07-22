@@ -11,7 +11,7 @@ const initialState: TransferState = {
     items: []
 }
 
-const transferSlice = createSlice( {
+const transfersSlice = createSlice( {
     name: TransactionType.TRANSFER,
     initialState,
     reducers: {
@@ -25,5 +25,5 @@ const transferSlice = createSlice( {
     }
 } );
 
-export const { createTransfer, deleteTransfer } = transferSlice.actions;
-export default transferSlice.reducer;
+export const { createTransfer, deleteTransfer } = transfersSlice.actions;
+export default transfersSlice.reducer;

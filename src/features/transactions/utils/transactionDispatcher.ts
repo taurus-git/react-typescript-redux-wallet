@@ -9,7 +9,7 @@ import { createCardExpense, createCardIncome } from "../../wallets/redux/bankCar
 import { createCashExpense, createCashIncome } from "../../wallets/redux/cashSlice";
 import { createExpense } from "../redux/expensesSlice";
 import { createIncome } from "../redux/incomesSlice";
-import { createTransfer } from "../../transfer/redux/transferSlice";
+import { createTransfer } from "../../transfer/redux/transfersSlice";
 
 export const createTransactionDispatchers = ( dispatch: AppDispatch ) => ({
     dispatchExpense: ( formFields: ReturnType<typeof getExpenseFormFields> ) => {

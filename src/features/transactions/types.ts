@@ -1,19 +1,13 @@
 import { WalletType } from "../wallets/types";
+import {MoneyOperation} from "../operations/types";
 
 export enum TransactionType {
     EXPENSE = "expenses",
     INCOME = "incomes",
-    TRANSFER = "transfer",
+    TRANSFER = "transfers",
 }
 
-export interface BaseMoneyTransaction {
-    id: string;
-    amount: number;
-    date: string;
-    transactionType: TransactionType;
-}
-
-export interface Transaction extends BaseMoneyTransaction {
+export interface Transaction extends MoneyOperation {
     categoryId: string;
     comment?: string;
     walletType: WalletType;

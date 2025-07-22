@@ -6,7 +6,7 @@ import { TransactionType } from "../../transactions/types";
 import {
     getBaseFormFields,
     getExpenseFormFields,
-    getIncomeFormFields, getTransactionFormFields,
+    getIncomeFormFields,
     getTransferFormFields
 } from "../utils/formUtils";
 

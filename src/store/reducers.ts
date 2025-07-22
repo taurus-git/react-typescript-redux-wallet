@@ -1,7 +1,7 @@
 import authReducer from '../features/auth/redux/authSlice';
 import expensesReducer from '../features/transactions/redux/expensesSlice';
 import incomesReducer from '../features/transactions/redux/incomesSlice';
-import transferSlice from "../features/transfer/redux/transferSlice";
+import transfersSlice from "../features/transfer/redux/transfersSlice";
 import uiReducer from '../features/modal/redux/uiSlice';
 import categoriesReducer from '../features/categories/redux/categoriesSlice';
 import bankCardSlice from '../features/wallets/redux/bankCardSlice';
@@ -11,7 +11,7 @@ export const reducers = {
     auth: authReducer,
     expenses: expensesReducer,
     incomes: incomesReducer,
-    transfer: transferSlice,
+    transfers: transfersSlice,
     ui: uiReducer,
     categories: categoriesReducer,
     bank_card: bankCardSlice,

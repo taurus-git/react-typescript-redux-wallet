@@ -1,86 +1,24 @@
 import React from 'react';
-import { useSelector, useDispatch } from "react-redux";
-import { AppDispatch, RootState } from "../store";
 import { PageHeader } from "../components/common/PageHeader";
-import { WalletType, WalletTypeLabel } from "../features/wallets/types";
-import { BaseMoneyTransaction, Transaction, TransactionType } from "../features/transactions/types";
-import { deleteExpense } from "../features/transactions/redux/expensesSlice";
-import { deleteIncome } from "../features/transactions/redux/incomesSlice";
-import { deleteTransfer } from "../features/transfer/redux/transferSlice";
-import { createCardIncome, createCardExpense } from "../features/wallets/redux/bankCardSlice";
-import { createCashIncome, createCashExpense } from "../features/wallets/redux/cashSlice";
-import { Transfer } from "../features/transfer/types";
-
+import { WalletTypeLabel } from "../features/wallets/types";
+import { TransactionTypeLabel } from "../features/transactions/types";
+import { useMoneyOperations } from "../features/operations/hooks/useMoneyOperations";
+import { WalletsSummary } from "../features/dashboard/components/WalletsSummary";
 
 const Dashboard = () => {
-    const dispatch = useDispatch<AppDispatch>();
-
-    const expenses = useSelector( ( state: RootState ) => state[ TransactionType.EXPENSE ].items );
-    const incomes = useSelector( ( state: RootState ) => state[ TransactionType.INCOME ].items );
-    const transfer = useSelector( ( state: RootState ) => state[ TransactionType.TRANSFER ].items );
-
-    const bankCard = useSelector( ( state: RootState ) => state[ WalletType.BANK_CARD ].balance )
-    const cash = useSelector( ( state: RootState ) => state[ WalletType.CASH ].balance )
-
-    const transactions: BaseMoneyTransaction[] = [ ...expenses, ...incomes, ...transfer ];
-
-    const handleClick = () => {
-
-    }
-
-    const handleRemove = ( item: Transaction ) => {
-        const { transactionType, walletType, amount, id } = item;
-
-        if ( transactionType === TransactionType.EXPENSE ) {
-            if ( walletType === WalletType.BANK_CARD ) {
-                dispatch( createCardIncome( amount ) );
-            } else if ( walletType === WalletType.CASH ) {
-                dispatch( createCashIncome( amount ) )
-            }
-
-            dispatch( deleteExpense( id ) );
-        } else if ( transactionType === TransactionType.INCOME ) {
-            if ( walletType === WalletType.BANK_CARD ) {
-                dispatch( createCardExpense( amount ) );
-            } else if ( walletType === WalletType.CASH ) {
-                dispatch( createCashExpense( amount ) )
-            }
-
-            dispatch( deleteIncome( id ) );
-        } else {
-            console.error( "Unknown transaction type: " + transactionType );
-        }
-    }
-
-    const removeTransfer = ( item: Transfer ) => {
-        const { transactionType, fromWallet, toWallet, amount, id } = item;
-
-        if ( transactionType === TransactionType.TRANSFER ) {
-            if ( fromWallet === WalletType.BANK_CARD && toWallet === WalletType.CASH ) {
-                dispatch( createCardIncome( amount ) );
-                dispatch( createCashExpense( amount ) );
-            } else if ( fromWallet === WalletType.CASH && toWallet === WalletType.BANK_CARD ) {
-                dispatch( createCardIncome( amount ) );
-                dispatch( createCardExpense( amount ) )
-            }
-
-            dispatch( deleteTransfer( id ) );
-        }
-    }
+    const {
+        expenses,
+        incomes,
+        transfers,
+        removeTransaction,
+        removeTransfer
+    } = useMoneyOperations();
 
 
     return (
         <>
             <PageHeader/>
-
-            <div>
-                <b>
-                    <pre>{ WalletTypeLabel[ WalletType.BANK_CARD ] } : { bankCard }</pre>
-                </b>
-                <b>
-                    <pre>{ WalletTypeLabel[ WalletType.CASH ] } : { cash }</pre>
-                </b>
-            </div>
+            <WalletsSummary/>
 
             <div>
                 <ul>
@@ -93,11 +31,39 @@ const Dashboard = () => {
                         </li>
                     ) ) }*/ }
 
-                    { transfer.map( item => (
-                        <li key={ 1 }>
+                    { expenses.map( item => (
+                        <li key={ item.id }>
                             <>
-                                Перевод { WalletTypeLabel[ item.fromWallet ] } -
-                                { WalletTypeLabel[ item.toWallet ] }
+                                <p>Тип операции: { TransactionTypeLabel[ item.transactionType ] }</p>
+                                <p>Категория: { item.categoryId }</p>
+                                <p>Сумма: { item.amount }</p>
+                                <p>Дата: { item.date }</p>
+                                <p>Счет: { WalletTypeLabel[ item.walletType ] }</p>
+                                <button onClick={ () => removeTransaction( item ) }>Удалить</button>
+                            </>
+                        </li>
+                    ) ) }
+
+                    { incomes.map( item => (
+                        <li key={ item.id }>
+                            <>
+
+                                <p>Тип операции: { TransactionTypeLabel[ item.transactionType ] }</p>
+                                <p>Категория: { item.categoryId }</p>
+                                <p>Сумма: { item.amount }</p>
+                                <p>Дата: { item.date }</p>
+                                <p>Счет: { WalletTypeLabel[ item.walletType ] }</p>
+                                <button onClick={ () => removeTransaction( item ) }>Удалить</button>
+                            </>
+                        </li>
+                    ) ) }
+
+                    { transfers.map( item => (
+                        <li key={ item.id }>
+                            <>
+                                <p>{ TransactionTypeLabel[ item.transactionType ] }</p>
+                                <p>{ WalletTypeLabel[ item.fromWallet ] }</p>
+                                <p>{ WalletTypeLabel[ item.toWallet ] }</p>
                                 Сумма: { item.amount }
                                 <button onClick={ () => removeTransfer( item ) }>Удалить</button>
                             </>
