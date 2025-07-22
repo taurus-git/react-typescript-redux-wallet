@@ -1,12 +1,12 @@
 import { useState } from "react";
 import { FormErrors } from "../types";
-import { getFormFields } from "../utils/formUtils";
+import { getTransactionFormFields } from "../utils/formUtils";
 
 export const useFormValidation = () => {
     const [ errors, setErrors ] = useState<FormErrors>();
 
     const isFormValid = ( formData: FormData ) => {
-        const { amount, categoryId, date } = getFormFields( formData );
+        const { amount, categoryId, date } = getTransactionFormFields( formData );
         const errorMessages: typeof errors = {};
 
         if ( !amount || amount <= 0 ) {

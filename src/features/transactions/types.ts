@@ -1,32 +1,31 @@
 import { WalletType } from "../wallets/types";
 
-export interface Transaction {
-    id: string;
-    amount: number;
-    categoryId: string;
-    date: string;
-    comment?: string;
-    walletType: WalletType;
-    transactionType: TransactionType;
-}
-
-/**
- * Expense and Income interfaces extend the shared Transaction structure.
- * This improves semantic clarity across the app and allows independent future modifications.
- * Even if they currently share the same shape, separating them provides better flexibility,
- * maintainability, and type safety as the application grows.
- */
-export interface Expense extends Transaction {
-
-}
-
-export interface Income extends Transaction {
-}
-
 export enum TransactionType {
     EXPENSE = "expenses",
     INCOME = "incomes",
     TRANSFER = "transfer",
+}
+
+export interface BaseMoneyTransaction {
+    id: string;
+    amount: number;
+    date: string;
+    transactionType: TransactionType;
+}
+
+export interface Transaction extends BaseMoneyTransaction {
+    categoryId: string;
+    comment?: string;
+    walletType: WalletType;
+    transactionType: TransactionType.EXPENSE | TransactionType.INCOME;
+}
+
+export interface Expense extends Transaction {
+    transactionType: TransactionType.EXPENSE;
+}
+
+export interface Income extends Transaction {
+    transactionType: TransactionType.INCOME;
 }
 
 export const TransactionTypeLabel: Record<TransactionType, string> = {
@@ -34,3 +33,5 @@ export const TransactionTypeLabel: Record<TransactionType, string> = {
     [ TransactionType.INCOME ]: "Доход",
     [ TransactionType.TRANSFER ]: "Перевод",
 }
+
+

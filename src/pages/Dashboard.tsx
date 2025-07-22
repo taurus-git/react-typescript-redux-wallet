@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { AppDispatch, RootState } from "../store";
 import { PageHeader } from "../components/common/PageHeader";
 import { WalletType, WalletTypeLabel } from "../features/wallets/types";
-import { Transaction, TransactionType } from "../features/transactions/types";
+import { BaseMoneyTransaction, Transaction, TransactionType } from "../features/transactions/types";
 import { deleteExpense } from "../features/transactions/redux/expensesSlice";
 import { deleteIncome } from "../features/transactions/redux/incomesSlice";
 import { deleteTransfer } from "../features/transfer/redux/transferSlice";
@@ -22,7 +22,7 @@ const Dashboard = () => {
     const bankCard = useSelector( ( state: RootState ) => state[ WalletType.BANK_CARD ].balance )
     const cash = useSelector( ( state: RootState ) => state[ WalletType.CASH ].balance )
 
-    const transactions = expenses.concat( incomes );
+    const transactions: BaseMoneyTransaction[] = [ ...expenses, ...incomes, ...transfer ];
 
     const handleClick = () => {
 
@@ -84,14 +84,14 @@ const Dashboard = () => {
 
             <div>
                 <ul>
-                    { transactions.map( item => (
+                    {/* { transactions.map( item => (
                         <li key={ item.id }>
                             <>
-                                { item.categoryId } - { item.amount } - { item.date }
+                                { item?.categoryId } - { item.amount } - { item.date }
                                 <button onClick={ () => handleRemove( item ) }>Удалить</button>
                             </>
                         </li>
-                    ) ) }
+                    ) ) }*/ }
 
                     { transfer.map( item => (
                         <li key={ 1 }>

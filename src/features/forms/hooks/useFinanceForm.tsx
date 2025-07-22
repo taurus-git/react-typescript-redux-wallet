@@ -3,10 +3,15 @@ import { useDispatch } from "react-redux";
 import { AppDispatch } from "../../../store";
 import { createTransactionDispatchers } from "../../transactions/utils/transactionDispatcher";
 import { TransactionType } from "../../transactions/types";
-import { useFormValidation } from "./useFormValidation";
-import { getFormFields } from "../utils/formUtils";
-import { InputTypes } from "../types";
+import {
+    getBaseFormFields,
+    getExpenseFormFields,
+    getIncomeFormFields, getTransactionFormFields,
+    getTransferFormFields
+} from "../utils/formUtils";
 
+import { useFormValidation } from "./useFormValidation";
+import { FormFields, InputTypes } from "../types";
 
 export const useFinanceForm = ( onClose?: () => void ) => {
     const dispatch = useDispatch<AppDispatch>();
@@ -31,8 +36,14 @@ export const useFinanceForm = ( onClose?: () => void ) => {
         }
     }
 
-    const dispatchActions = ( formFields: ReturnType<typeof getFormFields> ) => {
-        switch ( formFields.transactionType ) {
+    const getFormFieldsByType = () => {
+
+    }
+
+    const dispatchActions = ( formFields: FormFields ) => {
+        const { transactionType } = formFields;
+
+        switch ( transactionType ) {
             case TransactionType.INCOME :
                 dispatchIncome( formFields );
                 break;
@@ -45,6 +56,21 @@ export const useFinanceForm = ( onClose?: () => void ) => {
         }
     }
 
+    const createFormFields = ( formData: FormData ): FormFields => {
+        const { transactionType } = getBaseFormFields( formData );
+
+        switch ( transactionType ) {
+            case TransactionType.EXPENSE :
+                return getExpenseFormFields( formData );
+            case TransactionType.INCOME :
+                return getIncomeFormFields( formData );
+            case TransactionType.TRANSFER :
+                return getTransferFormFields( formData );
+            default:
+                throw new Error( `Unknown transaction type: ${ transactionType }` );
+        }
+    }
+
     const processSubmitting = ( e: React.FormEvent<HTMLFormElement> ) => {
         const form = e.currentTarget;
         const formData = new FormData( form );
@@ -52,11 +78,15 @@ export const useFinanceForm = ( onClose?: () => void ) => {
 
         if ( !formValid ) return false;
 
-        const formFields = getFormFields( formData );
-        dispatchActions( formFields );
-        form.reset();
-
-        return true;
+        try {
+            const formFields = createFormFields( formData );
+            dispatchActions( formFields );
+            form.reset();
+            return true;
+        } catch ( e ) {
+            console.error( e );
+            return false;
+        }
     }
 
     const handleSubmit = ( e: React.FormEvent<HTMLFormElement> ) => {

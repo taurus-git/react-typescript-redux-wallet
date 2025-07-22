@@ -1,11 +1,9 @@
 import { WalletType } from "../wallets/types";
-import { TransactionType } from "../transactions/types";
+import { BaseMoneyTransaction, Transaction, TransactionType } from "../transactions/types";
 
-export interface Transfer {
-    id: string;
-    amount: number;
+export interface Transfer extends BaseMoneyTransaction {
     fromWallet: WalletType;
     toWallet: WalletType;
-    date: string;
-    transactionType: TransactionType;
+    transactionType: TransactionType.TRANSFER;
 }
+
