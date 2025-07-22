@@ -11,7 +11,7 @@ import { createExpense } from "../redux/expensesSlice";
 import { createIncome } from "../redux/incomesSlice";
 import { createTransfer } from "../../transfer/redux/transfersSlice";
 
-export const createTransactionDispatchers = ( dispatch: AppDispatch ) => ({
+export const createOperationCreator = ( dispatch: AppDispatch ) => ({
     dispatchExpense: ( formFields: ReturnType<typeof getExpenseFormFields> ) => {
         const { amount, walletType } = formFields;
 

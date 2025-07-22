@@ -9,7 +9,7 @@ import { Transfer } from "../../transfer/types";
 import { deleteTransfer } from "../../transfer/redux/transfersSlice";
 import { AppDispatch } from "../../../store";
 
-export const createOperationRemover = ( dispatch: AppDispatch ) => ({
+export const operationRemover = ( dispatch: AppDispatch ) => ({
     removeTransaction: ( item: Transaction ) => {
         const { transactionType, walletType, amount, id } = item;
 
@@ -44,6 +44,8 @@ export const createOperationRemover = ( dispatch: AppDispatch ) => ({
             } else if ( fromWallet === WalletType.CASH && toWallet === WalletType.BANK_CARD ) {
                 dispatch( createCardIncome( amount ) );
                 dispatch( createCardExpense( amount ) )
+            } else {
+                console.error( "Unknown transaction type: " + transactionType );
             }
 
             dispatch( deleteTransfer( id ) );
