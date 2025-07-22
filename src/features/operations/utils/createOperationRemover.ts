@@ -9,7 +9,7 @@ import { Transfer } from "../../transfer/types";
 import { deleteTransfer } from "../../transfer/redux/transfersSlice";
 import { AppDispatch } from "../../../store";
 
-export const operationRemover = ( dispatch: AppDispatch ) => ({
+export const createOperationRemover = ( dispatch: AppDispatch ) => ({
     removeTransaction: ( item: Transaction ) => {
         const { transactionType, walletType, amount, id } = item;
 

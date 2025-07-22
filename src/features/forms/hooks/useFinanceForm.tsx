@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import { useDispatch } from "react-redux";
 import { AppDispatch } from "../../../store";
-import { createTransactionDispatchers } from "../../transactions/utils/transactionDispatcher";
+import { createOperationCreator } from "../../transactions/utils/createOperationCreator";
 import { TransactionType } from "../../transactions/types";
 import {
     getBaseFormFields,
@@ -15,7 +15,7 @@ import { FormFields, InputTypes } from "../types";
 
 export const useFinanceForm = ( onClose?: () => void ) => {
     const dispatch = useDispatch<AppDispatch>();
-    const { dispatchIncome, dispatchExpense, dispatchTransfer } = createTransactionDispatchers( dispatch );
+    const { dispatchIncome, dispatchExpense, dispatchTransfer } = createOperationCreator( dispatch );
     const inputElement = useRef<HTMLInputElement>( null );
     const [ transactionType, setTransactionType ] = useState<TransactionType>( TransactionType.EXPENSE );
     const [ isSubmitting, setIsSubmitting ] = useState( false );
