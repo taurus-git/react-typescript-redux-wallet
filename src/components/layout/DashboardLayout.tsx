@@ -1,7 +1,7 @@
 import React from 'react';
 import { Outlet } from "react-router-dom";
 import { useMediaQuery } from "../../features/navigation/hooks/useMediaQuery";
-import { WidthMediaQueries } from "../../constants/breakpoints";
+import { WidthMediaQueries } from "../../features/navigation/types";
 import { Container } from "./Container";
 import { Header } from "./Header";
 import { Sidebar } from "./Sidebar/Sidebar";

@@ -2,7 +2,7 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import { RootState } from "../../store";
 import { useMediaQuery } from "../../features/navigation/hooks/useMediaQuery";
-import { WidthMediaQueries } from "../../constants/breakpoints";
+import { WidthMediaQueries } from "../../features/navigation/types";
 import { filterRoutes } from "../../features/navigation/utils/navigationUtils";
 import { privateRoutes } from "../../routes/routes";
 import { MenuCategory, RouteItemField } from "../../features/navigation/types";
