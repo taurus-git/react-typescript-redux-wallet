@@ -1,5 +1,5 @@
 import { WalletType } from "../wallets/types";
-import {MoneyOperation} from "../operations/types";
+import { MoneyOperation } from "../operations/types";
 
 export enum TransactionType {
     EXPENSE = "expenses",
@@ -27,5 +27,3 @@ export const TransactionTypeLabel: Record<TransactionType, string> = {
     [ TransactionType.INCOME ]: "Доход",
     [ TransactionType.TRANSFER ]: "Перевод",
 }
-
-
