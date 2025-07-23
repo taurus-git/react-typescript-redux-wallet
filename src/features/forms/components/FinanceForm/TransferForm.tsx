@@ -7,6 +7,7 @@ import { FormFieldWallet } from "./FormFieldWallet";
 import { WalletType } from "../../../wallets/types";
 import { FORM_FIELD_NAMES } from "../../types";
 import { TransactionType } from "../../../transactions/types";
+import { FormFieldDate } from "./FormFieldDate";
 
 interface TransferFormProps {
     onClose?: () => void;
@@ -61,6 +62,10 @@ export const TransferForm: React.FC<TransferFormProps> = ( { onClose } ) => {
                         exclude={ fromWallet }
                         onChange={ setToWallet }
                     />
+                </FormField>
+
+                <FormField errors={ errors?.date }>
+                    <FormFieldDate change={ handleInputChange }/>
                 </FormField>
 
                 <FormField>

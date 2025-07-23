@@ -1,11 +1,11 @@
 import React from 'react';
 
 interface FormFieldDateProps {
-    change: ( e: React.ChangeEvent<HTMLInputElement>) => void,
+    change: ( e: React.ChangeEvent<HTMLInputElement> ) => void,
 }
 
-export const FormFieldDate:React.FC<FormFieldDateProps> = ({change}) => {
-    const today = new Date().toISOString().split( "T" )[0];
+export const FormFieldDate: React.FC<FormFieldDateProps> = ( { change } ) => {
+    const today = new Date().toISOString().split( "T" )[ 0 ];
 
     return (
         <>
@@ -15,7 +15,7 @@ export const FormFieldDate:React.FC<FormFieldDateProps> = ({change}) => {
                 max="2050-00-01"
                 defaultValue={ today }
                 name="date"
-                onChange={change}
+                onChange={ change }
             />
         </>
     );

@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import { RootState } from "../../../store";
 import { TransactionType } from "../../transactions/types";
 
-export const useAllOperations = () => {
+export const useOperations = () => {
     const expenses = useSelector( ( state: RootState ) => state[ TransactionType.EXPENSE ].items );
     const incomes = useSelector( ( state: RootState ) => state[ TransactionType.INCOME ].items );
     const transfers = useSelector( ( state: RootState ) => state[ TransactionType.TRANSFER ].items );

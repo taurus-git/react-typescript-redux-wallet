@@ -27,3 +27,4 @@ export const TransactionTypeLabel: Record<TransactionType, string> = {
     [ TransactionType.INCOME ]: "Доход",
     [ TransactionType.TRANSFER ]: "Перевод",
 }
+
