@@ -11,7 +11,7 @@ interface OperationItemProps {
 }
 
 export const OperationList: React.FC<OperationItemProps> = ( { operations } ) => {
-    const { removeTransaction, removeTransfer } = useOperationRemover();
+    const { removeTransaction, removeTransfer, } = useOperationRemover();
 
     return (
         <ul>

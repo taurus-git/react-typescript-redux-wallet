@@ -8,6 +8,6 @@ export const useOperationRemover = () => {
 
     return {
         removeTransaction,
-        removeTransfer
+        removeTransfer,
     }
 }

@@ -5,7 +5,7 @@ import { Transfer } from "../../transfer/types";
 
 export const getBaseFormFields = ( formData: FormData ) => ({
         amount: Number( formData.get( FORM_FIELD_NAMES.amount ) ) || DEFAULT_FORM_VALUES.amount,
-        date: String( formData.get( FORM_FIELD_NAMES.date ) ) || DEFAULT_FORM_VALUES.date,
+        date: (formData.get( FORM_FIELD_NAMES.date )?.toString() ?? DEFAULT_FORM_VALUES.date),
         transactionType: formData.get( FORM_FIELD_NAMES.transactionType ) as TransactionType || DEFAULT_FORM_VALUES.transactionType,
     }
 );

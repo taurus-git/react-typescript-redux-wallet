@@ -1,7 +1,10 @@
 import React from 'react';
-import { TransactionTypeLabel } from "../../transactions/types";
 import { Transfer } from "../../transfer/types";
-import { WalletTypeLabel } from "../../wallets/types";
+import { OperationTypeField } from "./OperationFields/OperationTypeField";
+import { OperationAmountField } from "./OperationFields/OperationAmountField";
+import { OperationDateField } from "./OperationFields/OperationDateField";
+import { OperationWalletField } from "./OperationFields/OperationWalletField";
+import { OperationDeleteField } from "./OperationFields/OperationDeleteField";
 
 interface TransferItemProps {
     item: Transfer,
@@ -9,15 +12,16 @@ interface TransferItemProps {
 }
 
 export const TransferItem: React.FC<TransferItemProps> = ( { item, onRemove } ) => {
+    const { transactionType, date, fromWallet, toWallet } = item;
+
     return (
         <>
-            <p>Тип операции: { TransactionTypeLabel[ item.transactionType ] }</p>
-            <p>{ TransactionTypeLabel[ item.transactionType ] }</p>
-            <p>{ WalletTypeLabel[ item.fromWallet ] }</p>
-            <p>{ WalletTypeLabel[ item.toWallet ] }</p>
-            <p>Сумма: { item.amount }</p>
-            <p>Дата: { item.date }</p>
-            <button onClick={ () => onRemove( item ) }>Удалить</button>
+            <OperationTypeField transactionType={ transactionType }/>
+            <OperationWalletField walletType={ fromWallet }/>
+            <OperationWalletField walletType={ toWallet }/>
+            <OperationAmountField amount={ item.amount }/>
+            <OperationDateField date={ date }/>
+            <OperationDeleteField item={ item } onRemove={ onRemove }/>
         </>
     );
 }
