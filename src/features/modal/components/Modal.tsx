@@ -9,10 +9,19 @@ interface ModalProps {
     onClose: () => void;
     children: React.ReactNode;
     className?: string;
+    containerClassName?: string;
     variant?: ModalVariant;
 }
 
-export const Modal: React.FC<ModalProps> = ( { isOpen, onClose, children, className, variant = 'default' } ) => {
+export const Modal: React.FC<ModalProps> = (
+    {
+        isOpen,
+        onClose,
+        children,
+        className,
+        containerClassName,
+        variant = 'default'
+    } ) => {
     if ( !isOpen ) return null;
 
     const rootElement = document.getElementById( "root" );
@@ -27,7 +36,7 @@ export const Modal: React.FC<ModalProps> = ( { isOpen, onClose, children, classN
     return ReactDOM.createPortal(
         <div className={ `overlay ${ className }` }>
             <div className={ styles.overlay__background } onClick={ onClose }>
-                <div className={ containerClass } onClick={ handleClick }>
+                <div className={ `${ containerClass } ${ containerClassName ?? '' }` } onClick={ handleClick }>
                     { children }
                 </div>
             </div>

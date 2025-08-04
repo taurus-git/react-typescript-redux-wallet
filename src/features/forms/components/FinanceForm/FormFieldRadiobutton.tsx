@@ -1,4 +1,5 @@
 import React from 'react';
+import styles from './FinanceForm.module.scss';
 import { TransactionType } from "../../../transactions/types";
 
 interface FormFieldRadiobuttonProps {
@@ -15,13 +16,15 @@ export const FormFieldRadiobutton: React.FC<FormFieldRadiobuttonProps> = (
         onChange,
         children
     } ) => {
+    const isChecked = transactionType === value;
+
     return (
-        <label>
+        <label className={ `${ styles.radioLabel } ${ isChecked ? styles.radioLabelChecked : '' }` }>
             <input
                 type="radio"
                 name="transactionType"
                 value={ value }
-                checked={ transactionType === value }
+                checked={ isChecked }
                 onChange={ () => onChange( value ) }
             />
             { children }

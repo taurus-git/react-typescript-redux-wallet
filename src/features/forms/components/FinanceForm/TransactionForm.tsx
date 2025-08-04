@@ -8,6 +8,7 @@ import { useFinanceForm } from "../../hooks/useFinanceForm";
 import { FormField } from "./FormField";
 import { TransactionType } from "../../../transactions/types";
 import { FormFieldSubmit } from "./FormFieldSubmit";
+import { FormFieldFieldset } from "./FormFieldFieldset";
 
 interface TransactionFormProps {
     transactionType: TransactionType;
@@ -29,8 +30,7 @@ export const TransactionForm: React.FC<TransactionFormProps> = (
 
     return (
         <form onSubmit={ handleSubmit } className={ styles.financeForm }>
-            <fieldset>
-                <legend>Новая запись</legend>
+            <FormFieldFieldset>
                 <FormField errors={ errors?.amount }>
                     <FormFieldAmount reference={ inputElement } change={ handleInputChange }/>
                 </FormField>
@@ -51,8 +51,8 @@ export const TransactionForm: React.FC<TransactionFormProps> = (
                 <FormField>
                     <FormFieldSubmit isSubmitting={ isSubmitting }/>
                 </FormField>
-            </fieldset>
-            <input type="hidden" name="transactionType" value={ transactionType }/>
+                <input type="hidden" name="transactionType" value={ transactionType }/>
+            </FormFieldFieldset>
         </form>
     );
 }

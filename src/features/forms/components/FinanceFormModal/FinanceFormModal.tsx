@@ -1,4 +1,5 @@
 import React from 'react';
+import styles from '../FinanceForm/FinanceForm.module.scss';
 import { X } from "lucide-react";
 import { FinanceForm } from "../FinanceForm";
 import { Modal } from "../../../modal/components/Modal";
@@ -15,9 +16,9 @@ export const FinanceFormModal = () => {
             <CtaButton onClick={ () => open( financeForm ) }/>
             <Modal isOpen={ isOpen( financeForm ) }
                    onClose={ () => close( financeForm ) }
-                   className={ 'financeForm' }
-                   variant={ 'fullScreen' }>
-                <div className="modal-menu__close d-flex align-center justify-end">
+                   className={ 'financeFormModal' }
+                   containerClassName={ styles.financeForm__container }>
+                <div className="modal-menu__close d-flex align-center justify-end mb-1">
                     <X className="close cursor-pointer" onClick={ () => close( financeForm ) }></X>
                 </div>
                 <FinanceForm onClose={ () => close( financeForm ) }/>

@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from 'react';
+import { FormFieldFieldset } from "./FormFieldFieldset";
 import { FormFieldAmount } from "./FormFieldAmount";
 import { FormField } from "./FormField";
 import { useFinanceForm } from "../../hooks/useFinanceForm";
 import { FormFieldSubmit } from "./FormFieldSubmit";
 import { FormFieldWallet } from "./FormFieldWallet";
+import { FormFieldDate } from "./FormFieldDate";
 import { WalletType } from "../../../wallets/types";
 import { FORM_FIELD_NAMES } from "../../types";
 import { TransactionType } from "../../../transactions/types";
-import { FormFieldDate } from "./FormFieldDate";
 
 interface TransferFormProps {
     onClose?: () => void;
@@ -37,8 +38,7 @@ export const TransferForm: React.FC<TransferFormProps> = ( { onClose } ) => {
 
     return (
         <form onSubmit={ handleSubmit }>
-            <fieldset>
-                <legend>Новый перевод</legend>
+            <FormFieldFieldset>
                 <FormField errors={ errors?.amount }>
                     <FormFieldAmount reference={ inputElement } change={ handleInputChange }/>
                 </FormField>
@@ -73,7 +73,7 @@ export const TransferForm: React.FC<TransferFormProps> = ( { onClose } ) => {
                 </FormField>
 
                 <input type="hidden" name="transactionType" value={ TransactionType.TRANSFER }/>
-            </fieldset>
+            </FormFieldFieldset>
         </form>
     )
 }

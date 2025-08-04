@@ -1,4 +1,5 @@
 import React from 'react';
+import styles from './FinanceForm.module.scss';
 import { TransactionType, TransactionTypeLabel } from "../../../transactions/types";
 import { FormFieldRadiobutton } from "./FormFieldRadiobutton";
 
@@ -14,7 +15,8 @@ export const FormFieldTransactionToggle: React.FC<FormFieldTransactionToggleProp
     } ) => {
 
     return (
-        <div role="radiogroup" aria-label="Тип операции" id="transaction-type">
+        <div role="radiogroup" aria-label="Тип операции" id="transaction-type"
+             className={ `${ styles.financeForm__radiogroup } d-flex justify-between mb-1 ` }>
             <FormFieldRadiobutton
                 transactionType={ transactionType }
                 value={ TransactionType.EXPENSE }

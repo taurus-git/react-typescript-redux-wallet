@@ -10,8 +10,6 @@
 }
 .overlay__container {
   position: fixed;
-  width: fit-content;
-  height: fit-content;
   z-index: 10;
   margin: auto;
   top: 0;
@@ -19,7 +17,6 @@
   bottom: 0;
   left: 0;
   cursor: auto;
-  padding: 2rem;
   background-color: var(--gray-0);
 }
 .overlay__container--fullHeight {
@@ -35,8 +32,6 @@
 }
 @media screen and (min-width: 768px) {
   .overlay__container--fullScreen {
-    height: fit-content;
-    width: fit-content;
     min-width: unset;
     max-width: 90vw;
     max-height: 90vh;

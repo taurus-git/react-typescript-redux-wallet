@@ -93,6 +93,22 @@ textarea {
     padding: 0 var(--spacing-6);
 }
 
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+.border-none {
+    border: none;
+}
+
 .d-flex {
     display: flex;
 }
@@ -109,7 +125,7 @@ textarea {
     flex-direction: row;
 }
 
-.flex-column {
+.flex-col {
     flex-direction: column;
 }
 
@@ -119,10 +135,6 @@ textarea {
 
 .flex-wrap {
     flex-wrap: wrap;
-}
-
-.flex-col {
-    flex-direction: column;
 }
 
 .justify-center {

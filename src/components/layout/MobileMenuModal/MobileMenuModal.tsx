@@ -1,4 +1,5 @@
 import React from 'react';
+import styles from './MobileMenuModal.module.scss';
 import { X } from "lucide-react";
 import { SidebarNavigation } from "../../../features/navigation/components/SidebarNavigation/SidebarNavigation";
 import { Modal } from "../../../features/modal/components/Modal";
@@ -17,6 +18,7 @@ export const MobileMenuModal = () => {
         <Modal isOpen={ isOpen( mobileMenu ) }
                onClose={ () => close( mobileMenu ) }
                className={ 'modal-menu' }
+               containerClassName={ styles.modalMenu__container }
                variant={ 'fullHeight' }>
             <div className="modal-menu__close d-flex align-center justify-end">
                 <X className="close cursor-pointer" onClick={ () => close( mobileMenu ) }></X>

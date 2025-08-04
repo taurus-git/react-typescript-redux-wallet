@@ -1,6 +1,68 @@
-.financeForm{
+.financeForm {
+
+  &__container {
+    padding: 1.5rem;
+    max-height: 65vh;
+    top: unset;
+
+    @media screen and (min-width: 768px) {
+      top: 0;
+      min-width: 25rem;
+      max-width: 40rem;
+    }
+  }
+
+  &__fieldset {
+    min-height: 25rem;
+  }
+
+  &__radiogroup {
+    background-color: var(--gray-2);
+    padding: .5rem;
+    border-radius: 15px;
+  }
+
+  .radioLabel {
+    flex: 1;
+    text-align: center;
+    border-radius: 15px;
+    padding: 0 1rem;
+    background-color: var(--gray-2);
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  .radioLabelChecked {
+    background-color: var(--primary-default);
+    color: var(--gray-0);
+  }
+
+  input[type="radio"] {
+    appearance: none;
+  }
+
   &__field {
-    background-color: blanchedalmond;
+    padding: .5rem 1rem;
+    border-radius: 25px;
+    background-color: var(--gray-2);
+    margin-bottom: 1rem;
+
+    input {
+      flex: 1;
+    }
+
+    input[type="number"] {
+      text-align: right;
+      background-color: inherit;
+    }
+
+    input:focus {
+      outline: none;
+      border: 2px solid var(--primary-default);
+      border-radius: inherit;
+    }
 
     &--categories {
       ul {
@@ -9,7 +71,6 @@
       }
     }
   }
-
 
 
 }
