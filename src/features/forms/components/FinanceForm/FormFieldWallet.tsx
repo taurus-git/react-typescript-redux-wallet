@@ -22,7 +22,10 @@ export const FormFieldWallet: React.FC<FormFieldWalletProps> = (
     return (
         <>
             <label htmlFor={ name }>{ label }</label>
-            <select id={ name } value={ value } name={ name }
+            <select id={ name }
+                    value={ value }
+                    name={ name }
+                    className="px-1 mx-1"
                     onChange={ ( e ) => {
                         change( e );
                         onChange?.( e.target.value as WalletType );

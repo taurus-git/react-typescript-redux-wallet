@@ -39,7 +39,7 @@ export const TransactionForm: React.FC<TransactionFormProps> = (
                     <FormFieldWallet change={ handleInputChange }/>
                 </FormField>
 
-                <FormField errors={ errors?.categoryId }>
+                <FormField errors={ errors?.categoryId } className="flex-col">
                     <FormFieldCategories transactionType={ transactionType }
                                          change={ handleInputChange }/>
                 </FormField>

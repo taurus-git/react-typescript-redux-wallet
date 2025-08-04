@@ -12,7 +12,7 @@ export const CategoryButton: React.FC<CategoriesDropdownProps> = ( { onToggle, s
 
 
     return (
-        <button type="button" onClick={ onToggle }>
+        <button type="button" className="flex-1" onClick={ onToggle }>
 
             { selectedCategory ?
                 <div>
@@ -22,7 +22,7 @@ export const CategoryButton: React.FC<CategoriesDropdownProps> = ( { onToggle, s
                     </span>
                 </div>
                 :
-                <span>Выберете категорию</span>
+                <>Выберете категорию</>
             }
 
         </button>

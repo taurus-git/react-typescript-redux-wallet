@@ -2,11 +2,11 @@
 
   &__container {
     padding: 1.5rem;
-    max-height: 65vh;
     top: unset;
 
     @media screen and (min-width: 768px) {
       top: 0;
+      max-height: fit-content;
       min-width: 25rem;
       max-width: 40rem;
     }
@@ -49,19 +49,48 @@
     background-color: var(--gray-2);
     margin-bottom: 1rem;
 
-    input {
-      flex: 1;
-    }
-
     input[type="number"] {
       text-align: right;
       background-color: inherit;
+      border: 2px solid var(--gray-2);
+
+      &:focus {
+        outline: none;
+        box-shadow: 0 0 0 2px var(--primary-default);
+        border-radius: inherit;
+      }
     }
 
-    input:focus {
-      outline: none;
-      border: 2px solid var(--primary-default);
-      border-radius: inherit;
+    input[type="search"] {
+      background-color: inherit;
+      border: 2px solid var(--gray-2);
+
+      &:focus {
+        outline: none;
+        box-shadow: 0 0 0 2px var(--primary-default);
+        border-radius: 15px;
+      }
+    }
+
+    select {
+      text-align: center;
+      border: none;
+      background-color: var(--gray-0);
+      border-radius: 15px;
+      box-shadow: 0 0 0 1px var(--gray-6);
+
+      &:focus-visible {
+        outline: none;
+        box-shadow: 0 0 0 2px var(--primary-default);
+      }
+    }
+
+    button[type="button"] {
+      cursor: pointer;
+      text-align: center;
+      border: none;
+      background-color: inherit;
+      border-radius: 15px;
     }
 
     &--categories {
