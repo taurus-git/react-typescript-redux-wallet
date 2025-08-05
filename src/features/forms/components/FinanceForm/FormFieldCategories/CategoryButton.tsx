@@ -1,6 +1,7 @@
 import React from 'react';
-import { NormalizedCategory } from "../../../../categories/utils/normalizeCategories";
+import styles from "../FinanceForm.module.scss";
 import { X } from "lucide-react";
+import { NormalizedCategory } from "../../../../categories/utils/normalizeCategories";
 
 interface CategoriesDropdownProps {
     onToggle: () => void,
@@ -12,15 +13,15 @@ export const CategoryButton: React.FC<CategoriesDropdownProps> = ( { onToggle, s
 
 
     return (
-        <button type="button" className="flex-1" onClick={ onToggle }>
+        <button type="button" className={`${styles.categoryButton} d-flex justify-between align-center flex-1`}onClick={ onToggle }>
 
             { selectedCategory ?
-                <div>
+                <>
                     <span style={ { color: selectedCategory.iconColor } }>{ selectedCategory.name }</span>
                     <span onClick={ handleClear } title="Очистить">
                         <X/>
                     </span>
-                </div>
+                </>
                 :
                 <>Выберете категорию</>
             }
