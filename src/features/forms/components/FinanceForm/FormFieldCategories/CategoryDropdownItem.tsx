@@ -22,10 +22,17 @@ export const CategoryDropdownItem: React.FC<CategoryDropdownItemProps> = ( { cat
     const Icon = (Icons[ capitalizedString( category.iconName ) as keyof typeof Icons ] || Icons.HelpCircle) as LucideIcon;
 
     return (
-        <li key={ category.type + index } style={ { color: category.iconColor || undefined } }>
-            <button onClick={ () => handleSelect( category ) }>
+        <li
+            key={ category.type + index }
+            style={ { color: category.iconColor || undefined } }
+            className="w-1-4"
+        >
+            <button
+                onClick={ () => handleSelect( category ) }
+                className="d-flex flex-col align-center"
+            >
                 <Icon size={ 20 } color={ category.iconColor || "#000" }/>
-                { category.name }
+                <span>{ category.name }</span>
             </button>
         </li>
     );

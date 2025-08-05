@@ -236,6 +236,13 @@ textarea {
     border: 0;
 }
 
+.hidden-input {
+    appearance: none;
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+}
+
 .border-none {
     border: none;
 }

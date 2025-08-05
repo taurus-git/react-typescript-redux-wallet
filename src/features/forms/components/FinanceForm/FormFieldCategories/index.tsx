@@ -20,6 +20,7 @@ export const FormFieldCategories: React.FC<FormFieldCategoriesProps> = ( { trans
     const [ selectedCategory, setSelectedCategory ] = useState<NormalizedCategory>();
     const [ searchTerm, setSearchTerm ] = useState( '' );
 
+    //Todo: add the code below to custom hook
     const getChangeEvent = ( value: string ): React.ChangeEvent<HTMLInputElement> => {
         return {
             target: {

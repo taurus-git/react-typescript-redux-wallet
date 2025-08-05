@@ -25,6 +25,7 @@ export const FormFieldRadiobutton: React.FC<FormFieldRadiobuttonProps> = (
                 name="transactionType"
                 value={ value }
                 checked={ isChecked }
+                className="hidden-input"
                 onChange={ () => onChange( value ) }
             />
             { children }
