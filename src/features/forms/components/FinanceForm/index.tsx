@@ -3,7 +3,6 @@ import styles from './FinanceForm.module.scss';
 import { TransactionForm } from "./TransactionForm";
 import { useFinanceForm } from "../../hooks/useFinanceForm";
 import { FormFieldTransactionToggle } from "./FormFieldTransactionToggle";
-import { FormField } from "./FormField";
 import { TransactionType } from "../../../transactions/types";
 import { TransferForm } from "./TransferForm";
 
@@ -17,8 +16,9 @@ export const FinanceForm: React.FC<FinanceFormProps> = ( { onClose } ) => {
     return (
         <div className={ `${ styles.financeForm } d-flex flex-col` }>
 
-            <FormFieldTransactionToggle transactionType={ transactionType }
-                                        setTransactionType={ setTransactionType }/>
+            <FormFieldTransactionToggle
+                transactionType={ transactionType }
+                setTransactionType={ setTransactionType }/>
 
             { transactionType === TransactionType.TRANSFER ?
                 <TransferForm onClose={ onClose }/> :

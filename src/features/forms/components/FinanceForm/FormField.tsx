@@ -10,8 +10,8 @@ interface FormFieldProps {
 
 export const FormField: React.FC<FormFieldProps> = ( { className, children, errors } ) => {
     return (
-        <div className={ `${ styles[ 'financeForm__field' ] } ${ className } d-flex justify-between` }>
-            { children }
+        <div className="flex-col">
+            <div className={ `${ styles[ 'financeForm__field' ] } ${ className }` }>{ children }</div>
             { errors && <Message message={ errors }/> }
         </div>
     );

@@ -13,7 +13,7 @@ export const CategoryButton: React.FC<CategoriesDropdownProps> = ( { onToggle, s
 
 
     return (
-        <button type="button" className={`${styles.categoryButton} d-flex justify-between align-center flex-1`}onClick={ onToggle }>
+        <button type="button" className={`${styles.categoryButton} d-flex justify-between align-center flex-1 mr-1`}onClick={ onToggle }>
 
             { selectedCategory ?
                 <>

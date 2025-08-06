@@ -9,6 +9,7 @@ export const FormFieldSubmit: React.FC<FormFieldSubmitProps> = ( { isSubmitting 
         <input
             type="submit"
             disabled={ isSubmitting }
+            className="border-none py-04 px-1"
             value={ isSubmitting ? "Сохранение..." : "Сохранить" }/>
     );
 }

@@ -13,7 +13,7 @@
   }
 }
 .financeForm__fieldset {
-  min-height: 25rem;
+  min-height: 22rem;
 }
 .financeForm__radiogroup {
   background-color: var(--gray-2);
@@ -35,10 +35,27 @@
   color: var(--gray-0);
 }
 .financeForm__field {
-  padding: 0.5rem 1rem;
   border-radius: 25px;
   background-color: var(--gray-2);
   margin-bottom: 1rem;
+}
+.financeForm__field select {
+  text-align: left;
+  border: none;
+  background-color: var(--gray-0);
+  border-radius: 15px;
+  box-shadow: 0 0 0 1px var(--gray-6);
+}
+.financeForm__field select:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--primary-default);
+}
+.financeForm__field button[type=button] {
+  cursor: pointer;
+  text-align: center;
+  border: none;
+  background-color: inherit;
+  border-radius: 15px;
 }
 .financeForm__field input[type=number] {
   text-align: right;
@@ -59,26 +76,23 @@
   box-shadow: 0 0 0 2px var(--primary-default);
   border-radius: 15px;
 }
-.financeForm__field select {
-  text-align: left;
+.financeForm__field input[type=date] {
+  background-color: inherit;
   border: none;
-  background-color: var(--gray-0);
-  border-radius: 15px;
-  box-shadow: 0 0 0 1px var(--gray-6);
 }
-.financeForm__field select:focus-visible {
+.financeForm__field input[type=date]:focus-visible {
   outline: none;
   box-shadow: 0 0 0 2px var(--primary-default);
 }
-.financeForm__field button[type=button] {
-  cursor: pointer;
-  text-align: center;
+.financeForm__field input[type=submit] {
+  flex: 1;
   border: none;
-  background-color: inherit;
+  background-color: var(--primary-default);
+  color: var(--gray-0);
   border-radius: 15px;
 }
-.financeForm__field .categoryButton svg {
-  vertical-align: middle;
+.financeForm__field input[type=submit] :disabled {
+  background-color: var(--gray-2);
 }
 .financeForm__field .categoriesList ul {
   gap: 1.6rem;
@@ -90,11 +104,16 @@
   white-space: normal;
 }
 .financeForm__field .categoriesList button {
-  width: 100%;
   height: 100%;
+  padding: 0.5rem;
   border: none;
   color: inherit;
   background-color: var(--grey-2);
+  border-radius: 1.5rem;
+}
+.financeForm__field .categoriesList button:hover {
+  cursor: pointer;
+  background-color: var(--card-shadow);
 }
 .financeForm__field .categoriesList svg {
   padding: 0.5rem;
@@ -107,6 +126,12 @@
 .financeForm__field .categoriesList span {
   color: var(--gray-9);
   font-size: 1rem;
+}
+.financeForm__field .categoryButton {
+  align-self: stretch;
+}
+.financeForm__field .categoryButton svg {
+  vertical-align: middle;
 }
 
 /*# sourceMappingURL=FinanceForm.module.css.map */

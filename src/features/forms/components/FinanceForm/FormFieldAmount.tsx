@@ -16,7 +16,7 @@ export const FormFieldAmount: React.FC<FormFieldAmountProps> = ( { reference, ch
                 min="1"
                 onChange={ change }
                 ref={ reference }
-                className="px-1 mx-1 flex-1"
+                className="pl-1 ml-1 flex-1"
             />
         </>
     );

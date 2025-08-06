@@ -39,11 +39,11 @@ export const TransferForm: React.FC<TransferFormProps> = ( { onClose } ) => {
     return (
         <form onSubmit={ handleSubmit }>
             <FormFieldFieldset>
-                <FormField errors={ errors?.amount }>
+                <FormField errors={ errors?.amount } className="d-flex justify-between align-center py-04 px-1">
                     <FormFieldAmount reference={ inputElement } change={ handleInputChange }/>
                 </FormField>
 
-                <FormField>
+                <FormField className="d-flex justify-between align-center py-04 px-1">
                     <FormFieldWallet
                         change={ handleInputChange }
                         label="Со счета"
@@ -53,7 +53,7 @@ export const TransferForm: React.FC<TransferFormProps> = ( { onClose } ) => {
                     />
                 </FormField>
 
-                <FormField>
+                <FormField className="d-flex justify-between align-center py-04 px-1">
                     <FormFieldWallet
                         change={ handleInputChange }
                         label="На счет"
@@ -64,11 +64,11 @@ export const TransferForm: React.FC<TransferFormProps> = ( { onClose } ) => {
                     />
                 </FormField>
 
-                <FormField errors={ errors?.date }>
+                <FormField errors={ errors?.date } className="d-flex justify-center align-center py-04 px-1">
                     <FormFieldDate change={ handleInputChange }/>
                 </FormField>
 
-                <FormField>
+                <FormField className="d-flex align-center">
                     <FormFieldSubmit isSubmitting={ isSubmitting }/>
                 </FormField>
 

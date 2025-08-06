@@ -145,6 +145,11 @@ textarea {
     width: 100%;
 }
 
+.py-04 {
+    padding-top: var(--spacing-1);
+    padding-bottom: var(--spacing-1);
+}
+
 .py-08 {
     padding-top: var(--spacing-2);
     padding-bottom: var(--spacing-2);
@@ -246,6 +251,23 @@ textarea {
 .border-none {
     border: none;
 }
+
+.message-error {
+    color: var(--text-error);
+}
+
+.message-warning {
+    color: var(--text-warning);
+}
+
+.message-info {
+    color: var(--text-info);
+}
+
+.message-success {
+    color: var(--text-success);
+}
+
 
 @media (min-width: 768px) {
 
