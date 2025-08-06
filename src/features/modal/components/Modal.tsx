@@ -35,7 +35,7 @@ export const Modal: React.FC<ModalProps> = (
 
     return ReactDOM.createPortal(
         <div className={ `overlay ${ className }` }>
-            <div className={ styles.overlay__background } onClick={ onClose }>
+            <div className={ `${ styles.overlay__background }` } onClick={ onClose }>
                 <div className={ `${ containerClass } ${ containerClassName ?? '' }` } onClick={ handleClick }>
                     { children }
                 </div>

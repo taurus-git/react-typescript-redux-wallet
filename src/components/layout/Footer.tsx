@@ -1,4 +1,5 @@
 import React from 'react';
+import styles from './Footer.module.scss';
 import { useSelector } from 'react-redux';
 import { RootState } from "../../store";
 import { useMediaQuery } from "../../features/navigation/hooks/useMediaQuery";
@@ -14,7 +15,7 @@ export const Footer = () => {
     const finances = filterRoutes( privateRoutes, RouteItemField.MenuCategory, MenuCategory.Finances );
 
     return (
-        <footer>
+        <footer className={ `backdrop-blur d-flex ${ styles.footer }` }>
             <>
                 { isAuthenticated && !isDesktop ? (
                     <SidebarNavigation

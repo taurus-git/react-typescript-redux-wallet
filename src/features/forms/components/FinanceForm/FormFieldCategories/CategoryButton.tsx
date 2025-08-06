@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from "../FinanceForm.module.scss";
-import { X } from "lucide-react";
+import { Delete } from "lucide-react";
 import { NormalizedCategory } from "../../../../categories/utils/normalizeCategories";
 
 interface CategoriesDropdownProps {
@@ -19,7 +19,7 @@ export const CategoryButton: React.FC<CategoriesDropdownProps> = ( { onToggle, s
                 <>
                     <span style={ { color: selectedCategory.iconColor } }>{ selectedCategory.name }</span>
                     <span onClick={ handleClear } title="Очистить">
-                        <X/>
+                        <Delete/>
                     </span>
                 </>
                 :

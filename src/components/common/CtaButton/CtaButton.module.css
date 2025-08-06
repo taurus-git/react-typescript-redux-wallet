@@ -12,14 +12,16 @@
 .ctaButton:hover {
   border-color: var(--primary-default);
 }
-.ctaButton:hover .ctaButton__icon {
-  color: var(--primary-default);
+.ctaButton:hover svg {
+  stroke: var(--primary-default);
 }
 .ctaButton__icon {
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(grey-9);
+}
+.ctaButton__icon svg {
+  color: var(--gray-9);
 }
 
 /*# sourceMappingURL=CtaButton.module.css.map */

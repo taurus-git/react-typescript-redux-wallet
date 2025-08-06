@@ -10,17 +10,20 @@
   background-color: var(--gray-0);
 
   &:hover {
-    border-color: var(--primary-default);
-  }
+      border-color: var(--primary-default);
 
-  &:hover &__icon{
-      color: var(--primary-default);
+    svg {
+      stroke: var(--primary-default);
+    }
   }
 
   &__icon {
     display: flex;
     align-items: center;
     justify-content: center;
-    color: var(grey-9);
+
+    & svg {
+      color: var(--gray-9);
+    }
   }
 }

@@ -1,0 +1,11 @@
+.footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  z-index: 5;
+}
+.footer nav {
+  width: 100%;
+}
+
+/*# sourceMappingURL=Footer.module.css.map */

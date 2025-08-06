@@ -8,28 +8,36 @@ import { Sidebar } from "./Sidebar/Sidebar";
 import { MobileHeader } from "./MobileHeader/MobileHeader";
 import { MobileMenuModal } from "./MobileMenuModal/MobileMenuModal";
 import { FinanceFormModal } from "../../features/forms/components/FinanceFormModal/FinanceFormModal";
+import { Footer } from "./Footer";
 
 export const DashboardLayout = () => {
     const isDesktop = useMediaQuery( WidthMediaQueries.md );
 
     return (
-        <div className="main d-flex flex-1">
+        <>
+            <Header>
+                { !isDesktop && <MobileHeader/> }
+            </Header>
+            <main className="d-flex flex-1">
+                <div className="main d-flex flex-1">
 
-            { isDesktop && <Sidebar/> }
 
-            <div className="d-flex flex-col w-full">
-                <Header>
-                    { !isDesktop && <MobileHeader/> }
-                </Header>
+                    { isDesktop && <Sidebar/> }
 
-                <Container>
-                    <Outlet/>
-                </Container>
-            </div>
+                    <div className="d-flex flex-col w-full">
+                        <Container>
+                            <Outlet/>
+                        </Container>
+                    </div>
 
-            { !isDesktop && <MobileMenuModal/> }
+                    { !isDesktop && <MobileMenuModal/> }
 
-            <FinanceFormModal/>
-        </div>
+                    <FinanceFormModal/>
+
+
+                </div>
+            </main>
+            <Footer/>
+        </>
     );
 }
