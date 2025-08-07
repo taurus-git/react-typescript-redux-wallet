@@ -89,6 +89,13 @@ textarea {
     min-height: 100vh;
 }
 
+.container__wrapper {
+    max-height: 77vh;
+    height: 77vh;
+    height: 77dvh;
+    overflow-y: auto;
+}
+
 .container {
     padding: 0 var(--spacing-6);
 }

@@ -15,16 +15,14 @@ export const DashboardLayout = () => {
 
     return (
         <>
-            <Header>
-                { !isDesktop && <MobileHeader/> }
-            </Header>
+
+            { !isDesktop && <MobileHeader/> }
+
             <main className="d-flex flex-1">
                 <div className="main d-flex flex-1">
-
-
                     { isDesktop && <Sidebar/> }
 
-                    <div className="d-flex flex-col w-full">
+                    <div className="d-flex flex-col w-full container__wrapper">
                         <Container>
                             <Outlet/>
                         </Container>
@@ -34,10 +32,10 @@ export const DashboardLayout = () => {
 
                     <FinanceFormModal/>
 
-
                 </div>
             </main>
-            <Footer/>
+
+            { !isDesktop && <Footer/> }
         </>
     );
 }

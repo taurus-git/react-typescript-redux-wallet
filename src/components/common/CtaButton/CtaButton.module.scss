@@ -9,6 +9,10 @@
   cursor: pointer;
   background-color: var(--gray-0);
 
+  @media screen and (min-width: 768px) {
+    bottom: .8rem;
+  }
+
   &:hover {
       border-color: var(--primary-default);
 
