@@ -22,11 +22,11 @@ export const DashboardLayout = () => {
                 <div className="main d-flex flex-1">
                     { isDesktop && <Sidebar/> }
 
-                    <div className="d-flex flex-col w-full container__wrapper">
+                    <section className="d-flex flex-col w-full py-2 px-2 container__wrapper">
                         <Container>
                             <Outlet/>
                         </Container>
-                    </div>
+                    </section>
 
                     { !isDesktop && <MobileMenuModal/> }
 

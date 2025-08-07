@@ -3,6 +3,7 @@ import { Menu } from "lucide-react";
 import { LinkToHome } from "../../../features/navigation/components/LinkToHome/LinkToHome";
 import { useModal } from "../../../features/modal/hooks/useModal";
 import { MODAL_NAME } from "../../../features/modal/types";
+import { Header } from "../Header";
 
 export const MobileHeader = () => {
     const { open } = useModal();
@@ -10,13 +11,14 @@ export const MobileHeader = () => {
 
     return (
         <>
-            <button
-                onClick={ () => open( mobileMenu ) }
-                className={ "menuButton custom-button d-flex align-items-center justify-center mr-1" }>
-                <Menu/>
-            </button>
-
-            <LinkToHome className="custom-button d-flex align-items-center justify-center mr-1"/>
+            <Header>
+                <button
+                    onClick={ () => open( mobileMenu ) }
+                    className={ "menuButton custom-button d-flex align-items-center justify-center mr-1" }>
+                    <Menu/>
+                </button>
+                <LinkToHome className="custom-button d-flex align-items-center justify-center mr-1"/>
+            </Header>
         </>
     );
 }

@@ -90,10 +90,37 @@ textarea {
 }
 
 .container__wrapper {
-    max-height: 77vh;
-    height: 77vh;
-    height: 77dvh;
+    height: 82vh;
+    height: 82dvh;
     overflow-y: auto;
+}
+
+@media (min-width: 481px) and (orientation: landscape)  {
+    .container__wrapper {
+        height: 69vh;
+        height: 69dvh;
+    }
+}
+
+@media (min-width: 576px) {
+    .container__wrapper {
+        height: 100vh;
+        height: 100dvh;
+    }
+}
+
+@media (min-width: 576px) and (orientation: landscape)  {
+    .container__wrapper {
+        height: 69vh;
+        height: 69dvh;
+    }
+}
+
+@media (min-width: 768px) and (orientation: landscape)  {
+    .container__wrapper {
+        height: 100vh;
+        height: 100dvh;
+    }
 }
 
 .container {
@@ -282,9 +309,3 @@ textarea {
 .message-success {
     color: var(--text-success);
 }
-
-
-@media (min-width: 768px) {
-
-}
-
