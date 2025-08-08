@@ -10,7 +10,7 @@ interface LinkToHomeProps {
     className?: string;
 }
 
-export const LinkToHome: React.FC<LinkToHomeProps> = ( { className } ) => {
+export const LinkToHome: React.FC<LinkToHomeProps> = ( { className = "" } ) => {
     const isAuthenticated = useSelector( ( state: RootState ) => state.auth.isAuthenticated );
     const homeLink = isAuthenticated ? ROUTES_MAP.dashboard.path : "/";
     return (

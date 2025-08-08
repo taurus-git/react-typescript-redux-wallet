@@ -22,7 +22,7 @@ export const DashboardLayout = () => {
                 <div className="main d-flex flex-1">
                     { isDesktop && <Sidebar/> }
 
-                    <section className="d-flex flex-col w-full py-2 px-2 container__wrapper">
+                    <section className="d-flex flex-col w-full container__wrapper">
                         <Container>
                             <Outlet/>
                         </Container>

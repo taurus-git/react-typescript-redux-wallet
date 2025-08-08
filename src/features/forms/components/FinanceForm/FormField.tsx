@@ -8,7 +8,7 @@ interface FormFieldProps {
     errors?: string;
 }
 
-export const FormField: React.FC<FormFieldProps> = ( { className, children, errors } ) => {
+export const FormField: React.FC<FormFieldProps> = ( { className = "", children, errors } ) => {
     return (
         <div className="flex-col">
             <div className={ `${ styles[ 'financeForm__field' ] } ${ className }` }>{ children }</div>
