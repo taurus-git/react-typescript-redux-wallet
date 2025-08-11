@@ -12,12 +12,17 @@ export const MobileHeader = () => {
     return (
         <>
             <Header>
-                <button
-                    onClick={ () => open( mobileMenu ) }
-                    className={ "menuButton custom-button d-flex align-items-center justify-center mr-1" }>
-                    <Menu/>
-                </button>
-                <LinkToHome className="custom-button d-flex align-items-center justify-center mr-1"/>
+                <div className="flex-1">
+                    <button
+                        onClick={ () => open( mobileMenu ) }
+                        className={ "menuButton custom-button d-flex align-items-center justify-center mr-1" }>
+                        <Menu/>
+                    </button>
+                </div>
+                <div className="flex-1">
+                    <LinkToHome className="custom-button d-flex align-items-center justify-center mr-1"/>
+                </div>
+                <div className="flex-1"></div>
             </Header>
         </>
     );
