@@ -1,5 +1,6 @@
 import React from 'react';
 import { PageHeader } from "../components/common/PageHeader";
+import { WalletsSummary } from "../features/dashboard/components/WalletsSummary";
 
 const Accounts = () => {
 
@@ -7,7 +8,7 @@ const Accounts = () => {
         <>
             <PageHeader/>
             <div>
-                <p>Тут будет список Банковских счетов, Карт, Наличных</p>
+                <WalletsSummary/>
             </div>
         </>
     )
