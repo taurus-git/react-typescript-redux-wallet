@@ -7,7 +7,7 @@ interface CategoriesSearchProps {
 
 export const CategoriesSearch: React.FC<CategoriesSearchProps> = ( { searchTerm, setSearchTerm } ) => {
     return (
-        <div className="d-flex my-1 mb-1">
+        <div className="d-flex my-1 mb-1 w-100">
             <input
                 type="search"
                 placeholder="Поиск категории..."

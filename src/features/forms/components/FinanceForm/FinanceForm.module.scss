@@ -110,6 +110,10 @@
       :disabled {
         background-color: var(--gray-2);
       }
+
+      &:hover {
+        cursor: pointer;
+      }
     }
 
     .categoriesList {

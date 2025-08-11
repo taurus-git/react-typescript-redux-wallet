@@ -94,6 +94,9 @@
 .financeForm__field input[type=submit] :disabled {
   background-color: var(--gray-2);
 }
+.financeForm__field input[type=submit]:hover {
+  cursor: pointer;
+}
 .financeForm__field .categoriesList ul {
   gap: 1.6rem;
 }
