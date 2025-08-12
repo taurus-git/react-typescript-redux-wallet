@@ -1,4 +1,5 @@
 import React from 'react';
+import styles from './OperationList.module.scss';
 import { AllOperations } from "../types";
 import { isTransaction } from "../../transactions/utils/transactionUtils";
 import { isTransfer } from "../../transfer/utils/transferUtils";
@@ -14,9 +15,9 @@ export const OperationList: React.FC<OperationItemProps> = ( { operations } ) =>
     const { removeTransaction, removeTransfer, } = useOperationRemover();
 
     return (
-        <ul>
+        <ul className="list-none">
             { operations.map( item => (
-                <li key={ item.id }>
+                <li key={ item.id } className={ `d-flex flex-col mb-1 px-1 py-1 ${ styles.OperationList }` }>
                     { isTransaction( item ) &&
                         <TransactionItem item={ item } onRemove={ removeTransaction }/>
                     }

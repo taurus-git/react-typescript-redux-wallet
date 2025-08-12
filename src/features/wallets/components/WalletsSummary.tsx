@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import { RootState } from "../../../store";
 import styles from "./Wallet.module.scss";
 import { CreditCard, Banknote } from "lucide-react";
-import { WalletType } from "../../wallets/types";
+import { WalletType } from "../types";
 import { WalletCard } from "./WalletCard";
 
 export const WalletsSummary = () => {
@@ -12,8 +12,8 @@ export const WalletsSummary = () => {
 
     return (
         <section className={ `${ styles.walletsSummary } d-flex flex-wrap my-1` }>
-            <WalletCard label={ WalletType.BANK_CARD } amount={ bankCard } icon={ <CreditCard/> }/>
-            <WalletCard label={ WalletType.CASH } amount={ cash } icon={ <Banknote/> }/>
+            <WalletCard walletType={ WalletType.BANK_CARD } amount={ bankCard } icon={ <CreditCard/> }/>
+            <WalletCard walletType={ WalletType.CASH } amount={ cash } icon={ <Banknote/> }/>
         </section>
     );
 }

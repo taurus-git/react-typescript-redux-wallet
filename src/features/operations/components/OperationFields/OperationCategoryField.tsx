@@ -1,4 +1,5 @@
 import React from 'react';
+import styles from '../OperationList.module.scss';
 
 interface OperationCategoryFieldProps {
     categoryId: string;
@@ -6,7 +7,7 @@ interface OperationCategoryFieldProps {
 
 export const OperationCategoryField: React.FC<OperationCategoryFieldProps> = ( { categoryId } ) => {
     return (
-        <p>Категория: { categoryId }</p>
+        <span className={ `${ styles.OperationList__CategoryField }` }>{ categoryId }</span>
     );
 }
 

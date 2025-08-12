@@ -1,4 +1,5 @@
 import React from 'react';
+import styles from '../OperationList.module.scss';
 
 interface OperationDateFieldProps {
     date: string;
@@ -6,7 +7,7 @@ interface OperationDateFieldProps {
 
 export const OperationDateField: React.FC<OperationDateFieldProps> = ( { date } ) => {
     return (
-        <p>Дата: { date }</p>
+        <span className={ `${styles.OperationList__DateField}` }>{ date }</span>
     );
 }
 

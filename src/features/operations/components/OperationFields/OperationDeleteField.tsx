@@ -1,5 +1,7 @@
 import React from 'react';
+import styles from '../OperationList.module.scss';
 import { AllOperations } from "../../types";
+import { Trash2 } from 'lucide-react';
 import { Modal } from "../../../modal/components/Modal";
 import { useModal } from "../../../modal/hooks/useModal";
 import { MODAL_NAME } from "../../../modal/types";
@@ -24,10 +26,11 @@ export const OperationDeleteField =
 
         return (
             <>
-                <button
+                <Trash2
+                    className={ `${styles.OperationList__DeleteField}` }
                     onClick={ () => open( modalId ) }>
                     Удалить
-                </button>
+                </Trash2>
 
                 <Modal isOpen={ isOpen( modalId ) }
                        onClose={ () => close( modalId ) }>

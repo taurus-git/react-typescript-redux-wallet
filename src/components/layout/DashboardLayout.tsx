@@ -14,7 +14,6 @@ export const DashboardLayout = () => {
 
     return (
         <>
-
             { !isDesktop && <MobileHeader/> }
 
             <main className="d-flex flex-1">

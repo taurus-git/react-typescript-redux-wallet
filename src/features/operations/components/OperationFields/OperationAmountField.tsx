@@ -1,4 +1,5 @@
 import React from 'react';
+import styles from '../OperationList.module.scss';
 
 interface OperationAmountFieldProps {
     amount: number;
@@ -6,7 +7,7 @@ interface OperationAmountFieldProps {
 
 export const OperationAmountField: React.FC<OperationAmountFieldProps> = ( { amount } ) => {
     return (
-        <p>Сумма: { amount }</p>
+        <b className={ `${ styles.OperationList__AmountField }` }>{ amount } ₽</b>
     );
 }
 

@@ -1,13 +1,17 @@
 import React from 'react';
-import { WalletType, WalletTypeLabel } from "../../../wallets/types";
+import { WalletType } from "../../../wallets/types";
+import { WalletIcon } from "../../../wallets/components/WalletIcon";
 
 interface OperationWalletFieldProps {
     walletType: WalletType;
 }
 
 export const OperationWalletField: React.FC<OperationWalletFieldProps> = ( { walletType } ) => {
+
     return (
-        <p>Счет: { WalletTypeLabel[ walletType ] }</p>
+        <span>
+            <WalletIcon walletType ={ walletType }/>
+        </span>
     );
 }
 

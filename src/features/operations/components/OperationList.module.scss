@@ -1,0 +1,100 @@
+.OperationList {
+  width: 100%;
+  border: 1px solid var(--gray-2);
+  border-radius: 1.5rem;
+
+  @media screen and (min-width: 992px) {
+    max-width: calc(100vw - 40rem);
+  }
+
+  &__item {
+
+  }
+
+  &__primary {
+    gap: 1rem;
+  }
+
+  &__wallet,
+  &__actions {
+    width: 20%;
+    min-width: 0;
+  }
+
+  &__wallet {
+    flex-direction: column;
+  }
+
+  &__transaction {
+    width: calc(60% - 1rem);
+    flex-direction: column;
+    align-items: center;
+    min-width: 0;
+
+    @media screen and (min-width: 992px) {
+      flex-direction: row;
+    }
+  }
+
+  &__TypeField {
+    min-width: 8rem;
+    justify-content: center;
+    border-radius: 15px;
+    text-align: center;
+  }
+
+  &__TypeField[data-operation-type="expenses"] {
+    border: 1px solid var(--text-error);
+    color: var(--text-error);
+  }
+
+  &__TypeField[data-operation-type="incomes"] {
+    border: 1px solid var(--text-success);
+    color: var(--text-success);
+  }
+
+  &__TypeField[data-operation-type="transfers"] {
+    border: 1px solid var(--text-info);
+    color: var(--text-info);
+  }
+
+  &__secondary {
+    flex-direction: column;
+  }
+
+  &__date {
+    gap: 1rem;
+
+    & span {
+      width: calc(50% - (1rem / 2));
+    }
+  }
+
+  &__CategoryField {
+    flex: 1;
+  }
+
+  &__AmountField {
+    flex: 1;
+    text-align: center;
+  }
+
+  &__DateField {
+    text-align: right;
+  }
+
+  &__WalletField {
+    flex: 1;
+  }
+
+  &__actions {
+    & svg {
+      color: var(--gray-6);
+    }
+
+    :hover {
+      cursor: pointer;
+      color: var(--text-error);
+    }
+  }
+}
