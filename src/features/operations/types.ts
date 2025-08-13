@@ -4,8 +4,9 @@ import { Transfer } from "../transfer/types";
 export interface MoneyOperation {
     id: string;
     amount: number;
-    date: string;
+    date: number;
     transactionType: TransactionType;
 }
 
 export type AllOperations = Transaction | Transfer;
+

@@ -31,3 +31,10 @@ export const DEFAULT_FORM_VALUES = {
     transactionType: TransactionType.EXPENSE
 } as const;
 
+export type DateParts = {
+    year: string,
+    month: string,
+    day: string,
+}
+
+export type DateFormat = 'iso' | 'dmy';

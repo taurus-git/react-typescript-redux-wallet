@@ -1,11 +1,11 @@
-import { DEFAULT_FORM_VALUES, FORM_FIELD_NAMES } from "../types";
+import { DEFAULT_FORM_VALUES, FORM_FIELD_NAMES, DateParts, DateFormat } from "../types";
 import { WalletType } from "../../wallets/types";
 import { Expense, Income, TransactionType } from "../../transactions/types";
 import { Transfer } from "../../transfer/types";
 
 export const getBaseFormFields = ( formData: FormData ) => ({
         amount: Number( formData.get( FORM_FIELD_NAMES.amount ) ) || DEFAULT_FORM_VALUES.amount,
-        date: (formData.get( FORM_FIELD_NAMES.date )?.toString() ?? DEFAULT_FORM_VALUES.date),
+        date: Number( formData.get( FORM_FIELD_NAMES.date ) ?? DEFAULT_FORM_VALUES.date ),
         transactionType: formData.get( FORM_FIELD_NAMES.transactionType ) as TransactionType || DEFAULT_FORM_VALUES.transactionType,
     }
 );
@@ -34,12 +34,20 @@ export const getTransferFormFields = ( formData: FormData ): Omit<Transfer, "id"
     transactionType: TransactionType.TRANSFER,
 });
 
-export const formatDate = ( date: Date ) => {
-    const year = date.getFullYear();
-    const month = String( date.getMonth() + 1 ).padStart( 2, '0' );
-    const day = String( date.getDate() ).padStart( 2, '0' );
-    const hours = String( date.getHours() ).padStart( 2, '0' );
-    const minutes = String( date.getMinutes() ).padStart( 2, '0' );
+export const getDateParts = ( date: Date ): DateParts => ({
+    year: String( date.getFullYear() ),
+    month: String( date.getMonth() + 1 ).padStart( 2, '0' ),
+    day: String( date.getDate() ).padStart( 2, '0' ),
+})
 
-    return `${ year }-${ month }-${ day }T${ hours }:${ minutes }`;
+export const getDateFormat = ( date: Date, dateFormat: DateFormat ) => {
+    const { year, month, day } = getDateParts( date );
+
+    switch ( dateFormat ) {
+        case 'iso' :
+            return `${ year }-${ month }-${ day }`;
+        case 'dmy' :
+            return `${ day }-${ month }-${ year }`;
+    }
+
 }
