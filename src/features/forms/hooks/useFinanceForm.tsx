@@ -57,7 +57,6 @@ export const useFinanceForm = ( onClose?: () => void ) => {
 
         switch ( transactionType ) {
             case TransactionType.EXPENSE :
-                console.log( getExpenseFormFields( formData ) );
                 return getExpenseFormFields( formData );
             case TransactionType.INCOME :
                 return getIncomeFormFields( formData );

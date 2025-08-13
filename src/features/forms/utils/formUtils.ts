@@ -34,3 +34,6 @@ export const getTransferFormFields = ( formData: FormData ): Omit<Transfer, "id"
     transactionType: TransactionType.TRANSFER,
 });
 
+export const formatDate = ( date: Date ) => {
+    return date.toISOString().slice( 0, 16 );
+}
