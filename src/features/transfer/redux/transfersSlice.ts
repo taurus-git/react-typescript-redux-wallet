@@ -18,6 +18,7 @@ const transfersSlice = createSlice( {
         createTransfer: ( state, action: PayloadAction<Omit<Transfer, 'id'>> ) => {
             const newTransfer = { id: uuidv4(), ...action.payload };
             state.items.push( newTransfer );
+            state.items.sort((a, b) => Number( b.date ) - Number( a.date ) );
         },
         deleteTransfer: ( state, action: PayloadAction<string>) => {
             state.items = state.items.filter( e => e.id !== action.payload );
