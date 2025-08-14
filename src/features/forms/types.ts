@@ -6,7 +6,9 @@ export type FormFields =
     | ReturnType<typeof getExpenseFormFields>
     | ReturnType<typeof getIncomeFormFields>
     | ReturnType<typeof getTransferFormFields>;
-export type FormErrors = Partial<Record<keyof Omit<Transaction, "id" | "comment">, string>>; //Todo: simplify THIS!
+
+export type FormErrors = Partial<Record<keyof typeof FORM_FIELD_NAMES, string>>;
+
 export type InputTypes = HTMLInputElement | HTMLSelectElement;
 
 export const FORM_FIELD_NAMES = {
