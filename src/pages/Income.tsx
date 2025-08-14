@@ -1,11 +1,15 @@
 import React from 'react';
 import { PageHeader } from "../components/common/PageHeader";
+import { useOperations } from "../features/operations/hooks/useOperations";
+import { OperationList } from "../features/operations/components/OperationList";
 
 const Income = () => {
+    const { incomes } = useOperations();
+
     return (
         <>
             <PageHeader />
-            <p>Тут будет список категорий дохода</p>
+            <OperationList operations={ incomes }/>
         </>
     );
 }

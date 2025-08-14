@@ -17,6 +17,7 @@ const incomesSlice = createSlice( {
         createIncome: ( state, action: PayloadAction<Omit<Income, 'id'>> ) => {
             const newIncome = { id: uuidv4(), ...action.payload };
             state.items.push( newIncome );
+            state.items.sort((a, b) => Number( b.date ) - Number( a.date ) );
         },
         deleteIncome: ( state, action: PayloadAction<string> ) => {
             state.items = state.items.filter( e => e.id !== action.payload );

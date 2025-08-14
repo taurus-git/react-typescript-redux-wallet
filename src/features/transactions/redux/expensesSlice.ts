@@ -17,6 +17,7 @@ const expensesSlice = createSlice( {
         createExpense: ( state, action: PayloadAction<Omit<Expense, 'id'>> ) => {
             const newExpense = { id: uuidv4(), ...action.payload };
             state.items.push( newExpense );
+            state.items.sort((a, b) => Number( b.date ) - Number( a.date ) );
         },
         deleteExpense: ( state, action: PayloadAction<string> ) => {
             state.items = state.items.filter( e => e.id !== action.payload );
