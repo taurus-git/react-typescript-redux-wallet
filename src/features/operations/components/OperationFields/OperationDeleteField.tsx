@@ -27,26 +27,33 @@ export const OperationDeleteField =
         return (
             <>
                 <Trash2
-                    className={ `${styles.OperationList__DeleteField}` }
+                    className={`${ styles.OperationDeleteField__trigger }` }
                     onClick={ () => open( modalId ) }>
                     Удалить
                 </Trash2>
 
                 <Modal isOpen={ isOpen( modalId ) }
-                       onClose={ () => close( modalId ) }>
+                       onClose={ () => close( modalId ) }
+                       containerClassName={ `${ styles.OperationDeleteField__modal }` }>
                     <>
-                        Удалить?
-                        <button
-                            onClick={ () => {
-                                onRemove( item );
-                                close( modalId )
-                            } }>
-                            Да
-                        </button>
-                        <button
-                            onClick={ () => close( modalId ) }>
-                            Нет
-                        </button>
+                        <div className={ `px-2 py-2 d-flex flex-col justify-center align-center ${ styles.OperationDeleteField__content }`}>
+                            <h3 className={  `mb-1 ${ styles.OperationDeleteField__question }`}>Удалить?</h3>
+                            <div className={  `d-flex justify-center align-center ${ styles.OperationDeleteField__actions }` }>
+                                <button
+                                    onClick={ () => {
+                                        onRemove( item );
+                                        close( modalId )
+                                    } }
+                                    className={`cursor-pointer ${ styles.OperationDeleteField__button } ${ styles['OperationDeleteField__button--confirm'] }`}>
+                                    Да
+                                </button>
+                                <button
+                                    onClick={ () => close( modalId ) }
+                                    className={`cursor-pointer ${ styles.OperationDeleteField__button } ${ styles['OperationDeleteField__button--cancel'] }`}>
+                                    Нет
+                                </button>
+                            </div>
+                        </div>
                     </>
 
                 </Modal>
